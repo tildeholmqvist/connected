@@ -7,7 +7,7 @@
 
 {% block page_content %}
     <small>
-        {{ post.created_at.date }} | Categories:
+        {{ post.created_at|date }} | Categories:
         {% for category in post.categories.all %}
             <a href="{% url 'blog_category' category.name %}">
                 {{ category.name }}
@@ -30,7 +30,7 @@
     <h3>Comments:</h3>
     {% for comment in comments %}
         <p>
-            On {{ comment.created_on.date }} <b>{{ comment.author }}</b> wrote:
+            On {{ comment.created_at|date }} <b>{{ comment.author }}</b> wrote:
         </p>
         <p>
             {{ comment.body | linebreaks }}
