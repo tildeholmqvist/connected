@@ -10,6 +10,7 @@ def blog_list(request):
     context = {
         "posts": posts,
     }
+    paginate_by = 6
 
     return render(request, "blog/index.html", context)
 
