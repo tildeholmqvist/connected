@@ -5,10 +5,9 @@ from django_summernote.admin import SummernoteModelAdmin
 # This code is from the walkthorugh project "I think therefor I blog"
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-    search_fields = ['title', 'content']
-    summernote_fields = ('content',)
+    list_display = ('title', 'author', 'created_at', 'updated_on',)
+    list_filter = ('categories', 'created_at')
 
 # Register your models here.
-admin.site.register(Category)
 admin.site.register(Comment)
-
+admin.site.register(Category)

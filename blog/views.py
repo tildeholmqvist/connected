@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from blog.forms import CommentForm
+from .forms import PostForm
 
 # Create your views here.
 
@@ -14,7 +15,19 @@ def blog_list(request):
 
     return render(request, "blog/index.html", context)
 
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'post_form.html', {'form': form})
 
+    
 def blog_category(request, category):
     posts = Post.objects.filter(
         categories__name__contains=category).order_by("-created_at")

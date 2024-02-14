@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.text import slugify
+from django_summernote.fields import SummernoteTextField
 
 # Model handeling Categories
 
@@ -31,7 +31,6 @@ class Post(models.Model):
     def __str__(self): 
         return f"{self.title} by {self.author}"
     
-
 # Model handeling Comments 
 # Some code is taken from the walkthoughproject "I think therefor I blog"
 
