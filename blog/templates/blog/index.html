@@ -1,10 +1,5 @@
-<!-- blog/templates/blog/index.html -->
 {% extends "base.html" %}
-
-<h1>CONNECTED</h1>
-{% block page_title %}
-    <h2>Blog Posts</h2>
-{% endblock page_title %}
+{% load static %}
 
 {% block page_content %}
     {% block posts %}
@@ -22,3 +17,5 @@
         {% endfor %}
     {% endblock posts %}
 {% endblock page_content %}
+
+{% block copyright %}Copyright 2024 Tilde Holmqvist{% endblock %}
