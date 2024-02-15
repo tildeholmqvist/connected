@@ -1,13 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.views import generic
 from .models import Post, Comment
 from blog.forms import CommentForm
 from .forms import PostForm
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'index.html')
+class BlogList(generic.ListView):
+    queryset = Post.objects.all()
+    template_name = "blog/index.html"
+    paginate_by = 6
+
 
 def blog_list(request):
     posts = Post.objects.all().order_by("-created_at")

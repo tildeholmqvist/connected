@@ -2,17 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_summernote.fields import SummernoteTextField
 
-# Model handeling Categories
-
-class Category(models.Model):
-    name = models.CharField(max_length=40)
-
-    class Meta:
-        verbose_name_plural = "categories"
-
-    def __str__(self):
-        return self.name
-
 
 # Model handeling Posts
 # Some code is taken from the walkthoughproject "I think therefor I blog"
@@ -30,6 +19,18 @@ class Post(models.Model):
     
     def __str__(self): 
         return f"{self.title} by {self.author}"
+
+# Model handeling Categories
+
+class Category(models.Model):
+    name = models.CharField(max_length=40)
+
+    class Meta:
+        verbose_name_plural = "categories"
+
+    def __str__(self):
+        return self.name
+
     
 # Model handeling Comments 
 # Some code is taken from the walkthoughproject "I think therefor I blog"
