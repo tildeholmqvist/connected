@@ -6,6 +6,9 @@ from .forms import PostForm
 
 # Create your views here.
 
+def index(request):
+    return render(request, 'index.html')
+
 def blog_list(request):
     posts = Post.objects.all().order_by("-created_at")
     context = {
@@ -61,3 +64,5 @@ def blog_detail(request, pk):
     }
 
     return render(request, "blog/blog_detail.html", context)
+
+
