@@ -3,8 +3,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.views import generic
 from .models import Post, Comment
-from blog.forms import CommentForm
-from .forms import PostForm
+from .forms import CommentForm, PostForm
 
 
 # Create your views here.
