@@ -8,31 +8,10 @@ from .forms import PostForm
 # Create your views here.
 
 class BlogList(generic.ListView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by("-created_at")
     template_name = "blog/index.html"
     paginate_by = 6
 
-
-def blog_list(request):
-    posts = Post.objects.all().order_by("-created_at")
-    context = {
-        "posts": posts,
-    }
-    paginate_by = 6
-
-    return render(request, "blog/index.html", context)
-
-def create_post(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm()
-    return render(request, 'post_form.html', {'form': form})
 
     
 def blog_category(request, category):
@@ -45,28 +24,32 @@ def blog_category(request, category):
     return render(request, "blog/category.html", context)
 
 
-def blog_detail(request, pk):
-    post = Post.objects.get(pk=pk)
+def blog_detail(request):
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset)
+    comments = post.comments.all().order_by("-created_on")
+    comment_count = post.comments.filter(apporoved=True).count()
     if request.method == "POST":
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = Comment(
-                author=request.user, 
-                body=form.cleaned_data["body"],
-                post=post,
-            )
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
             comment.save()
-            return HttpResponseRedirect(request.path_info)
-    else:
-        form = CommentForm() 
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+            )
 
-    comments = Comment.objects.filter(post=post)
-    context = {
-        "post": post,
-        "comments": comments,
-        "form": form,
-    }
+    comment_form = CommentForm()
 
-    return render(request, "blog/blog_detail.html", context)
-
-
+    return render(
+        request,
+        "blog/post_detail.html",
+        {
+            "post": post,
+            "comments": comments,
+            "comment_count": comment_count,
+            "comment_form": comment_form,
+        },
+    )
