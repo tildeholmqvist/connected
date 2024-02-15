@@ -27,31 +27,24 @@ def blog_category(request, category):
 
 
 def blog_detail(request, pk):
-    queryset = Post.objects.filter(status=1)
+    queryset = Post.objects.all()
     post = get_object_or_404(queryset, pk=pk)
-    comments = post.comments.all().order_by("-created_on")
-    comment_count = post.comments.filter(apporoved=True).count()
+    form = CommentForm()
     if request.method == "POST":
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.author = request.user
-            comment.post = post
-            comment.save()
-            messages.add_message(
-                request, messages.SUCCESS,
-                'Comment submitted and awaiting approval'
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = Comment(
+                author=form.cleaned_data["author"],
+                body=form.cleaned_data["body"],
+                post=post,
             )
+            comment.save()
+            return HttpResponseRedirect(request.path_info)
 
-    comment_form = CommentForm()
-
-    return render(
-        request,
-        "blog/post_detail.html",
-        {
-            "post": post,
-            "comments": comments,
-            "comment_count": comment_count,
-            "comment_form": comment_form,
-        },
-    )
+    comments = Comment.objects.filter(post=post)
+    context = {
+        "post": post,
+        "comments": comments,
+        "form": CommentForm(),
+    }
+    return render(request, "blog/blog_detail.html", context)
