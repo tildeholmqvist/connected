@@ -13,6 +13,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField("Category", related_name="posts")
     updated_on = models.DateTimeField(auto_now=True)
+    excerpt = models.TextField(blank=True)
 
     class Meta:
         ordering = ["-created_at"]
