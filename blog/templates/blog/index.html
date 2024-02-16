@@ -13,9 +13,11 @@
                     </a>
                 {% endfor %}
             </small>
-            <p>{{ post.content | slice:":400" }}...</p>
+            <p>{{ post.content |safe | slice:":400" }}...</p>
         {% endfor %}
     {% endblock posts %}
 {% endblock page_content %}
 
-{% block copyright %}Copyright 2024 Tilde Holmqvist{% endblock %}
+{% block copyright %}
+Copyright 2024 Tilde Holmqvist
+{% endblock %}
