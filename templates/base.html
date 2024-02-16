@@ -14,7 +14,7 @@
 <h1>C O N N E C T E D</h1>
 <nav>
 <a href="{% url 'home' %}">Home</a>
-<a href="#">About</a>
+<a href="about.html">About</a>
 <a href="#">Discussion</a>
 </nav>
 
@@ -24,10 +24,9 @@
 {% endblock page_content %}
 
 <footer class="footer mt-auto py-3 dark-bg">
-    <p class="m-0 text-center text-white">
-  {% block copyright %}Made by Tilde Holmqvist{% endblock copyright %}
-</p>
+  {% block copyright %}
+  Made by Tilde Holmqvist
+  {% endblock copyright %}
 </footer>
-
 </body>
 </html>
