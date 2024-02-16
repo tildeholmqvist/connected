@@ -47,3 +47,6 @@ def blog_detail(request, pk):
         "form": CommentForm(),
     }
     return render(request, "blog/blog_detail.html", context)
+
+def about(request):
+    return render(request, 'about.html')
