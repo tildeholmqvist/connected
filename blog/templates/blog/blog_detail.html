@@ -13,7 +13,7 @@
                 {{ category.name }}
             </a>
         {% endfor %}
-    </small>
+      </small>  
     <p>{{ post.content |safe | linebreaks }}</p>
     {% if user.is_authenticated %}
         <h3>Leave a comment:</h3>

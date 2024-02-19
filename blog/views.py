@@ -40,12 +40,14 @@ def blog_detail(request, pk):
             comment.save()
             return HttpResponseRedirect(request.path_info)
 
-    comments = Comment.objects.filter(post=post)
+    comments = post.comments.all().order_by("-created_at")
+    comment_count = post.comments.filter(approved=True).count()
     context = {
         "post": post,
         "comments": comments,
         "form": CommentForm(),
     }
+
     return render(request, "blog/blog_detail.html", context)
 
 def about(request):
