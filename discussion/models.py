@@ -3,11 +3,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class DiscussionPost(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    categories = models.ManyToManyField("Category", related_name="posts")
+    category = models.ManyToManyField("Category", related_name="posts")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     updated_on = models.DateTimeField(auto_now=True)
 
