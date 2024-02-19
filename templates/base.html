@@ -19,7 +19,7 @@
 <nav>
   <a href="{% url 'home' %}">Home</a>
   <a href="{% url 'about' %}">About</a>
-  <a href="{% url 'discussion' %}">Discussion</a>
+  <a href="{% url 'discussion_list' %}">Discussion</a>
   <div class="login-links">
       {% if user.is_authenticated %}
           <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>

@@ -2,11 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import DiscussionPost
 from .forms import DiscussionPostForm
+from blog.models import Post 
 
 # Create your views here.
 
 def discussion_list(request):
-    post = DiscussionPost.objects.all()
+    posts = Post.objects.all() 
     return render(request, 'discussion/discussion_list.html', {'posts': posts})
 
 
