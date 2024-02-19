@@ -1,10 +1,42 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
-    <h2>Create a Post</h2>
-    <form method="post" enctype="multipart/form-data">
-        {{ blog_form.as_p }}
-        {{ photo_form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Submit</button>
-    </form>
-{% endblock content %}
+    <div class="container">
+        <h2>Create a Post</h2>
+        {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Post Your Own Story</h4>
+                        <form method="post" action="{% url 'discussion_create' %}">
+                            {% csrf_token %}
+                            {{ form.title }}
+                            {{ form.content }}
+                            {{ form.category }}
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Post Your Own Story</h4>
+                        <form method="post" action="{% url 'discussion_create' %}">
+                            {% csrf_token %}
+                            {{ form.title }}
+                            {{ form.content }}
+                            {{ form.category }}
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

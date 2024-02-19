@@ -11,7 +11,7 @@ class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    categories = models.ManyToManyField("Category", related_name="posts")
+    category = models.ManyToManyField("Category", related_name="posts")
     updated_on = models.DateTimeField(auto_now=True)
     excerpt = models.TextField(blank=True)
 
@@ -27,7 +27,7 @@ class Category(models.Model):
     name = models.CharField(max_length=40)
 
     class Meta:
-        verbose_name_plural = "categories"
+        verbose_name_plural = "category"
 
     def __str__(self):
         return self.name

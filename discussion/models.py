@@ -18,6 +18,8 @@ class DiscussionPost(models.Model):
     def __str__(self): 
         return f"{self.title} by {self.author}"
 
+
+
 class Category(models.Model):
     name = models.CharField(max_length=40)
 

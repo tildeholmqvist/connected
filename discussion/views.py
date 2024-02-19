@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import DiscussionPost
 from .forms import DiscussionPostForm
 from blog.models import Post
+from blog.models import Category
 
 def discussion_list(request):
     discussion = DiscussionPost.objects.all()
@@ -23,6 +24,8 @@ def discussion_create(request):
             return redirect('discussion_list')  
     else:
         form = DiscussionPostForm()
+    
+    form.fields['category'].queryset = Category.objects.all()
     
     discussions = DiscussionPost.objects.all()
     return render(request, 'discussion/discussion_list.html', {'form': form, 'discussions': discussions})
