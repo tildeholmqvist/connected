@@ -48,3 +48,6 @@ class Comment(models.Model):
     
     def __str__(self): 
         return f"{self.body} by {self.author}"
+    
+    def is_visible_to_user(self, user):
+        return self.approved or user == self.author
