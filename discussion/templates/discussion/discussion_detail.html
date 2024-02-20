@@ -1,0 +1,88 @@
+<!--  blog/templates/blog/blog_detail.html -->
+{% extends "base.html" %}
+
+{% block page_title %}
+    <h2>{{ discussion.title }}</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <small>
+        {{ discussion.created_at|date }} | Categories:
+        {% for category in discussion.category.all %}
+            <a href="{% url 'discussion_category' category.name %}">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+      </small>  
+    <p>{{ discussion.content |safe | linebreaks }}</p>
+    {% if user.is_authenticated %}
+    <h3>Leave a comment:</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.author }}
+        </div>
+        <div>
+            {{ form.body }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% else%}
+        <h5> Log in to comment</h5>
+    {% endif%}
+    
+    <h3>Comments:</h3>
+    {% for comment in comments %}
+    <div class="p-2 comments {% if not comment.apporoved and comment.author == user %} faded{% elif not comment.apporoved %} d-none{% endif %}">
+      <p class="font-weight-bold">
+        {{ comment.author }}
+        <span class="font-weight-normal">
+          {{ comment.created_on }}
+        </span> wrote:
+      </p>
+      <div id="comment{{ comment.id }}">
+        {{ comment.body | linebreaks }}
+      </div>
+      {% if not comment.approved and comment.author == user %}
+      <p class="approval">
+        This comment is awaiting approval
+      </p>
+      {% endif %}
+      {% if user.is_authenticated and comment.author == user %}
+      <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+      <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    <!--- Walkthorugh-->
+
+    <div class="modal fade" id="deleteModal" tabindex="-1"
+  aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+          id="deleteModalLabel">Delete comment?</h5>
+        <button type="button" class="btn-close"
+          data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your comment?
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock page_content %}
+
+{% block copyright %}
+    Copyright 2024 Tilde Holmqvist
+{% endblock %}
