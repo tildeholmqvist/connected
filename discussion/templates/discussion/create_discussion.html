@@ -10,11 +10,9 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Post Your Own Story</h4>
-                    <form method="post" action="{% url 'discussion_list' %}">
+                    <form method="post" action="{% url 'create_discussion' %}">
                         {% csrf_token %}
-                        {{ form.title }}
-                        {{ form.content }}
-                        {{ form.category }} 
+                        {{ form.as_p }} 
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
