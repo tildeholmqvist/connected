@@ -14,10 +14,11 @@ def discussion_detail(request, pk):
     return render(request, 'discussion/discussion_detail.html', {'discussion': discussion})
 
 def discussion_category(request, category):
-    discussions = DiscussionPost.objects.filter(category__name__contains=category).order_by("-created_at")
+    discussion = DiscussionPost.objects.filter(
+        categories__name=category).order_by("-created_at")
     context = {
         "category": category,
-        "discussions": discussions,
+        "discussion": discussion,
     }
     return render(request, "discussion/discussion_list.html", context)
 

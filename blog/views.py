@@ -82,14 +82,12 @@ def about(request):
 
 # FROM WALKTHROUGH
 
-def comment_edit(request, comment_id):
+def comment_edit(request, pk, comment_id):
     """
-    view to edit comments
+    View to edit comments
     """
     if request.method == "POST":
-
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset)
+        post = get_object_or_404(Post, pk=pk)
         comment = get_object_or_404(Comment, pk=comment_id)
         comment_form = CommentForm(data=request.POST, instance=comment)
 
@@ -98,31 +96,23 @@ def comment_edit(request, comment_id):
             comment.post = post
             comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+            messages.success(request, 'Comment Updated!')
         else:
-            messages.add_message(
-                request, messages.ERROR,
-                'Error updating comment!')
+            messages.error(request, 'Error updating comment!')
 
-    return HttpResponseRedirect(reverse('post_detail'))
+    return HttpResponseRedirect(reverse('blog_detail', kwargs={'pk': pk}))
 
-
-def comment_delete(request,comment_id):
+def comment_delete(request, pk, comment_id):
     """
-    view to delete comment
+    View to delete comment
     """
-    queryset = Post.objects.filter(status=1)
-    post = get_object_or_404(queryset)
+    post = get_object_or_404(Post, pk=pk)
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author == request.user:
         comment.delete()
-        messages.add_message(
-            request, messages.SUCCESS,
-            'Comment deleted!')
+        messages.success(request, 'Comment deleted!')
     else:
-        messages.add_message(
-            request, messages.ERROR,
-            'You can only delete your own comments!')
+        messages.error(request, 'You can only delete your own comments!')
 
-    return HttpResponseRedirect(reverse('post_detail'))
+    return HttpResponseRedirect(reverse('blog_detail', kwargs={'pk': pk}))
