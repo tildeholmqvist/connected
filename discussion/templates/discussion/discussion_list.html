@@ -32,8 +32,10 @@
                     <div class="card-footer">
                         <small class="text-muted">
                             {{ discussion.created_at.date }} | Categories:
-                            {% for category in discussion.categories.all %}
-                                <a href="{% url 'discussion_category' category.name %}">{{ category.name }}</a>
+                            {% for category in discussion.category.all %}
+                                <a href="{% url 'discussion_category' category.name %}">
+                                    {{ category.name }}
+                                </a>
                             {% endfor %}
                         </small>
                     </div>

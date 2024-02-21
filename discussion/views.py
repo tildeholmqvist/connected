@@ -10,8 +10,8 @@ from blog.models import Post
 class DiscussionIndex(generic.ListView):
     queryset = DiscussionPost.objects.all().order_by("-created_at")
     context_object_name = "discussions"
-    paginate_by =  6
-    template_name = "discussion/discussion_list.html" 
+    paginate_by = 6
+    template_name = "discussion/discussion_list.html"
 
 
 
@@ -22,12 +22,12 @@ def discussion_list(request):
 
 def discussion_category(request, category):
     discussions = DiscussionPost.objects.filter(
-        categories__name=category).order_by("-created_at")
+        category__name=category).order_by("-created_at")
     context = {
         "category": category,
         "discussions": discussions,
     }
-    return render(request, "discussion/discussion_list.html", context)
+    return render(request, "discussion/discussion_category.html", context)
 
 
 # This is the same view as in the blog_detail
