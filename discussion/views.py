@@ -1,14 +1,22 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.views import generic
 from django.contrib.auth.decorators import login_required
 from .models import DiscussionPost, Category, DiscussionComment
 from .forms import DiscussionPostForm, DiscussionCommentForm
 from blog.models import Post
 
 
+class DiscussionIndex(generic.ListView):
+    queryset = DiscussionPost.objects.all().order_by("-created_at")
+    context_object_name = "discussions"
+    paginate_by =  6
+    template_name = "discussion/discussion_list.html" 
+
+
+
 def discussion_list(request):
     discussions = DiscussionPost.objects.all()
-    paginate_by = 6
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
 
 
