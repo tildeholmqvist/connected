@@ -20,16 +20,15 @@
     <form method="post">
         {% csrf_token %}
         <div>
-            {{ form.author }}
-        </div>
-        <div>
-            {{ form.body }}
+            <input type="hidden" name="post_id" value="{{ discussion.id }}">
+            <label for="id_body">Your comment:</label>
+            <textarea name="body" id="id_body" rows="4" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    {% else%}
+    {% else %}
         <h5> Log in to comment</h5>
-    {% endif%}
+    {% endif %}
     
     <h3>Comments:</h3>
     {% for comment in comments %}

@@ -1,17 +1,40 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import DiscussionPost
-from .forms import DiscussionPostForm
+from .models import DiscussionPost, Category, DiscussionComment
+from .forms import DiscussionPostForm, DiscussionCommentForm
 from blog.models import Post
-from .models import Category
+
 
 def discussion_list(request):
     discussions = DiscussionPost.objects.all()
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
 
+# This is the same view as in the blog_detail
+
 def discussion_detail(request, pk):
     discussion = DiscussionPost.objects.get(pk=pk)
-    return render(request, 'discussion/discussion_detail.html', {'discussion': discussion})
+    form = DiscussionCommentForm()
+    if request.method == "POST":
+        form = DiscussionCommentForm(request.POST)
+        if form.is_valid():
+            comment = DiscussionComment(
+                author=request.user,
+                body=form.cleaned_data["body"],
+                post=discussion,
+            )
+            comment.save()
+            return HttpResponseRedirect(request.path_info)
+
+    comments = discussion.comments.all().order_by("-created_at")
+    comment_count = discussion.comments.filter(approved=True).count()
+    context = {
+        "discussion": discussion,
+        "comments": comments,
+        "form": form,
+    }
+    return render(request, 'discussion/discussion_detail.html', context)
+
 
 def discussion_category(request, category):
     discussion = DiscussionPost.objects.filter(
