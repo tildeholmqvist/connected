@@ -8,7 +8,19 @@ from blog.models import Post
 
 def discussion_list(request):
     discussions = DiscussionPost.objects.all()
+    paginate_by = 6
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
+
+
+def discussion_category(request, category):
+    discussions = DiscussionPost.objects.filter(
+        categories__name=category).order_by("-created_at")
+    context = {
+        "category": category,
+        "discussions": discussions,
+    }
+    return render(request, "discussion/discussion_list.html", context)
+
 
 # This is the same view as in the blog_detail
 
@@ -35,15 +47,6 @@ def discussion_detail(request, pk):
     }
     return render(request, 'discussion/discussion_detail.html', context)
 
-
-def discussion_category(request, category):
-    discussion = DiscussionPost.objects.filter(
-        categories__name=category).order_by("-created_at")
-    context = {
-        "category": category,
-        "discussion": discussion,
-    }
-    return render(request, "discussion/discussion_list.html", context)
 
 @login_required
 def create_discussion(request):

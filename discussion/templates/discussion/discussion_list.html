@@ -3,6 +3,24 @@
 {% load static %}
 
 {% block page_content %}
+{% if user.is_authenticated %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Post Your Own Story</h4>
+                <form method="post" action="{% url 'create_discussion' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }} 
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <h5>Log in to post your own story</h5>
+{% endif %}
+</div>
     <div class="row">
         {% for discussion in discussions %}
             <div class="col-md-4 mb-4">
@@ -23,22 +41,7 @@
             </div>
         {% endfor %}
     </div>
-    {% if user.is_authenticated %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Post Your Own Story</h4>
-                    <form method="post" action="{% url 'create_discussion' %}">
-                        {% csrf_token %}
-                        {{ form.as_p }} 
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endif %}
+
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
