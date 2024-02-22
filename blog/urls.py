@@ -8,7 +8,6 @@ urlpatterns = [
     path("category/<category>/", views.blog_category, name="blog_category"),
     path('edit_comment/<int:comment_id>',
          views.comment_edit, name='comment_edit'),
-     path('delete_comment/<int:comment_id>',
-         views.comment_delete, name='comment_delete'),
+    path('post/<int:pk>/delete_comment/<int:comment_id>/', views.comment_delete, name='comment_delete'),
 
 ]

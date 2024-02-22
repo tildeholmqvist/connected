@@ -48,7 +48,7 @@
         <div class="col-md-8 card mb-4  mt-3 ">
     <h3>Comments:</h3>
     {% for comment in comments %}
-        <div class="p-2 comments {% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}">
+        <div class="p-2 comments {% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
             <p class="font-weight-bold">
                 {{ comment.author }}
                 <span class="font-weight-normal">
@@ -69,7 +69,6 @@
             {% endif %}
         </div>
     {% endfor %}
-
     <!-- Delete confirmation modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -90,10 +89,6 @@
     </div>
 
 {% endblock page_content %}
-
-{% block extras %}
-    <script src="{% static 'js/comments.js' %}"></script>
-{% endblock extras %}
 
 {% block copyright %}
     Copyright 2024 Tilde Holmqvist
