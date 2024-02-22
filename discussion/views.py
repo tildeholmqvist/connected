@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views import generic
+from django.contrib import messages
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .models import DiscussionPost, Category, DiscussionComment
 from .forms import DiscussionPostForm, DiscussionCommentForm
@@ -44,6 +46,10 @@ def discussion_detail(request, pk):
                 post=discussion,
             )
             comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+                )
             return HttpResponseRedirect(request.path_info)
 
     comments = discussion.comments.all().order_by("-created_at")
@@ -70,3 +76,18 @@ def create_discussion(request):
 
     form.fields['category'].queryset = Category.objects.all()
     return render(request, 'discussion/create_discussion.html', {'form': form})
+
+
+def comment_delete(request, pk, comment_id):
+    """
+    View to delete comment
+    """
+    post = get_object_or_404(Post, pk=pk)
+    discussion_comment = get_object_or_404(DiscussionComment, id=comment_id)
+    if discussion_comment.author == request.user:
+            discussion_comment.delete()
+            messages.success(request, 'Comment deleted!')
+    else:
+        messages.error(request, 'You can only delete your own comments!')
+
+    return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))

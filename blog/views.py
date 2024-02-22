@@ -68,7 +68,7 @@ def comment_edit(request, pk, comment_id):
     """
     if request.method == "POST":
         post = get_object_or_404(Post, pk=pk)
-        comment = get_object_or_404(Comment, pk=comment_id)
+        comment = get_object_or_404(Comment, id=comment_id)
         comment_form = CommentForm(data=request.POST, instance=comment)
 
         if comment_form.is_valid() and comment.author == request.user:

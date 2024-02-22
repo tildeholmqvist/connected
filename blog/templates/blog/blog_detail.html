@@ -17,6 +17,7 @@
     </small>
     <p>{{ post.content | safe | linebreaks }}</p>
     {% if user.is_authenticated %}
+    <form method="post" id="commentForm">
         <h3>Leave a comment:</h3>
         <form method="post">
             {% csrf_token %}
@@ -31,7 +32,6 @@
     {% else %}
         <h5>Log in to comment</h5>
     {% endif %}
-
     <!--From the walkthorugh-->
        <!-- Displaying count of comments -->
     <div class="row">
@@ -48,27 +48,28 @@
         <div class="col-md-8 card mb-4  mt-3 ">
     <h3>Comments:</h3>
     {% for comment in comments %}
-        <div class="p-2 comments {% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
-            <p class="font-weight-bold">
-                {{ comment.author }}
-                <span class="font-weight-normal">
-                    {{ comment.created_on }}
-                </span> wrote:
-            </p>
-            <div id="comment{{ comment.id }}">
-                {{ comment.body | linebreaks }}
-            </div>
-            {% if not comment.approved and comment.author == user %}
-                <p class="approval">
-                    This comment is awaiting approval
-                </p>
-            {% endif %}
-            {% if user.is_authenticated and comment.author == user %}
-                <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
-            {% endif %}
+    <div class="p-2 comments {% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
+        <p class="font-weight-bold">
+            {{ comment.author }}
+            <span class="font-weight-normal">
+                {{ comment.created_on }}
+            </span> wrote:
+        </p>
+        <div id="comment{{ comment.id }}">
+            {{ comment.body | linebreaks }}
         </div>
-    {% endfor %}
+        {% if not comment.approved and comment.author == user %}
+            <p class="approval">
+                This comment is awaiting approval
+            </p>
+        {% endif %}
+        {% if user.is_authenticated and comment.author == user %}
+            <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+            <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+        {% endif %}
+    </div>
+{% endfor %}
+
     <!-- Delete confirmation modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -93,3 +94,7 @@
 {% block copyright %}
     Copyright 2024 Tilde Holmqvist
 {% endblock copyright %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
