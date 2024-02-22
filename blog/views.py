@@ -38,6 +38,11 @@ def blog_detail(request, pk):
                 post=post,
             )
             comment.save()
+            # From walkthrough
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+                )
             return HttpResponseRedirect(request.path_info)
 
     comments = post.comments.all().order_by("-created_at")
