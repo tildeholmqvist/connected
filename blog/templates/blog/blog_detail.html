@@ -33,7 +33,19 @@
     {% endif %}
 
     <!--From the walkthorugh-->
-    
+       <!-- Displaying count of comments -->
+    <div class="row">
+        <div class="col-12">
+        <strong class="text-secondary">
+            <i class="far fa-comments"></i> {{ comment_count }}
+        </strong>
+        </div>
+        <div class="col-12">
+        <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
     <h3>Comments:</h3>
     {% for comment in comments %}
         <div class="p-2 comments {% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}">

@@ -45,6 +45,7 @@ def blog_detail(request, pk):
     context = {
         "post": post,
         "comments": comments,
+        "comment_count": comment_count,
         "form": CommentForm(),
     }
 
@@ -52,7 +53,7 @@ def blog_detail(request, pk):
 
 # WALKTHROUGH
 
-def comment_edit(request, slug, comment_id):
+def comment_edit(request, comment_id):
     """
     view to edit comments
     """

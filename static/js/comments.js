@@ -28,7 +28,7 @@ for (let button of editButtons) {
     submitButton.innerText = "Update";
     commentForm.setAttribute("action", `edit_comment/${commentId}`);
   });
-}
+} console.log("Edit button clicked")
 
 /**
 * Initializes deletion functionality for the provided delete buttons.
