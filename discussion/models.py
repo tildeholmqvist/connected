@@ -11,6 +11,7 @@ class DiscussionPost(models.Model):
     category = models.ManyToManyField("Category", related_name="discussion")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     updated_on = models.DateTimeField(auto_now=True)
+    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-created_at"]

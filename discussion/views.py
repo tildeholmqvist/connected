@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.views import generic
 from django.contrib import messages
@@ -70,7 +71,11 @@ def create_discussion(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('discussion_list')
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Post submitted and awaiting approval'
+                )
+            return HttpResponseRedirect(request.path_info)
     else:
         form = DiscussionPostForm()
 
@@ -91,3 +96,13 @@ def comment_delete(request, pk, comment_id):
         messages.error(request, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
+
+
+#@login_required
+#def profile(request):
+#    user_profile = get_object_or_404(User, username=request.user.username)
+#        context = {
+#                    'user_profile': user_profile
+#                            }
+#
+#                               return render(request, 'profile.html', context )

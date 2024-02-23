@@ -24,6 +24,7 @@
     <div class="row">
         {% for discussion in discussions %}
         <div class="col-md-12 mb-2">
+            <div class="p-2 discussion {% if not discussion.approved and discussion.author == user %} faded {% elif not discussion.approved %} d-none{% endif %}">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h4>
@@ -42,6 +43,15 @@
                 </div>
             </div>
         </div>
+        {% if not discussion.approved and discussion.author == user %}
+        <p class="approval">
+          This post is awaiting approval
+        </p>
+        {% endif %}
+        {% if user.is_authenticated and comment.author == user %}
+        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+        {% endif %}
+    </div>
         {% endfor %}
     </div>
 

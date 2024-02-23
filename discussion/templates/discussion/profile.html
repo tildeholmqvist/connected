@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    <h2>{{ user.username }}</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <div>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+
+  <div class="container">
+    <h2>Logout</h2>
+    <p>Are you sure you want to log out?</p>
+    <form method="post" action="{% url 'account_logout' %}">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+{% endblock %}
+{% endblock page_content %}
