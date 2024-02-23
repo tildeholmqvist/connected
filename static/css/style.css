@@ -29,11 +29,13 @@ nav {
     display: flex;
     flex-direction: column;
     height: 100%;
+    
 }
 
 .discussion-post-list {
     width: 120%;
 }
+
 
 .approval {
     color: red;
