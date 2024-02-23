@@ -18,15 +18,15 @@ document.addEventListener("DOMContentLoaded", function() {
   * - Updates the submit button's text to "Update".
   * - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
   */
-    for (let button of editButtons) {
-      button.addEventListener("click", (e) => {
-        console.log("Edit button clicked")
-        let commentId = e.target.getAttribute("comment_id");
-        let commentContent = document.getElementById(`comment${commentId}`).innerText;
-        commentText.value = commentContent;
-        commentForm.setAttribute("action", `edit_comment/${commentId}`);
-      });
-    }
+  for (let button of editButtons) {
+    button.addEventListener("click", (e) => {
+      console.log("Edit button clicked")
+      let commentId = e.target.getAttribute("comment_id");
+      let commentContent = document.getElementById(`comment${commentId}`).innerText;
+      commentText.value = commentContent;
+      commentForm.setAttribute("action", `edit_comment/${commentId}`);
+    });
+  }
   /**
   * Initializes deletion functionality for the provided delete buttons.
   * 
