@@ -148,6 +148,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dd2tctnen',
+    'API_KEY': '345264749761883',
+    'API_SECRET': 'xaRWV84c4G0xodMMk3W5LKkItCI',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
