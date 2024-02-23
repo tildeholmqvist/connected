@@ -38,6 +38,9 @@
                                     {{ category.name }}
                                 </a>
                             {% endfor %}-->
+                        {% if user.is_authenticated and discussion.author == user %}
+                        <button class="btn btn-delete" comment_id="{{ discussion.id }}">Delete</button>
+                        {% endif %}
                         </small>
                     </div>
                 </div>
@@ -48,10 +51,8 @@
           This post is awaiting approval
         </p>
         {% endif %}
-        {% if user.is_authenticated and comment.author == user %}
-        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-        {% endif %}
     </div>
+    
         {% endfor %}
     </div>
 
