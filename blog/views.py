@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import CommentForm, PostForm
 
 
@@ -14,7 +14,6 @@ class BlogList(generic.ListView):
     template_name = "blog/index.html"
     context_object_name = "posts"
     paginate_by =  6
-
 
 def blog_category(request, category):
     posts = Post.objects.filter(

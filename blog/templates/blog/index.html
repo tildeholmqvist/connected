@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title"><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h4>
-                            <p class="card-text">{{ post.excerpt | safe | truncatechars:300 }}</p>
+                            <p class="card-text">{{ post.excerpt | safe | truncatechars:200 }}</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">
@@ -19,7 +19,6 @@
                                         {{ category.name }}
                                     </a>
                                 {% endfor %}
-
                             </small>
                         </div>
                     </div>
@@ -29,7 +28,7 @@
     </div>
     <!---This is from the walkthrough project-->
     {% if is_paginated %}
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" class="pagination-nav">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>

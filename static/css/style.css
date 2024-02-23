@@ -1,3 +1,40 @@
+header {
+    margin-bottom: 70px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-links {
+    display: flex;
+    gap: 10px;
+}
+
+.login-links a {
+    text-decoration: none;
+    color: black;
+}
+
+.pagination-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.discussion-post-list {
+    width: 120%;
+}
+
 .approval {
     color: red;
 

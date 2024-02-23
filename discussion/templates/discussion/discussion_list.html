@@ -22,12 +22,12 @@
 {% endif %}
 </div>
     <div class="row">
+        <ul class="discussion-post-list">
         {% for discussion in discussions %}
-            <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h4>
-                        <p class="card-text">{{ discussion.content | safe | truncatechars:300 }}</p>
+                        <p class="card-text">{{ discussion.content | safe | truncatechars:200 }}</p>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">
@@ -37,6 +37,7 @@
                                     {{ category.name }}
                                 </a>
                             {% endfor %}
+                        </ul>
                         </small>
                     </div>
                 </div>

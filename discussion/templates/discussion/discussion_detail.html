@@ -29,6 +29,20 @@
     {% else %}
         <h5>Log in to comment</h5>
     {% endif %}
+    <!--From the walkthorugh-->
+       <!-- Displaying count of comments -->
+       <div class="row">
+        <div class="col-12">
+        <strong class="text-secondary">
+            <i class="far fa-comments"></i> {{ comment_count }}
+        </strong>
+        </div>
+        <div class="col-12">
+        <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
     
     <h3>Comments:</h3>
     {% for comment in comments %}
