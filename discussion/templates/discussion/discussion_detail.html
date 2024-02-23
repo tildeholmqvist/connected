@@ -6,12 +6,12 @@
 
 {% block page_content %}
     <small>
-        {{ discussion.created_at|date }} | Categories:
+        {{ discussion.created_at|date }} <!---| Categories:
         {% for category in discussion.category.all %}
             <a href="{% url 'discussion_category' category.name %}">
                 {{ category.name }}
             </a>
-        {% endfor %}
+        {% endfor %}-->
       </small>  
     <p>{{ discussion.content |safe | linebreaks }}</p>
     {% if user.is_authenticated %}
@@ -93,5 +93,5 @@
     </div>
   </div>
 </div>
-
+</div>
 {% endblock page_content %}

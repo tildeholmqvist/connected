@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_summernote.fields import SummernoteTextField
+from cloudinary.models import CloudinaryField
 
 
 # Model handeling Posts
@@ -11,6 +12,7 @@ class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    featured_image = CloudinaryField('image', default='placeholder')
     category = models.ManyToManyField("Category", related_name="posts")
     updated_on = models.DateTimeField(auto_now=True)
     excerpt = models.TextField(blank=True)

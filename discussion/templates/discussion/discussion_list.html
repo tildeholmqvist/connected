@@ -5,7 +5,7 @@
 {% block page_content %}
 {% if user.is_authenticated %}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 mb-2">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Post Your Own Story</h4>
@@ -22,8 +22,8 @@
 {% endif %}
 </div>
     <div class="row">
-        <ul class="discussion-post-list">
         {% for discussion in discussions %}
+        <div class="col-md-12 mb-2">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h4>
@@ -31,22 +31,22 @@
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">
-                            {{ discussion.created_at.date }} | Categories:
+                            {{ discussion.created_at.date }} by {{ discussion.author }} <!--| Categories:
                             {% for category in discussion.category.all %}
                                 <a href="{% url 'discussion_category' category.name %}">
                                     {{ category.name }}
                                 </a>
-                            {% endfor %}
-                        </ul>
+                            {% endfor %}-->
                         </small>
                     </div>
                 </div>
             </div>
+        </div>
         {% endfor %}
     </div>
 
     {% if is_paginated %}
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" class="pagination-nav">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
