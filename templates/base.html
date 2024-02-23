@@ -21,16 +21,20 @@
 <nav>
   <a href="{% url 'home' %}">Home</a>
   <a href="{% url 'about' %}">About</a>
-  <div class="dropdown">
-    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        Categories
+  <!---https://stackoverflow.com/questions/72977293/how-to-show-list-of-categories-in-navbar-using-django-framework-->
+  <ul class="nav-item dropdown">
+    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+       id="navbarDropdown" role="button">
+        categories
     </a>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {% for category in categories %}
-            <li><a class="dropdown-item" href="{% url 'blog_category' category %}">{{ category }}</a></li>
-        {% endfor %}
+    <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
+      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/News/">News</a></li>
+      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/Sience/">Sience</a></li>
+      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/Culture/">Culture</a></li>
+      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/AI/">AI</a></li>
+      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/Gadgets/">Gadgets</a></li>
     </ul>
-</div>
+  </ul>
 <a href="{% url 'discussion_list' %}">Discussion</a>
   <div class="login-links">
       {% if user.is_authenticated %}
