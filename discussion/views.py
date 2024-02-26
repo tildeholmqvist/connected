@@ -111,7 +111,7 @@ def comment_edit(request, pk, comment_id):
             "form": comment_form,
         }
 
-    return render(request, "discussion/edit_comment.html", context)
+    return render(request, "discussion/edit_discussion_comment.html", context)
 
 
 def comment_delete(request, pk, comment_id):
