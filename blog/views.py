@@ -73,6 +73,7 @@ def about(request):
 # FROM WALKTHROUGH
 
 def comment_edit(request, slug, comment_id):
+    categories = Category.objects.all() 
     """
     View to edit comments
     """
@@ -96,6 +97,7 @@ def comment_edit(request, slug, comment_id):
         comment_form = CommentForm(instance=comment)
         context = {
             "form": comment_form,
+            "categories": categories
         }
 
     return render(request, "blog/edit_comment.html", context)

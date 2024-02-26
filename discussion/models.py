@@ -8,7 +8,6 @@ class DiscussionPost(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    category = models.ManyToManyField("Category", related_name="discussion")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     updated_on = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)

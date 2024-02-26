@@ -25,6 +25,7 @@ class DiscussionIndex(generic.ListView):
 
 def discussion_list(request):
     discussions = DiscussionPost.objects.all()
+    categories = Category.objects.all() 
     for discussion in discussions: 
         discussion.comment_count = discussion.comments.filter(approved=True).count()
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
@@ -53,17 +54,20 @@ def discussion_detail(request, pk):
     comments = discussion.comments.all().order_by("-created_at")
     discussion_comment_count = discussion.comments.filter(approved=True).count()
 
-    blog_categories = Category.objects.all()
+    categories = Category.objects.all() 
     context = {
         "discussion": discussion,
         "comments": comments,
         "form": form,
+        "categories": categories,
     }
     return render(request, 'discussion/discussion_detail.html', context)
 
 
 @login_required
 def create_discussion(request):
+    categories = Category.objects.all() 
+
     if request.method == 'POST':
         form = DiscussionPostForm(request.POST)
         if form.is_valid():
@@ -78,12 +82,11 @@ def create_discussion(request):
     else:
         form = DiscussionPostForm()
 
-    categories = Category.objects.all() 
-
-    return render(request, 'discussion/create_discussion.html', {'form': form})
+    return render(request, 'discussion/create_discussion.html', {'form': form, 'categories': categories})
 
 
 def comment_edit(request, pk, comment_id):
+    categories = Category.objects.all() 
     """
     View to edit comments
     """
@@ -107,6 +110,7 @@ def comment_edit(request, pk, comment_id):
         comment_form = DiscussionCommentForm(instance=comment)
         context = {
             "form": comment_form,
+            "categories": categories
         }
 
     return render(request, "discussion/edit_discussion_comment.html", context)
