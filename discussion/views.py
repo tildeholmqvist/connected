@@ -20,6 +20,8 @@ class DiscussionIndex(generic.ListView):
 
 def discussion_list(request):
     discussions = DiscussionPost.objects.all()
+    for discussion in discussions: 
+        discussion.comment_count = discussion.comments.filter(approved=True).count()
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
 
 
@@ -54,7 +56,7 @@ def discussion_detail(request, pk):
             return HttpResponseRedirect(request.path_info)
 
     comments = discussion.comments.all().order_by("-created_at")
-    comment_count = discussion.comments.filter(approved=True).count()
+    discussion_comment_count = discussion.comments.filter(approved=True).count()
     context = {
         "discussion": discussion,
         "comments": comments,

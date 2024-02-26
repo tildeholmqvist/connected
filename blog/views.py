@@ -24,9 +24,11 @@ class BlogList(generic.ListView):
 def blog_category(request, category):
     posts = Post.objects.filter(
         category__name__contains=category).order_by("-created_at")
+    categories = Category.objects.all()
     context = {
         "category": category,
         "posts": posts,
+        "categories": categories,
     }
     return render(request, "blog/category.html", context)
 
