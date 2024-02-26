@@ -15,6 +15,8 @@ class BlogList(generic.ListView):
     context_object_name = "posts"
     paginate_by =  6
 
+    #With help from antonio
+
     def get_context_data(self,**kwargs):
         context = super(BlogList,self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
@@ -33,9 +35,9 @@ def blog_category(request, category):
     return render(request, "blog/category.html", context)
 
 
-def blog_detail(request, pk):
+def blog_detail(request, slug):
     queryset = Post.objects.all()
-    post = get_object_or_404(queryset, pk=pk)
+    post = get_object_or_404(queryset, slug=slug)
     form = CommentForm()
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -65,16 +67,17 @@ def blog_detail(request, pk):
     return render(request, "blog/blog_detail.html", context)
 
 def about(request):
-    return render(request, 'about.html')
+    categories = Category.objects.all()
+    return render(request, 'blog/about.html', {'categories': categories})
 
 # FROM WALKTHROUGH
 
-def comment_edit(request, pk, comment_id):
+def comment_edit(request, slug, comment_id):
     """
     View to edit comments
     """
     if request.method == "POST":
-        post = get_object_or_404(Post, pk=pk)
+        post = get_object_or_404(Post, slug=slug)
         comment = get_object_or_404(Comment, id=comment_id)
         comment_form = CommentForm(data=request.POST, instance=comment)
 
@@ -86,9 +89,9 @@ def comment_edit(request, pk, comment_id):
             messages.success(request, 'Comment Updated!')
         else:
             messages.error(request, 'Error updating comment!')
-        return HttpResponseRedirect(reverse('blog_detail', kwargs={'pk': pk}))
+        return HttpResponseRedirect(reverse('blog_detail', kwargs={'slug': slug}))
     else:
-        post = get_object_or_404(Post, pk=pk)
+        post = get_object_or_404(Post, slug=slug)
         comment = get_object_or_404(Comment, id=comment_id)
         comment_form = CommentForm(instance=comment)
         context = {
@@ -101,11 +104,11 @@ def comment_edit(request, pk, comment_id):
 
 
 
-def comment_delete(request, pk, comment_id):
+def comment_delete(request, slug, comment_id):
     """
     View to delete comment
     """
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Post, slug=slug)
     comment = get_object_or_404(Comment, id=comment_id)
 
     if comment.author == request.user:
@@ -114,4 +117,4 @@ def comment_delete(request, pk, comment_id):
     else:
         messages.error(request, 'You can only delete your own comments!')
 
-    return HttpResponseRedirect(reverse('blog_detail', kwargs={'pk': pk}))
+    return HttpResponseRedirect(reverse('blog_detail', kwargs={'slug': slug}))
