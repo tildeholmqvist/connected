@@ -1,65 +1,63 @@
-<!-- discussion_list.html -->
 {% extends "base.html" %}
 {% load static %}
 
 {% block page_content %}
-{% if user.is_authenticated %}
-<div class="row">
-    <div class="col-md-12 mb-2">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Post Your Own Story</h4>
-                <form method="post" action="{% url 'create_discussion' %}">
-                    {% csrf_token %}
-                    {{ form.as_p }} 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-{% else %}
-    <h5>Log in to post your own story</h5>
-{% endif %}
-</div>
-
-<div class="row">
-    {% for discussion in discussions %}
-    <div class="col-md-12 mb-2">
-        <div class="p-2 discussion {% if not discussion.approved and discussion.author == user %} faded {% elif not discussion.approved %} d-none{% endif %}">
+<div class="container">
+    {% if user.is_authenticated %}
+    <div class="row mb-4">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h4>
-                    <p class="card-text">{{ discussion.content | safe | truncatechars:200 }}</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        {{ discussion.created_at.date }} by {{ discussion.author }}
-                    </small>
-                    <strong class="text-secondary">
-                        <i class="far fa-comments"></i> {{ discussion.approved_comment_count }}
-                    </strong>
+                    <h4 class="card-title">Post Your Own Story</h4>
+                    <form method="post" action="{% url 'create_discussion' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    {% if not discussion.approved and discussion.author == user %}
-    <p class="approval">
-        This post is awaiting approval
-    </p>
+    {% else %}
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h5 class="text-muted">Log in to post your own story</h5>
+        </div>
+    </div>
     {% endif %}
-    {% endfor %}
-</div>
 
-{% if is_paginated %}
-<nav aria-label="Page navigation" class="pagination-nav">
-    <ul class="pagination justify-content-center">
-        {% if page_obj.has_previous %}
-        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-        {% endif %}
-        {% if page_obj.has_next %}
-        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-        {% endif %}
-    </ul>
-</nav>
-{% endif %}
+    {% for discussion in discussions %}
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card-discussion">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h5>
+                    <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
+                    <span class="badge bg-secondary"><i class="far fa-comments"></i> {{ discussion.approved_comment_count }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if is_paginated %}
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation" class="pagination-nav">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {% endif %}
+</div>
 {% endblock page_content %}

@@ -2,17 +2,17 @@
 {% load static %}
 
 {% block page_content %}
-<div class="row">
+<div class="row row-cols-1 row-cols-md-3 g-4 myindex">
     {% block posts %}
         {% for post in posts %}
-        <div class="col-md-6 mb-2">
-            <div class="card">
-                {% if "placeholder" in post.featured_image.url %}
-                <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
-                {% else %}
-                <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-                {% endif %}
+        <div class="col mb-4">
+            <div class="card mx-auto"> 
                 <div class="card-body">
+                    {% if "placeholder" in post.featured_image.url %}
+                    <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
+                    {% else %}
+                    <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                    {% endif %}
                     <h4 class="card-title"><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h4>
                     <p class="card-text">{{ post.excerpt | safe | truncatechars:200 }}</p>
                 </div>
