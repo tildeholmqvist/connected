@@ -15,6 +15,11 @@ class BlogList(generic.ListView):
     context_object_name = "posts"
     paginate_by =  6
 
+    def get_context_data(self,**kwargs):
+        context = super(BlogList,self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
 
 def blog_category(request, category):
     posts = Post.objects.filter(
@@ -79,8 +84,18 @@ def comment_edit(request, pk, comment_id):
             messages.success(request, 'Comment Updated!')
         else:
             messages.error(request, 'Error updating comment!')
+        return HttpResponseRedirect(reverse('blog_detail', kwargs={'pk': pk}))
+    else:
+        post = get_object_or_404(Post, pk=pk)
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment_form = CommentForm(instance=comment)
+        context = {
+            "form": comment_form,
+        }
 
-    return HttpResponseRedirect(reverse('blog_detail', kwargs={'pk': pk}))
+    return render(request, "blog/edit_comment.html", context)
+
+    
 
 
 

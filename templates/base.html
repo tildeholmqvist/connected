@@ -25,14 +25,14 @@
   <ul class="nav-item dropdown">
     <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
        id="navbarDropdown" role="button">
-        categories
+        Categories
     </a>
     <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
-      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/News/">News</a></li>
-      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/Sience/">Sience</a></li>
-      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/Culture/">Culture</a></li>
-      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/AI/">AI</a></li>
-      <li><a class="dropdown-item" href="https://connected-c643fb1afe74.herokuapp.com/category/Gadgets/">Gadgets</a></li>
+      {% for category in categories%}
+        <li>
+          <a class="dropdown-item" href="{% url 'blog_category' category.name %}">{{category.name}}</a>
+        </li>
+      {% endfor%}
     </ul>
   </ul>
 <a href="{% url 'discussion_list' %}">Discussion</a>

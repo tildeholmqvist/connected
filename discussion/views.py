@@ -97,19 +97,6 @@ def comment_delete(request, pk, comment_id):
 
     return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
 
-def discussion_delete(request, pk, DiscussionPost):
-    """
-    View to delete comment
-    """
-    DiscussionPost = get_object_or_404(DiscussionPost, pk=pk)
-    if discussion_post.author == request.user:
-            discussion_post.delete()
-            messages.success(request, 'Post deleted!')
-    else:
-        messages.error(request, 'You can only delete your own posts!')
-
-    return HttpResponseRedirect(reverse('discussion_list', kwargs={'pk': pk}))
-
 
 #@login_required
 #def profile(request):

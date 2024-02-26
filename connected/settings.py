@@ -30,6 +30,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DEBUG = 'DEBUG' in os.environ 
+
 ALLOWED_HOSTS = ['8000-tildeholmqvis-connected-efbzp09i9t9.ws-eu108.gitpod.io','.herokuapp.com']
 
 
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
     'blog',
     'discussion',
 ]
+
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
