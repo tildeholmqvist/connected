@@ -1,11 +1,13 @@
 <!-- templates/account/login.html -->
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_title %}
 {% endblock %}
 
 {% block page_content %}
   <div class="container">
+    <div class="login-page">
     <h2>Login</h2>
     <form method="post" action="{% url 'account_login' %}">
       {% csrf_token %}
@@ -15,4 +17,5 @@
     <p>Don't have an account? <a href="{% url 'account_signup' %}">Sign up</a></p>
     <p>Forgot your password? <a href="{% url 'account_reset_password' %}">Reset password</a></p>
   </div>
+</div>
 {% endblock %}
