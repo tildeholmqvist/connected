@@ -6,12 +6,7 @@
 
 {% block page_content %}
     <small>
-        {{ discussion.created_at|date }} <!---| Categories:
-        {% for category in discussion.category.all %}
-            <a href="{% url 'discussion_category' category.name %}">
-                {{ category.name }}
-            </a>
-        {% endfor %}-->
+        {{ discussion.created_at|date }} 
       </small>  
     <p>{{ discussion.content |safe | linebreaks }}</p>
     {% if user.is_authenticated %}

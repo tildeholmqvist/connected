@@ -12,7 +12,8 @@
                     <h4 class="card-title">Post Your Own Story</h4>
                     <form method="post" action="{% url 'create_discussion' %}">
                         {% csrf_token %}
-                        {{ form.as_p }} 
+                        {{ form.title }}
+                        {{ form.content | safe }}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

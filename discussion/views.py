@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .models import DiscussionPost, Category, DiscussionComment
 from .forms import DiscussionPostForm, DiscussionCommentForm
-from blog.models import Post
+from blog.models import Post, Category
 
 
 class DiscussionIndex(generic.ListView):
@@ -17,22 +17,17 @@ class DiscussionIndex(generic.ListView):
     template_name = "discussion/discussion_list.html"
 
 
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
 
 def discussion_list(request):
     discussions = DiscussionPost.objects.all()
     for discussion in discussions: 
         discussion.comment_count = discussion.comments.filter(approved=True).count()
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
-
-
-def discussion_category(request, category):
-    discussions = DiscussionPost.objects.filter(
-        category__name=category).order_by("-created_at")
-    context = {
-        "category": category,
-        "discussions": discussions,
-    }
-    return render(request, "discussion/discussion_category.html", context)
 
 
 # This is the same view as in the blog_detail
@@ -57,6 +52,8 @@ def discussion_detail(request, pk):
 
     comments = discussion.comments.all().order_by("-created_at")
     discussion_comment_count = discussion.comments.filter(approved=True).count()
+
+    blog_categories = Category.objects.all()
     context = {
         "discussion": discussion,
         "comments": comments,
@@ -77,11 +74,12 @@ def create_discussion(request):
                 request, messages.SUCCESS,
                 'Post submitted and awaiting approval'
                 )
-            return HttpResponseRedirect(request.path_info)
+            return redirect('discussion_list')
     else:
         form = DiscussionPostForm()
 
-    form.fields['category'].queryset = Category.objects.all()
+    categories = Category.objects.all() 
+
     return render(request, 'discussion/create_discussion.html', {'form': form})
 
 
