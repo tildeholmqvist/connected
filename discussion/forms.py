@@ -12,10 +12,10 @@ class DiscussionPostForm(forms.ModelForm):
         }
 
 
-class DiscussionCommentForm(forms.Form):
-    model = DiscussionComment
-    body = forms.CharField(
-        widget=forms.Textarea(
-            attrs={"class": "form-control", "placeholder": "Leave a comment!"}
-        )
-    )
+class DiscussionCommentForm(forms.ModelForm):
+    class Meta:
+        model = DiscussionComment
+        fields = ['body']
+        widgets = {
+                'body': forms.Textarea(attrs={"class": "form-control", "placeholder": "Leave a comment!"})
+            }

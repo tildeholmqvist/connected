@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+    <h2>{{ post.title }}</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <form method="post"  action=".">
+        <h3>Edit comment:</h3>
+        {% csrf_token %}
+        <div>
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+{% endblock page_content %}

@@ -83,6 +83,35 @@ def create_discussion(request):
     return render(request, 'discussion/create_discussion.html', {'form': form})
 
 
+def comment_edit(request, pk, comment_id):
+    """
+    View to edit comments
+    """
+    if request.method == "POST":
+        discussion_post = get_object_or_404(DiscussionPost, pk=pk)
+        comment = get_object_or_404(DiscussionComment, id=comment_id)
+        comment_form = DiscussionCommentForm(data=request.POST, instance=comment)
+
+        if comment_form.is_valid() and comment.author == request.user:
+            comment = comment_form.save(commit=False)
+            comment.post = discussion_post
+            comment.approved = False
+            comment.save()
+            messages.success(request, 'Comment Updated!')
+        else:
+            messages.error(request, 'Error updating comment!')
+        return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
+    else:
+        post = get_object_or_404(DiscussionPost, pk=pk)
+        comment = get_object_or_404(DiscussionComment, id=comment_id)
+        comment_form = DiscussionCommentForm(instance=comment)
+        context = {
+            "form": comment_form,
+        }
+
+    return render(request, "discussion/edit_comment.html", context)
+
+
 def comment_delete(request, pk, comment_id):
     """
     View to delete comment

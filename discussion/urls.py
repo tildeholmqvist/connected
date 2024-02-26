@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import DiscussionIndex, create_discussion, discussion_detail, discussion_category #profile
+from .views import DiscussionIndex, create_discussion, discussion_detail, discussion_category 
 
 urlpatterns = [
     path('', DiscussionIndex.as_view(), name='discussion_list'),
@@ -9,6 +9,5 @@ urlpatterns = [
     path('category/<category>/', views.discussion_category, name='discussion_category'),
     path('create_discussion/', create_discussion, name='create_discussion'),
     path('post/<int:pk>/delete_comment/<int:comment_id>/', views.comment_delete, name='comment_delete'),
-    #path('profile/', profile, name='profile'),
-    
+    path('post/<int:pk>/edit_comment/<int:comment_id>/', views.comment_edit, name='comment_edit'),
 ]

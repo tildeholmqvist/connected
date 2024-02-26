@@ -63,7 +63,7 @@
       {% endif %}
       {% if user.is_authenticated and comment.author == user %}
       <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-      <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+      <a class="btn btn-edit" href="{% url 'comment_edit' discussion.pk comment.pk %}" comment_id="{{ comment.id }}">Edit</a>
       {% endif %}
     </div>
     {% endfor %}
