@@ -19,16 +19,6 @@ class DiscussionPost(models.Model):
         return f"{self.title} by {self.author}"
 
 
-
-class Category(models.Model):
-    name = models.CharField(max_length=40)
-
-    class Meta:
-        verbose_name_plural = "categories"
-
-    def __str__(self):
-        return self.name
-
 class DiscussionComment(models.Model):
     post = models.ForeignKey(DiscussionPost, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="discussion_comments")

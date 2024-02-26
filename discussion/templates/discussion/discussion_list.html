@@ -21,46 +21,45 @@
     <h5>Log in to post your own story</h5>
 {% endif %}
 </div>
-    <div class="row">
-        {% for discussion in discussions %}
-        <div class="col-md-12 mb-2">
-            <div class="p-2 discussion {% if not discussion.approved and discussion.author == user %} faded {% elif not discussion.approved %} d-none{% endif %}">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h4>
-                        <p class="card-text">{{ discussion.content | safe | truncatechars:200 }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">
-                            {{ discussion.created_at.date }} by {{ discussion.author }}
-                        </small>
-                        <strong class="text-secondary">
-                            <i class="far fa-comments"></i> {{ discussion.comment_count }}
-                        </strong>
-                    </div>
+
+<div class="row">
+    {% for discussion in discussions %}
+    <div class="col-md-12 mb-2">
+        <div class="p-2 discussion {% if not discussion.approved and discussion.author == user %} faded {% elif not discussion.approved %} d-none{% endif %}">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h4>
+                    <p class="card-text">{{ discussion.content | safe | truncatechars:200 }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        {{ discussion.created_at.date }} by {{ discussion.author }}
+                    </small>
+                    <strong class="text-secondary">
+                        <i class="far fa-comments"></i> {{ discussion.approved_comment_count }}
+                    </strong>
                 </div>
             </div>
         </div>
-        {% if not discussion.approved and discussion.author == user %}
-        <p class="approval">
-          This post is awaiting approval
-        </p>
-        {% endif %}
     </div>
-    
-        {% endfor %}
-    </div>
-
-    {% if is_paginated %}
-    <nav aria-label="Page navigation" class="pagination-nav">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
+    {% if not discussion.approved and discussion.author == user %}
+    <p class="approval">
+        This post is awaiting approval
+    </p>
     {% endif %}
+    {% endfor %}
+</div>
+
+{% if is_paginated %}
+<nav aria-label="Page navigation" class="pagination-nav">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
 {% endblock page_content %}

@@ -5,7 +5,7 @@ from django.views import generic
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import DiscussionPost, Category, DiscussionComment
+from .models import DiscussionPost, DiscussionComment
 from .forms import DiscussionPostForm, DiscussionCommentForm
 from blog.models import Post, Category
 
@@ -24,12 +24,10 @@ class DiscussionIndex(generic.ListView):
 
 
 def discussion_list(request):
-    discussions = DiscussionPost.objects.all()
-    categories = Category.objects.all() 
-    for discussion in discussions: 
-        discussion.comment_count = discussion.comments.filter(approved=True).count()
+    discussions = Discussion.objects.all()
+    for discussion in discussions:
+        discussion.approved_comment_count = discussion.comments.filter(approved=True).count()
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
-
 
 # This is the same view as in the blog_detail
 
@@ -60,6 +58,7 @@ def discussion_detail(request, pk):
         "comments": comments,
         "form": form,
         "categories": categories,
+        "discussion_comment_count": discussion_comment_count
     }
     return render(request, 'discussion/discussion_detail.html', context)
 
