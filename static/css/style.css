@@ -207,16 +207,19 @@ footer {
 
 .category-page h2{
     font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
 }
 
 /* Blog Details */
 
+.detail-title {
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+}
+
 .leave-comment{
     margin-top: 30px;
     margin-left: 50px;
-}
-.detail-title h2 {
-    font-family: "Oswald", sans-serif;
 }
 
 .leave-comment textarea{
@@ -233,4 +236,11 @@ footer {
     font-size: 20px;
     text-align: right;
     padding-right: 200px;
+}
+
+#submit-comment {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    padding: 10px;
 }

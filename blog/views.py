@@ -57,13 +57,17 @@ def blog_detail(request, slug):
 
     comments = post.comments.all().order_by("-created_at")
     comment_count = post.comments.filter(approved=True).count()
+
+    categories = Category.objects.all()
     context = {
         "post": post,
         "comments": comments,
+        "categories": categories,
         "comment_count": comment_count,
         "form": CommentForm(),
     }
 
+    categories = Category.objects.all()
     return render(request, "blog/blog_detail.html", context)
 
 def about(request):
