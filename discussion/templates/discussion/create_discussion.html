@@ -3,18 +3,18 @@
 {% load static %}
 
 {% block page_content %}
-    <div class="row">
+<div class="container">
     {% if user.is_authenticated %}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8 offset-md-2">
             <div class="card-discussion">
                 <div class="card-body">
-                    <h4 class="card-title">Post Your Own Story</h4>
+                    <h4 class="card-title">Create your own post</h4>
                     <form method="post" action="{% url 'create_discussion' %}">
                         {% csrf_token %}
                         {{ form.title }}
                         {{ form.content | safe }}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary submit-post">Submit</button>
                     </form>
                 </div>
             </div>
