@@ -318,7 +318,8 @@ footer {
 .login-form {
     background-color: #ffff;
     border-radius: 10px;
-    padding: 50px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .login-form input[type="text"],
@@ -383,7 +384,6 @@ footer {
 .create-account-btn {
     border: #000000 solid 1px;
     border-radius: 5px;
-    padding: 10px;
     margin: 10px;
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
@@ -396,4 +396,53 @@ footer {
 
 .create-account-btn:hover {
     background: linear-gradient(to right, #28DEE3, #00C4F3, #2AA4F3, #7D7ED9);
+}
+
+.text-section, .login-form {
+    flex: 1;
+    margin: 10px 10px;
+}
+
+.text-section {
+    background-color: #ffff;
+    border-radius: 10px;
+    padding: 70px;
+}
+
+.text-section h1, .text-section p {
+    margin-bottom: 20px;
+    font-family: "Oswald", sans-serif;
+}
+
+.follow {
+    font-family: "Oswald", sans-serif;
+    color: #818080;
+}
+
+.social-icon {
+    margin-top: 20px;
+}
+
+/* signup form */
+
+.signup-form {
+    background-color: #ffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.signup-form ul {
+    text-align: left;
+}
+
+.signup-form label {
+    display: none;
+}
+
+.signup-form input {
+    width:80%;
+    padding: 15px;
 }
