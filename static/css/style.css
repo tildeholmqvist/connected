@@ -446,3 +446,18 @@ footer {
     width:80%;
     padding: 15px;
 }
+
+/* Log out */
+
+.logout {
+    background-color: #ffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.logout h2 {
+    font-family: "Oswald", sans-serif;
+}
