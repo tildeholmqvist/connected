@@ -169,6 +169,11 @@ header {
     text-transform: uppercase;
 }
 
+.login {
+    text-decoration: none;
+    color:#000000;
+}
+
 /* About page */
 
 .text-center h2 {
@@ -305,4 +310,90 @@ footer {
 }
 .col-auto:nth-child(4) {
     --bg-color: #0077b5;
+}
+
+/* Log in /Sign up */
+/* https://mdbootstrap.com/docs/standard/extended/login/ */
+
+.login-form {
+    background-color: #ffff;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width:80%;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.login-form label {
+    display: none;
+}
+
+.login-form label[for="id_remember"] {
+    display: inline-block;
+}
+
+.login-form h4 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.login-button {
+    /* fallback for old browsers */
+    background: #28DEE3;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #28DEE3, #00C4F3, #2AA4F3, #7D7ED9);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #28DEE3, #00C4F3, #2AA4F3, #7D7ED9);
+
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 30px;
+    cursor: pointer;
+    margin: auto;
+    margin-right: 10px;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.login-button:hover {
+     /* fallback for old browsers */
+     background: #588FE9;
+    
+     /* Chrome 10-25, Safari 5.1-6 */
+     background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+     
+     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+}
+
+.forgot-password > a {
+    text-decoration: none;
+    color:#818080;
+}
+
+.create-account-btn {
+    border: #000000 solid 1px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+}
+
+.create-account-btn > a {
+    text-decoration: none;
+    color: #030303;
+}
+
+.create-account-btn:hover {
+    background: linear-gradient(to right, #28DEE3, #00C4F3, #2AA4F3, #7D7ED9);
 }
