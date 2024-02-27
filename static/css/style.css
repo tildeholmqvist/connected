@@ -200,6 +200,39 @@ header {
     text-transform: uppercase;
 }
 
+/* Discussion index page */
+
+.post-your-own {
+    width: 600px;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    margin-bottom: 20px;
+    border:#060606 solid 1px;
+}
+.post-your-own .card-title {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+.discussion-index {
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+}
+
+.submit-post, .login-link  {
+    background-color: #75C7E4;
+    width: 40%;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Oswald", sans-serif;
+    border: none;
+}
+
 
 /*Footer*/ /*https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
 

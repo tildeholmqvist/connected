@@ -1,35 +1,36 @@
 {% extends "base.html" %}
 {% load static %}
+{% url 'account_login' as login_url %}
 
 {% block page_content %}
-<div class="container">
+<div class="container discussion-container">
     {% if user.is_authenticated %}
     <div class="row mb-4">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card post-your-own">
                 <div class="card-body">
                     <h4 class="card-title">Post Your Own Story</h4>
                     <form method="post" action="{% url 'create_discussion' %}">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary submit-post">Submit</button>
                     </form>
                 </div>
+                {% else %}
+                <div class="card post-your-own">
+            <h4 class="card-title">Log in to post your own story</h4>
+            <a class="btn btn-primary login-link" href="{% url 'account_login' %}">Login</a>
+                </div>
+            {% endif %}
             </div>
         </div>
     </div>
-    {% else %}
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <h5 class="text-muted">Log in to post your own story</h5>
-        </div>
-    </div>
-    {% endif %}
-
+</div>
+ 
     {% for discussion in discussions %}
     <div class="row mb-4">
-        <div class="col-md-12">
-            <div class="card-discussion">
+        <div class="col-md-8 offset-md-2">
+                <div class="card discussion-index">
                 <div class="card-body">
                     <h5 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h5>
                     <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
