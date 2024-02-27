@@ -160,6 +160,8 @@ header {
     font-size: 1.4em;
     text-transform: uppercase;
     padding: 10px;
+    background-color: #75C7E4;
+    border: none;
 }
 
 .modal-title{
@@ -219,7 +221,6 @@ header {
     width: 80%;
     margin: auto;
     justify-content: center;
-    
 }
 
 .submit-post, .login-link  {
