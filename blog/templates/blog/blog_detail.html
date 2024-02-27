@@ -3,98 +3,110 @@
 {% load static %}
 
 {% block page_title %}
-    <h2>{{ post.title }}</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="detail-title">{{ post.title }}</h2>
+        </div>
+    </div>
+</div>
 {% endblock page_title %}
 
-{% if "placeholder" in post.featured_image.url %}
-                    <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
-                    {% else %}
-                    <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-{% endif %}
-
 {% block page_content %}
-    <small>
-        {{ post.created_at|date }} | Categories:
-        {% for category in post.category.all %}
-            <a href="{% url 'blog_category' category.name %}">
-                {{ category.name }}
-            </a>
-        {% endfor %}
-    </small>
-    <p>{{ post.content | safe | linebreaks }}</p>
-    {% if user.is_authenticated %}
-    <form method="post" id="commentForm">
-        <h3>Leave a comment:</h3>
-        <form method="post">
-            {% csrf_token %}
-            <div>
-                {{ form.author }}
-            </div>
-            <div>
-                {{ form.body }}
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    {% else %}
-        <h5>Log in to comment</h5>
-    {% endif %}
-    <!--From the walkthorugh-->
-       <!-- Displaying count of comments -->
+<div class="container">
     <div class="row">
-        <div class="col-12">
-        <strong class="text-secondary">
-            <i class="far fa-comments"></i> {{ comment_count }}
-        </strong>
-        </div>
-        <div class="col-12">
-        <hr>
+        <div class="col-md-8 offset-md-2">
+            <img class="img-fluid mb-4" src="{% if 'placeholder' in post.featured_image.url %}{% static 'images/default.jpg' %}{% else %}{{ post.featured_image.url }}{% endif %}" alt="{{ post.title }}">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
-    <h3>Comments:</h3>
-    {% for comment in comments %}
-    <div class="p-2 comments {% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}" id="comment-{{ comment.id }}">
-        <p class="font-weight-bold">
-            {{ comment.author }}
-            <span class="font-weight-normal">
-                {{ comment.created_on }}
-            </span> wrote:
-        </p>
-        <div id="comment{{ comment.id }}">
-            {{ comment.body | linebreaks }}
+        <div class="col-md-8 offset-md-2">
+            <small>
+                {{ post.created_at|date }} | Categories:
+                {% for category in post.category.all %}
+                    <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
+                {% endfor %}
+            </small>
+            <p>{{ post.content | safe | linebreaks }}</p>
         </div>
-        {% if not comment.approved and comment.author == user %}
-            <p class="approval">
-                This comment is awaiting approval
-            </p>
-        {% endif %}
-        {% if user.is_authenticated and comment.author == user %}
-            <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-            <a class="btn btn-edit" href="{% url 'comment_edit' slug=post.slug comment_id=comment.id %}" comment_id="{{ comment.id }}">Edit</a>
-        {% endif %}
     </div>
-{% endfor %}
-
-    <!-- Delete confirmation modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<form>
+    <div class="row mb-3">
+        <div class="col-md-8 offset-md-2">
+                <div class="leave-comment">
+                    <h3 class="card-title">Leave a Comment</h3>
+                    {% if user.is_authenticated %}
+                        <form method="post" id="commentForm">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                {{ form.author }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form.body }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    {% else %}
+                        <h5>Please log in to comment</h5>
+                    {% endif %}
                 </div>
-                <div class="modal-body">
-                    Are you sure you want to delete your comment? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
-                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <!-- Displaying count of comments -->
+    <div class="row">
+        <div class="col-12 comment-count">
+            <strong class="text-secondary">
+                <i class="far fa-comments"></i> {{ comment_count }}
+            </strong>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    </div>
+    <!-- Displaying the comments -->
+    <div class="row mt-3">
+        <div class="col-md-8 offset-md-2">
+            <h3 class="card-title">Comments:</h3>
+            {% for comment in comments %}
+                <div class="comment mb-3 {% if not comment.approved and comment.author == user %} faded {% elif not comment.approved %} d-none {% endif %}" id="comment-{{ comment.id }}">
+                        <div class="card-body">
+                            <p class="font-weight-bold">
+                                {{ comment.author }}
+                                <span class="card-subtitle mb-2 text-muted">{{ comment.created_at }}</span>
+                            </p>
+                            <p class="card-text">{{ comment.body | linebreaks }}</p>
+                            {% if not comment.approved and comment.author == user %}
+                                <p class="approval">This comment is awaiting approval</p>
+                            {% endif %}
+                            {% if user.is_authenticated and comment.author == user %}
+                                <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                                <a class="btn btn-edit" href="{% url 'comment_edit' slug=post.slug comment_id=comment.id %}" comment_id="{{ comment.id }}">Edit</a>
+                            {% endif %}
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your comment? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>
 </div>
 {% endblock page_content %}
-
-
