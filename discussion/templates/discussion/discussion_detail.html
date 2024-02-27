@@ -1,4 +1,6 @@
+<!-- blog/templates/discussion/discussion_detail.html -->
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_title %}
 <div class="container">
@@ -7,7 +9,7 @@
         <h2 class="detail-title">{{ discussion.title }}</h2>
       </div>
     </div>
-</div>
+</div> 
 {% endblock page_title %}
 
 {% block page_content %}
@@ -17,49 +19,51 @@
       <small>
           {{ discussion.created_at|date }} 
         </small>  
-      <p>{{ discussion.content |safe | linebreaks }}</p>
+      <p>{{ discussion.content | safe | linebreaks }}</p>
     </div>
   </div>
 </div>
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
-    <div class="leave-comment">
-        {% if user.is_authenticated %}
-        <h3>Leave a comment:</h3>
-        <form method="post" id="commentForm">
-          {% csrf_token %}
-          <div class="mb-3">
-              {{ form.author }}
+          <div class="leave-comment">
+              <h3 class="card-title">Leave a Comment</h3>
+              {% if user.is_authenticated %}
+                  <form method="post" id="commentForm">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                          {{ form.author }}
+                      </div>
+                      <div class="mb-3">
+                          {{ form.body }}
+                      </div>
+                      <button type="submit" class="btn btn-primary" id="submit-comment">Submit</button>
+                  </form>
+              {% else %}
+              <h5>PLEASE <a class="login" href="{% url 'account_login' %}">LOG IN</a> TO COMMENT</h5>
+              {% endif %}
           </div>
-          <div class="mb-3">
-              {{ form.body }}
-          </div>
-          <button type="submit" class="btn btn-primary" id="submit-comment">Submit</button>
-      </form>
-      {% else %}
-      <h5>PLEASE <a class="login" href="{% url 'account_login' %}">LOG IN</a> TO COMMENT</h5>
-      {% endif %}
-    </div> 
+      </div>
   </div>
 </div>
-<!-- Displaying count of comments -->
-<div class="row">
-  <div class="col-12 comment-count">
-      <strong class="text-secondary">
-          <i class="far fa-comments"></i> {{ comment_count }}
-      </strong>
-  </div>
-  <div class="col-12">
-      <hr>
-  </div>
+  <!--From the walkthorugh-->
+  <!-- Displaying count of comments -->
+  <div class="row">
+    <div class="col-12 comment-count">
+        <strong class="text-secondary">
+            <i class="far fa-comments"></i> {{ discussion.comment_count }}
+        </strong>
+    </div>
+    <div class="col-12">
+        <hr>
+    </div>
 </div>
 <!-- Displaying the comments -->
 <div class="row mt-3">
   <div class="col-md-8 offset-md-2">
       <h3 class="card-title">Comments:</h3>
       {% for comment in comments %}
-          <div class="comment mb-3 {% if not comment.approved and comment.author == user %} faded {% elif not comment.approved %} d-none {% endif %}" id="comment-{{ comment.id }}">
-                  <div class="card-body">
+      <div class="comment mb-3 {% if not comment.approved and comment.author == user %} faded {% elif not comment.approved %} d-none {% endif %}" id="comment-{{ comment.id }}">
+          <div class="card-body">
                       <p class="comment-author">{{ comment.author }}</p>
                       <p class="comment-date">{{ comment.created_at }}</p>
                       <p class="comment-body">{{ comment.body | linebreaks }}</p>

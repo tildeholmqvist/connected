@@ -24,9 +24,8 @@ class DiscussionIndex(generic.ListView):
 
 
 def discussion_list(request):
-    discussions = Discussion.objects.all()
-    for discussion in discussions:
-        discussion.approved_comment_count = discussion.comments.filter(approved=True).count()
+    discussions = Discussion.objects.all() 
+    discussion.comment_count = discussion.comments.filter(approved=True).count()
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
 
 # This is the same view as in the blog_detail
@@ -50,7 +49,7 @@ def discussion_detail(request, pk):
             return HttpResponseRedirect(request.path_info)
 
     comments = discussion.comments.all().order_by("-created_at")
-    discussion_comment_count = discussion.comments.filter(approved=True).count()
+    discussion.comment_count = discussion.comments.filter(approved=True).count()
 
     categories = Category.objects.all() 
     context = {
@@ -58,7 +57,7 @@ def discussion_detail(request, pk):
         "comments": comments,
         "form": form,
         "categories": categories,
-        "discussion_comment_count": discussion_comment_count
+        "discussion.comment_count": discussion.comment_count
     }
     return render(request, 'discussion/discussion_detail.html', context)
 

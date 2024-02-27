@@ -36,8 +36,9 @@
                     <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
-                    <span class="badge bg-secondary"><i class="far fa-comments"></i> {{ discussion.approved_comment_count }}</span>
+                    <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}
+                        <!---<i class="far fa-comments"></i> {{ discussion.comment_count }}-->
+                    </small>
                 </div>
             </div>
         </div>

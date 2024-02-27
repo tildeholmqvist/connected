@@ -20,15 +20,8 @@ header {
 /* Navbar */
 
 .menu-navbar a{
-    
     text-decoration: none;
 }
-
-#nav-text {
-    color:#0000;
-    text-decoration: none;
-}
-
 
 .brand-name {
     font-family: "Oswald", sans-serif;
@@ -100,9 +93,10 @@ header {
     text-transform: uppercase;
 }
 
-.leave-comment{
+.leave-comment {
     margin-top: 30px;
     margin-left: 50px;
+    border: #0000 solid 1px;
 }
 
 .leave-comment textarea{
@@ -160,8 +154,26 @@ header {
     font-size: 1.4em;
     text-transform: uppercase;
     padding: 10px;
-    background-color: #75C7E4;
     border: none;
+      /* fallback for old browsers */
+      background: #008DAC;
+    
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
+      
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
+}
+
+#submit-comment:hover{
+     /* fallback for old browsers */
+     background: #588FE9;
+    
+     /* Chrome 10-25, Safari 5.1-6 */
+     background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+     
+     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }
 
 .modal-title{
@@ -214,13 +226,14 @@ header {
     margin: auto;
     justify-content: center;
     text-align: center;
-    padding: 8px;
+    padding: 15px;
     margin-bottom: 20px;
-    border:#060606 solid 1px;
+    border:#060606 solid 0.5px;
+    border-radius: 20px;
 }
-.post-your-own .card-title {
+.post-your-own, .card-title {
     margin-bottom: 20px;
-    font-size: 2em;
+    font-size: 1.4em;
 }
 .discussion-index {
     width: 80%;
@@ -229,8 +242,18 @@ header {
 }
 
 .submit-post, .login-link  {
-    background-color: #75C7E4;
+     /* fallback for old browsers */
+     background: #008DAC;
+    
+     /* Chrome 10-25, Safari 5.1-6 */
+     background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
+     
+     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
+
     width: 40%;
+    border-radius: 20px;
+    padding: 10px;
     display: block;
     text-align: center;
     margin: 0 auto;
@@ -240,11 +263,23 @@ header {
     border: none;
 }
 
+.submit-post:hover, .login-link:hover {
+    /* fallback for old browsers */
+    background: #588FE9;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+}
 .card-discussion {
     width: 80%;
     margin: auto;
     justify-content: center;
 }
+
+/* discussion_detail*/
 
 /*Footer*/ /*https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
 
@@ -345,13 +380,13 @@ footer {
 
 .login-button {
     /* fallback for old browsers */
-    background: #28DEE3;
+    background: #008DAC;
     
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #28DEE3, #00C4F3, #2AA4F3, #7D7ED9);
+    background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #28DEE3, #00C4F3, #2AA4F3, #7D7ED9);
+    background: linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
 
     color: #ffffff;
     border: none;
@@ -387,6 +422,7 @@ footer {
     margin: 10px;
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
+    color:#0000;
 }
 
 .create-account-btn > a {
@@ -395,7 +431,16 @@ footer {
 }
 
 .create-account-btn:hover {
-    background: linear-gradient(to right, #28DEE3, #00C4F3, #2AA4F3, #7D7ED9);
+    color:#ffffff;
+
+     /* fallback for old browsers */
+     background: #588FE9;
+    
+     /* Chrome 10-25, Safari 5.1-6 */
+     background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+     
+     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }
 
 .text-section, .login-form {
