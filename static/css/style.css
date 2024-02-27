@@ -37,6 +37,8 @@ header {
     text-transform: uppercase;
 }
 
+/* index.html */
+
 .pagination-nav {
     display: flex;
     justify-content: center;
@@ -87,8 +89,56 @@ header {
     color:black;
 }
 
-.discussion-post-list {
-    width: 120%;
+.pagination-nav .page-link {
+    color: black;
+}
+
+/* Blog Details */
+
+.detail-title {
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+}
+
+.leave-comment{
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.leave-comment textarea{
+    width:70%;
+    height: 50%;
+    padding: 5px;
+}
+
+.comment {
+    border: 1px solid #515151;
+    background-color: #fffefe;
+}
+
+.comment-author {
+    font-weight: bold;
+}
+
+.comment-date{
+    color: #888;
+    font-size: small;
+}
+
+.comment-body{
+    color: black;
+}
+
+.btn-delete {
+    background-color: #db3f4e;
+    border-color: #d42a3b;
+    color:#fff;
+}
+
+.btn-edit {
+    background-color: #2079cc;
+    border-color: #1b6fbe;
+    color: #fff;
 }
 
 .approval {
@@ -99,17 +149,57 @@ header {
     opacity: 0.5;
 }
 
-.login-page {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #1d0442;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+.comment-count {
+    font-size: 20px;
+    text-align: right;
+    padding-right: 200px;
 }
 
-.pagination-nav .page-link {
-    color: black;
+#submit-comment {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    padding: 10px;
 }
+
+.modal-title{
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+}
+
+/* About page */
+
+.text-center h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+.about-section {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    background-color: #fff;
+}
+
+.about-section h3 {
+    font-family: "Oswald", sans-serif;
+    margin-top: 20px;
+}
+
+.about-section h6 {
+    font-family: "Oswald", sans-serif;
+}
+
+/* Categories */
+
+.category-page h2{
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+}
+
 
 /*Footer*/ /*https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
 
@@ -175,72 +265,4 @@ footer {
 }
 .col-auto:nth-child(4) {
     --bg-color: #0077b5;
-}
-
-/* About page */
-
-.text-center h2 {
-    font-family: "Oswald", sans-serif;
-    font-size: 2.5em;
-    text-transform: uppercase;
-    padding-bottom: 10px;
-}
-
-.about-section {
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 2px;
-    padding-bottom: 10px;
-    background-color: #fff;
-}
-
-.about-section h3 {
-    font-family: "Oswald", sans-serif;
-    margin-top: 20px;
-}
-
-.about-section h6 {
-    font-family: "Oswald", sans-serif;
-}
-
-/* Categories */
-
-.category-page h2{
-    font-family: "Oswald", sans-serif;
-    text-transform: uppercase;
-}
-
-/* Blog Details */
-
-.detail-title {
-    font-family: "Oswald", sans-serif;
-    text-transform: uppercase;
-}
-
-.leave-comment{
-    margin-top: 30px;
-    margin-left: 50px;
-}
-
-.leave-comment textarea{
-    width:70%;
-    height: 50%;
-    padding: 5px;
-}
-
-.comment {
-    border: 1px solid #515151;
-}
-
-.comment-count {
-    font-size: 20px;
-    text-align: right;
-    padding-right: 200px;
-}
-
-#submit-comment {
-    font-family: "Oswald", sans-serif;
-    font-size: 1.4em;
-    text-transform: uppercase;
-    padding: 10px;
 }
