@@ -1,6 +1,13 @@
 {% extends "base.html" %} 
 {% load static %}
 
+{% block page_title %}
+    <div class="row my-3 p-3">
+        <h1>This is the profile page for {{user.username}}</h1>
+    </div>
+
+    {% endblock page_title %}
+
 {% block content %}
 <div class="content-section">
       <h2 class="account-heading">{{ user.username }}</h2>
@@ -11,12 +18,23 @@
     {% csrf_token %}
     <fieldset class="form-group">
       <legend class="border-bottom mb-4">Profile Info</legend>
-      {{ form.as_p}}
-      <!-- Profile form -->
-    </fieldset>
-    <div class="form-group">
-      <button class="btn btn-outline-info" type="submit">Update</button>
+      <div class="form-group">
+        <label for="bio">Bio:</label>
+        <textarea class="form-control" id="bio" name="bio" rows="3">{{ bio }}</textarea>
     </div>
-  </form>
+</fieldset>
+<div class="form-group">
+    <button class="btn btn-outline-info" type="submit">Update</button>
+</div>
+</form>
+<h2>Discussion Posts</h2>
+<ul>
+{% for post in discussion_posts %}
+    <li>{{ post.title }}</li>
+    <p>{{ post.content }}</p>
+{% empty %}
+    <li>No discussion posts found.</li>
+{% endfor %}
+</ul>
 </div>
 {% endblock content %}
