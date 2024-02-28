@@ -4,6 +4,6 @@ from .views import profile_page
 
 urlpatterns = [
     path('profile/', views.profile_page, name='profile_page'),
-    path('discussionpost/delete/<int:pk>/', views.discussion_post_delete, name='discussionpost_delete'),
-    path('post/edit/<int:pk>/', views.discussionpost_edit, name='discussionpost_edit'),
+    path('profile/delete_comment/<int:comment_id>/', views.comment_delete, name='comment_delete'),
+    path('post/<int:pk>/edit_post/<int:pk>/', views.post_edit, name='post_edit'),
 ]
