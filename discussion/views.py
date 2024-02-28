@@ -127,13 +127,3 @@ def comment_delete(request, pk, comment_id):
         messages.error(request, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
-
-
-#@login_required
-#def profile(request):
-#    user_profile = get_object_or_404(User, username=request.user.username)
-#        context = {
-#                    'user_profile': user_profile
-#                            }
-#
-#                               return render(request, 'profile.html', context )
