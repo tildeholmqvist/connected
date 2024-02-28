@@ -26,40 +26,46 @@
         </div>
     </div>
 </div>
- 
-    {% for discussion in discussions %}
-    <div class="row mb-4">
-        <div class="col-md-8 offset-md-2">
-                <div class="card discussion-index">
-                <div class="card-body">
-                    <h5 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h5>
-                    <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}
-                        <!---<i class="far fa-comments"></i> {{ discussion.comment_count }}-->
-                    </small>
-                </div>
+{% for discussion in discussions %}
+{% if discussion.approved or discussion.author == user %}
+<div class="discussion mb-3 {% if not discussion.approved and discussion.author == user %} faded {% elif not discussion.approved %} d-none {% endif %}" id="discussion-{{ discussion.id }}"></div>
+<div class="row mb-4">
+    <div class="col-md-8 offset-md-2">
+        <div class="card discussion-index">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h5>
+                <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
+                {% if not discussion.approved and discussion.author == user %}
+                    <p class="approval">This post is awaiting approval</p>
+                {% elif not discussion.approved %}
+                    <p class="approval">This post is pending approval</p>
+                {% endif %}
             </div>
         </div>
-    </div>
-    {% endfor %}
-
-    {% if is_paginated %}
-    <div class="row">
-        <div class="col-md-12">
-            <nav aria-label="Page navigation" class="pagination-nav">
-                <ul class="pagination justify-content-center">
-                    {% if page_obj.has_previous %}
-                    <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-                    {% endif %}
-                    {% if page_obj.has_next %}
-                    <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
         </div>
     </div>
-    {% endif %}
+</div>
+{% endif %}
+{% endfor %}
+
+{% if is_paginated %}
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="Page navigation" class="pagination-nav">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endif %}
 </div>
 {% endblock page_content %}

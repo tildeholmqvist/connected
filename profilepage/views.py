@@ -12,13 +12,13 @@ from discussion.forms import DiscussionPostForm
 def profile_page(request):
     user_profile = Profile.objects.get(user=request.user)
     categories = Category.objects.all() 
-    discussion_posts = DiscussionPost.objects.filter(author=request.user)
+    discussions = DiscussionPost.objects.filter(author=request.user)
 
     context = {
         "categories": categories,
         "bio": user_profile.bio,
         "profile": user_profile,
-        "discussions": discussion_posts,
+        "discussions": discussions,
     }
 
     return render(request, 'profilepage/profile.html', context)
