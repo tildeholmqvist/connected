@@ -27,9 +27,10 @@
     </div>
 </div>
 {% for discussion in discussions %}
+{% if discussion.approved or user.is_authenticated %}
 <div class="row mb-4">
     <div class="col-md-8 offset-md-2">
-        <div class="card discussion-index {% if not discussion.approved %} faded {% endif %}">
+        <div class="card discussion-index {% if not discussion.approved  %} faded {% endif %}">
             <div class="card-body">
                 <h5 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h5>
                 <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
@@ -44,6 +45,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 {% endfor %}
 
 {% if is_paginated %}
