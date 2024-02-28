@@ -28,6 +28,7 @@ def discussion_list(request):
     discussion.comment_count = discussion.comments.filter(approved=True).count()
     return render(request, 'discussion/discussion_list.html', {'discussions': discussions})
 
+
 # This is the same view as in the blog_detail
 
 def discussion_detail(request, pk):

@@ -260,6 +260,7 @@ header {
     width: 80%;
     margin: auto;
     justify-content: center;
+    border-radius: 10px;
 }
 
 .submit-post, .login-link  {
@@ -296,10 +297,47 @@ header {
 }
 .card-discussion {
     width: 80%;
+    padding: 20px;
     margin: auto;
     justify-content: center;
 }
 
+.card-footer {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-p{
+    margin-bottom: 0;
+    text-decoration: none;
+    color:#000000;
+}
+
+.comment-p:hover {
+    color:#6f6d6d;
+}
+
+.comment-p i{
+    margin-right: 3px;
+}
+
+/* discussion detail */
+
+.card-discussion-detail {
+    background-color: #fff;
+    padding: 3px;
+    border: solid black 0.2px;
+    margin-left: 50px;
+    width: 90%;
+    height: 120%;
+    margin-bottom: 15px;
+}
+
+.discussion-created {
+    margin-top: -20px;
+    display: block;
+}
 /* profile page */
 
 .discussion-container-profile {

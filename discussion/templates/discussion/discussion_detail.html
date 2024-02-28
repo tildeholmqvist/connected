@@ -2,27 +2,19 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_title %}
-<div class="container">
-  <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <h2 class="detail-title">{{ discussion.title }}</h2>
-      </div>
-    </div>
-</div> 
-{% endblock page_title %}
-
 {% block page_content %}
-<div class="container">
-  <div class="row">
-      <div class="col-md-8 offset-md-2">
-      <small>
-          {{ discussion.created_at|date }} 
-        </small>  
-      <p>{{ discussion.content | safe | linebreaks }}</p>
+<div class="container discussion-container">
+    <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="card-discussion-detail">
+                <div class="card-body">
+                    <h4 class="card-title">{{ discussion.title }}</h4>
+                    <small class="text-muted discussion-created">{{ discussion.created_at|date }}</small>
+                    <p>{{ discussion.content | safe | linebreaks }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
           <div class="leave-comment">
@@ -39,7 +31,7 @@
                       <button type="submit" class="btn btn-primary" id="submit-comment">Submit</button>
                   </form>
               {% else %}
-              <h5>PLEASE <a class="login" href="{% url 'account_login' %}">LOG IN</a> TO COMMENT</h5>
+              <h5>PLEASE <a class="login" href="{% url 'account_login' %}">LOG IN</a> to COMMENT</h5>
               {% endif %}
           </div>
       </div>
