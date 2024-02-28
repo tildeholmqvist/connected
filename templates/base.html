@@ -35,25 +35,28 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="about" href="{% url 'about' %}">About</a>
             </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Categories
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% for category in categories %}
-                <li>
-                  <a class="dropdown-item"
-                    href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
-                </li>
-                {% endfor %}
-              </ul>
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for category in categories %}
+              <li>
+                <a class="dropdown-item"
+                  href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'discussion_list' %}">Discussion</a>
             </li>
             <li class="nav-item">
               <div class="login-links">
+                
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

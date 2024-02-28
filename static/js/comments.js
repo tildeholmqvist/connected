@@ -1,4 +1,4 @@
-/* ALL THIS CODE IS FROM THE WALKTHORUGH*/    
+/* This is from Code Institute Walkthrough project "I think therefor I blog" */    
 document.addEventListener("DOMContentLoaded", function() {
   const editButtons = document.getElementsByClassName("btn-edit");
   const commentText = document.getElementById("id_body");

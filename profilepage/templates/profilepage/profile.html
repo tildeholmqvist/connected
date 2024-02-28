@@ -2,39 +2,45 @@
 {% load static %}
 
 {% block page_title %}
-    <div class="row my-3 p-3">
-        <h1>This is the profile page for {{user.username}}</h1>
-    </div>
-
-    {% endblock page_title %}
+<div class="row my-3 p-3">
+    <h1>This is the profile page for {{ user.username }}</h1>
+</div>
+{% endblock page_title %}
 
 {% block content %}
-<div class="content-section">
-      <h2 class="account-heading">{{ user.username }}</h2>
-      <p class="text-secondary">{{ user.email }}</p>
-    </div>
-  </div>
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Profile Info</legend>
-      <div class="form-group">
-        <label for="bio">Bio:</label>
-        <textarea class="form-control" id="bio" name="bio" rows="3">{{ bio }}</textarea>
-    </div>
-</fieldset>
-<div class="form-group">
-    <button class="btn btn-outline-info" type="submit">Update</button>
-</div>
-</form>
-<h2>Discussion Posts</h2>
-<ul>
-{% for post in discussion_posts %}
-    <li>{{ post.title }}</li>
-    <p>{{ post.content }}</p>
-{% empty %}
-    <li>No discussion posts found.</li>
-{% endfor %}
-</ul>
+<div class="container discussion-container">
+    {% if user.is_authenticated %}
+        {% for discussion_post in discussions %}
+            <div class="row mb-4">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card discussion-index">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'discussion_detail' discussion_post.pk %}">{{ discussion_post.title }}</a></h5>
+                            <p class="card-text">{{ discussion_post.content | safe | truncatechars_html:200 }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">{{ discussion_post.created_at.date }} by {{ discussion_post.author }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if is_paginated %}
+        <div class="row">
+            <div class="col-md-12">
+                <nav aria-label="Page navigation" class="pagination-nav">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                        {% endif %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    {% endif %}
 </div>
 {% endblock content %}

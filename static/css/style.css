@@ -30,6 +30,11 @@ header {
     text-transform: uppercase;
 }
 
+.dropdown-item:active {
+   text-decoration: none;
+   background: none;
+
+}
 /* index.html */
 
 .pagination-nav {
