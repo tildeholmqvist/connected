@@ -7,17 +7,23 @@ from .models import Profile
 from blog.models import Category
 from discussion.models import DiscussionPost
 from discussion.forms import DiscussionPostForm 
+from blog.models import Post, Comment
+from blog.views import comment_delete
 
 @login_required
 def profile_page(request):
     user_profile = Profile.objects.get(user=request.user)
     categories = Category.objects.all() 
     discussions = DiscussionPost.objects.filter(author=request.user)
+    post_comments = Comment.objects.filter(post__author=request.user)
+    discussion_comments = Comment.objects.filter(author=request.user)
 
     context = {
         "categories": categories,
         "bio": user_profile.bio,
         "profile": user_profile,
+        "post_comments": post_comments,
+        "discussion_comments": discussion_comments,
         "discussions": discussions,
     }
 
@@ -39,12 +45,10 @@ def post_edit(request, post_id):
 
 
 @login_required
-def post_delete(request, post_id):
+def delete_post(request, post_id):
     post = get_object_or_404(DiscussionPost, pk=post_id, author=request.user)
     if request.method == "POST":
-        post.delete()
-        messages.success(request, 'Post deleted!')
-        return HttpResponseRedirect(reverse('profile'))
+        return delete_comment(request, post_id)
     else:
         messages.error(request, 'You can only delete your own post!')
         return HttpResponseRedirect(reverse('profile'))

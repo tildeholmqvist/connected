@@ -39,12 +39,11 @@
             <div class="card-footer">
                 <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
                 {% if not discussion.approved and discussion.author == user %}
-                    <p class="approval">This post is awaiting approval</p>
+                <p class="approval">This post is awaiting approval</p>
                 {% elif not discussion.approved %}
-                    <p class="approval">This post is pending approval</p>
+                <p class="approval">This post is pending approval</p>
                 {% endif %}
             </div>
-        </div>
         </div>
     </div>
 </div>
