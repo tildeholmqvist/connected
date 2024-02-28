@@ -124,15 +124,31 @@ header {
 }
 
 .btn-delete {
-    background-color: #db3f4e;
-    border-color: #d42a3b;
+    /* fallback for old browsers */
+    background: #f04b71;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right,   #f04b71,#e53c64, #da1a4d);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #f04b71,#e53c64, #da1a4d);
     color:#fff;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
 }
 
 .btn-edit {
-    background-color: #2079cc;
-    border-color: #1b6fbe;
+    /* fallback for old browsers */
+    background: #49a6e3;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #49a6e3,#338fcc, #1887d1);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #49a6e3,#338fcc, #1887d1);
     color: #fff;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
 }
 
 .approval {
