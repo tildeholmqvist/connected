@@ -20,7 +20,6 @@ def profile_page(request):
 
     context = {
         "categories": categories,
-        "bio": user_profile.bio,
         "profile": user_profile,
         "post_comments": post_comments,
         "discussion_comments": discussion_comments,

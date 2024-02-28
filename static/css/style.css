@@ -300,7 +300,21 @@ header {
     justify-content: center;
 }
 
-/* discussion_detail*/
+/* profile page */
+
+.discussion-container-profile {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+.user-info-container {
+    width:100px;
+}
+
+.user-info-container h6 {
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+}
 
 /*Footer*/ /*https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
 
