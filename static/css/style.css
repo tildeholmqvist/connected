@@ -14,42 +14,29 @@ body {
 header {
     background-color: #000000;
     margin-bottom: 40px;
-    border: black solid;
     padding: 5px;
 }
 
-/* Navbar */
-.menu-navbar a{
-    text-decoration: none;
-}
+/* Navigation */
 .brand-name {
     font-family: "Oswald", sans-serif;
     font-size: 250%;
     padding-left: 20px;
     text-transform: uppercase;
 }
-.dropdown-item:active {
-   text-decoration: none;
-   background: none;
-}
 
 /* index.html */
 .pagination-nav {
     margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .myindex {
     margin-left: 10%;
     margin-right: 10%;
 }
+
 .card {
-    display: flex;
-    flex-direction: column;
     height: 100%;
-    margin-top: 10px;
 }
 
 .card-img-top {
@@ -60,7 +47,6 @@ header {
 .card-title {
     font-family: "Oswald", sans-serif;
     color:black;
-    text-decoration: none;
     text-transform: uppercase;
 }
 
@@ -72,7 +58,6 @@ header {
 .card-title > a:hover {
     color: rgba(0, 0, 0, 0.6);
 }
-
 
 .text-muted > a {
     text-decoration: none;
@@ -222,10 +207,6 @@ header {
     font-family: "Oswald", sans-serif;
 }
 
-.about-section ul {
-    list-style: none;
-}
-
 /* Categories */
 
 .category-page h2{
@@ -247,7 +228,7 @@ header {
 }
 .post-your-own, .card-title {
     margin-bottom: 20px;
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 .discussion-index {
     width: 80%;
@@ -287,7 +268,6 @@ header {
     width: 80%;
     padding: 20px;
     margin: auto;
-    justify-content: center;
 }
 
 .card-footer {
@@ -326,7 +306,8 @@ header {
     margin-top: -20px;
     display: block;
 }
-/* profile page */
+
+/* Profile page */
 
 .discussion-header {
     text-align: center;
@@ -343,11 +324,12 @@ header {
     text-transform: uppercase;
 }
 
-/*Footer*/ /*https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
+/*Footer*/
+/*The social media icons styling is from: 
+https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
 
 footer {
-    list-style: none;
-    color:#060606;
+    color:#000000;
     font-family: "Oswald", sans-serif;
     padding-top: 50px;
     position: relative;
@@ -357,7 +339,6 @@ footer {
     text-decoration: none;
     width: 3.8rem;
     height: 3.8rem;
-    background-color: #ffffff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -410,7 +391,8 @@ footer {
 }
 
 /* Log in /Sign up */
-/* https://mdbootstrap.com/docs/standard/extended/login/ */
+/* Layout for this is partly from:
+https://mdbootstrap.com/docs/standard/extended/login/ */
 
 .login-form {
     background-color: #ffff;
@@ -449,8 +431,6 @@ footer {
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
-
-    color: #ffffff;
     border: none;
     border-radius: 5px;
     padding: 30px;
@@ -463,14 +443,12 @@ footer {
 }
 
 .login-button:hover {
-     /* fallback for old browsers */
-     background: #588FE9;
-    
-     /* Chrome 10-25, Safari 5.1-6 */
-     background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
-     
-     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+    /* fallback for old browsers */
+    background: #588FE9;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E); 
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }
 
 .forgot-password > a {
@@ -489,25 +467,17 @@ footer {
 
 .create-account-btn > a {
     text-decoration: none;
-    color: #030303;
+    color:#000000;
 }
 
 .create-account-btn:hover {
     color:#ffffff;
-
-     /* fallback for old browsers */
-     background: #588FE9;
-    
-     /* Chrome 10-25, Safari 5.1-6 */
-     background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
-     
-     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
-}
-
-.text-section, .login-form {
-    flex: 1;
-    margin: 10px 10px;
+    /* fallback for old browsers */
+    background: #588FE9;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }
 
 .text-section {
@@ -530,7 +500,7 @@ footer {
     margin-top: 20px;
 }
 
-/* signup form */
+/* Signup form */
 
 .signup-form {
     background-color: #ffff;
