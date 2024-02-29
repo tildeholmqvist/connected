@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background-color: #ffffff;
+    background-color: #000000;
     margin-bottom: 20px;
     border: black solid;
 }
@@ -340,9 +340,15 @@ header {
 }
 /* profile page */
 
+.discussion-header {
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+}
+
 .discussion-container-profile {
     width: 1400px;
     margin: 0 auto;
+    margin-bottom: 300px;
 }
 
 .user-info-container {

@@ -23,6 +23,7 @@
     <!-- Discussion Posts Column -->
     <div class="col-md-10">
       <div class="container discussion-container-profile">
+        <h3 class="discussion-header">Discussion Posts</h3>
         {% for discussion in discussions %}
         {% if discussion.approved or discussion.author == user %}
         <div class="discussion mb-3 {% if not discussion.approved and discussion.author == user %} faded {% elif not discussion.approved %} d-none {% endif %}" id="discussion-{{ discussion.id }}"></div>
@@ -51,8 +52,32 @@
         {% endif %}
         {% endfor %}
       </div>
-    </div>
-  </div>
+<!-- Comments Column -->
+  <div class="container discussion-container-profile">
+    <h3 class="discussion-header">Comments made by you</h3>
+      {% for comment in comments %}
+    {% if comment.approved or comment.author == user %}
+    <div class="comment mb-3 {% if not comment.approved and comment.author == user %} faded {% elif not comment.approved %} d-none {% endif %}" id="comment-{{ comment.id }}">
+        <div class="card-body">
+                    <p class="comment-author">{{ comment.author }}</p>
+                    <p class="comment-date">{{ comment.created_at }}</p>
+                    <p class="comment-body">{{ comment.body | linebreaks }}</p> 
+                    {% if not comment.approved and comment.author == user %}
+                        <p class="approval">This comment is awaiting approval</p>
+                    {% endif %}
+                    {% if user.is_authenticated and comment.author == user %}
+                    <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                    <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
+                {% endif %}
+                </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
 
   <!-- Delete confirmation modal -->
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

@@ -15,14 +15,15 @@ def profile_page(request):
     user_profile = Profile.objects.get(user=request.user)
     categories = Category.objects.all() 
     discussions = DiscussionPost.objects.filter(author=request.user)
-    post_comments = Comment.objects.filter(post__author=request.user)
+    comments = Comment.objects.filter(post__author=request.user)
     discussion_comments = Comment.objects.filter(author=request.user)
+
+    comments = comments | discussion_comments
 
     context = {
         "categories": categories,
         "profile": user_profile,
-        "post_comments": post_comments,
-        "discussion_comments": discussion_comments,
+        "comments": comments,
         "discussions": discussions,
     }
 
