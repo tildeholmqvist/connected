@@ -1,4 +1,4 @@
-<!-- blog/templates/blog/edit_comment.html -->
+<!-- blog/templates/discussion/edit_comment.html -->
 {% extends "base.html" %}
 {% load static %}
 
@@ -16,17 +16,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <form method="post"  action=".">
-                <div class="leave-comment"> 
+            <form method="post" action=".">
+                <div class="leave-comment">
                     <h3 class="card-title">Edit comment:</h3>
                     {% csrf_token %}
-                    <div class="mb-3"> 
-                     {{ form.body }}
-                 </div>
-                <button type="submit" class="btn btn-primary" id="submit-comment">Edit</button>
+                    <div class="mb-3">
+                        {{ form.body }}
                     </div>
-                </form>
-            </div>
+                    <button type="submit" class="btn btn-primary" id="submit-comment">Edit</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 {% endblock page_content %}

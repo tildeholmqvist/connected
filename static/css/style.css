@@ -1,9 +1,9 @@
-/*Google Fonts*/
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -46,7 +46,7 @@ header {
 
 .card-title {
     font-family: "Oswald", sans-serif;
-    color:black;
+    color: black;
     text-transform: uppercase;
 }
 
@@ -66,7 +66,7 @@ header {
 }
 
 .text-muted > a:hover {
-    color:black;
+    color: black;
 }
 
 .pagination-nav .page-link {
@@ -86,8 +86,8 @@ header {
     border: #0000 solid 1px;
 }
 
-.leave-comment textarea{
-    width:70%;
+.leave-comment textarea {
+    width: 70%;
     height: 50%;
     padding: 5px;
 }
@@ -101,12 +101,12 @@ header {
     font-weight: bold;
 }
 
-.comment-date{
+.comment-date {
     color: #888;
     font-size: small;
 }
 
-.comment-body{
+.comment-body {
     color: black;
 }
 
@@ -114,10 +114,10 @@ header {
     /* fallback for old browsers */
     background: #f04b71;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right,   #f04b71,#e53c64, #da1a4d);
+    background: -webkit-linear-gradient(to right, #f04b71, #e53c64, #da1a4d);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #f04b71,#e53c64, #da1a4d);
-    color:#fff;
+    background: linear-gradient(to right, #f04b71, #e53c64, #da1a4d);
+    color: #fff;
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
 }
@@ -126,9 +126,9 @@ header {
     /* fallback for old browsers */
     background: #49a6e3;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #49a6e3,#338fcc, #1887d1);
+    background: -webkit-linear-gradient(to right, #49a6e3, #338fcc, #1887d1);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #49a6e3,#338fcc, #1887d1);
+    background: linear-gradient(to right, #49a6e3, #338fcc, #1887d1);
     color: #fff;
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
@@ -157,12 +157,12 @@ header {
     /* fallback for old browsers */
     background: #008DAC;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
+    background: -webkit-linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
 }
 
-#submit-comment:hover{
+#submit-comment:hover {
     /* fallback for old browsers */
     background: #588FE9;
     /* Chrome 10-25, Safari 5.1-6 */
@@ -171,14 +171,14 @@ header {
     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }
 
-.modal-title{
+.modal-title {
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
 }
 
 .login {
     text-decoration: none;
-    color:#000000;
+    color: #000000;
 }
 
 /* About page */
@@ -209,7 +209,7 @@ header {
 
 /* Categories */
 
-.category-page h2{
+.category-page h2 {
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
 }
@@ -223,13 +223,16 @@ header {
     text-align: center;
     padding: 15px;
     margin-bottom: 20px;
-    border:#060606 solid 0.5px;
+    border: #060606 solid 0.5px;
     border-radius: 20px;
 }
-.post-your-own, .card-title {
+
+.post-your-own,
+.card-title {
     margin-bottom: 20px;
     font-size: 1.3em;
 }
+
 .discussion-index {
     width: 80%;
     margin: auto;
@@ -237,11 +240,12 @@ header {
     border-radius: 10px;
 }
 
-.submit-post, .login-link  {
+.submit-post,
+.login-link {
     /* fallback for old browsers */
     background: #008DAC;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589); 
+    background: -webkit-linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
     width: 60%;
@@ -256,7 +260,8 @@ header {
     border: none;
 }
 
-.submit-post:hover, .login-link:hover {
+.submit-post:hover,
+.login-link:hover {
     /* fallback for old browsers */
     background: #588FE9;
     /* Chrome 10-25, Safari 5.1-6 */
@@ -264,6 +269,7 @@ header {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }
+
 .card-discussion {
     width: 80%;
     padding: 20px;
@@ -271,22 +277,22 @@ header {
 }
 
 .card-footer {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.comment-p{
+.comment-p {
     margin-bottom: 0;
     text-decoration: none;
-    color:#000000;
+    color: #000000;
 }
 
 .comment-p:hover {
-    color:#6f6d6d;
+    color: #6f6d6d;
 }
 
-.comment-p i{
+.comment-p i {
     margin-right: 3px;
 }
 
@@ -324,12 +330,12 @@ header {
     text-transform: uppercase;
 }
 
-/*Footer*/
-/*The social media icons styling is from: 
-https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
+/* Footer */
+/* The social media icons styling is from: 
+https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html */
 
 footer {
-    color:#000000;
+    color: #000000;
     font-family: "Oswald", sans-serif;
     padding-top: 50px;
     position: relative;
@@ -348,7 +354,7 @@ footer {
     border: 3px solid #515151;
     overflow: hidden;
 }
-  
+
 .col-auto a::before {
     content: "";
     position: absolute;
@@ -360,32 +366,35 @@ footer {
     transform-origin: bottom;
     transition: scale 0.5s ease;
 }
-  
+
 .col-auto:hover a::before {
     scale: 1 1;
 }
-  
+
 .fab {
     font-size: 2rem;
     color: hsl(203, 92%, 8%);
     transition: 0.5s ease;
     z-index: 2;
 }
-  
+
 .col-auto a:hover .fab {
     color: #fff;
     transform: rotateY(360deg);
 }
-  
+
 .col-auto:nth-child(1) {
     --bg-color: linear-gradient(to bottom right, #f9ce34, #ee2a7b, #6228d7);
 }
+
 .col-auto:nth-child(2) {
     --bg-color: #1877F2;
 }
+
 .col-auto:nth-child(3) {
     --bg-color: #ff0000;
 }
+
 .col-auto:nth-child(4) {
     --bg-color: #0077b5;
 }
@@ -403,7 +412,7 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
 
 .login-form input[type="text"],
 .login-form input[type="password"] {
-    width:80%;
+    width: 80%;
     padding: 15px;
     margin-bottom: 10px;
 }
@@ -425,12 +434,12 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
 .login-button {
     /* fallback for old browsers */
     background: #008DAC;
-    
+
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
-    
+    background: -webkit-linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
+
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
+    background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
     border: none;
     border-radius: 5px;
     padding: 30px;
@@ -446,14 +455,14 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
     /* fallback for old browsers */
     background: #588FE9;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E); 
+    background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }
 
 .forgot-password > a {
     text-decoration: none;
-    color:#818080;
+    color: #818080;
 }
 
 .create-account-btn {
@@ -462,16 +471,16 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
     margin: 10px;
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
-    color:#0000;
+    color: #0000;
 }
 
 .create-account-btn > a {
     text-decoration: none;
-    color:#000000;
+    color: #000000;
 }
 
 .create-account-btn:hover {
-    color:#ffffff;
+    color: #ffffff;
     /* fallback for old browsers */
     background: #588FE9;
     /* Chrome 10-25, Safari 5.1-6 */
@@ -486,7 +495,8 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
     padding: 70px;
 }
 
-.text-section h1, .text-section p {
+.text-section h1,
+.text-section p {
     margin-bottom: 20px;
     font-family: "Oswald", sans-serif;
 }
@@ -520,7 +530,7 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
 }
 
 .signup-form input {
-    width:80%;
+    width: 80%;
     padding: 15px;
 }
 
@@ -539,12 +549,11 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
     font-family: "Oswald", sans-serif;
 }
 
-
 @media (max-width: 576px) {
-    .comment-p{
+    .comment-p {
         margin-bottom: 0;
         text-decoration: none;
-        color:#000000;
+        color: #000000;
         display: none;
     }
 
@@ -560,4 +569,4 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
     .approved {
         display: none;
     }
-}   
+}

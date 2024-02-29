@@ -1,4 +1,3 @@
-<!-- templates/base.html -->
 {% load static %}
 
 {% url 'account_login' as login_url %}
@@ -11,133 +10,119 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Connected</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="static/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="static/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="static/icons/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
+</head>
 <body>
-<!---Navigation Bar-->
 <header>
-  <nav class="navbar navbar-expand-md me-2 navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand brand-name-link home-link" href="/"><span class="brand-name">Connected</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarText">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="home" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="about" href="{% url 'about' %}">About</a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              {% for category in categories %}
-              <li>
-                <a class="dropdown-item"
-                  href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'discussion_list' %}">Discussion</a>
-            </li>
-            <li class="nav-item">
-              <div class="login-links">
-                
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                     data-bs-toggle="dropdown" aria-expanded="false">
-                      My profile
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      {% if user.is_authenticated %}
-                          <li><a class="dropdown-item" href="{% url 'profile' %}">View Profile</a></li>
-                          <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-                      {% else %}
-                          <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
-                          <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
-                      {% endif %}
-                  </ul>
-              </li>
-                {% else %}
-                <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                  href="{% url 'account_login' %}">Login / Register</a>
-                {% endif %}
-              </div>
-            </li>
-          </ul>
+    <nav class="navbar navbar-expand-md me-2 navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand brand-name-link home-link" href="/"><span class="brand-name">Connected</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarText">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="home" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="about" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for category in categories %}
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'discussion_list' %}">Discussion</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="login-links">
+                            {% if user.is_authenticated %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        My profile
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{% url 'profile' %}">View Profile</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                                   href="{% url 'account_login' %}">Login / Register</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
-  </header>
-<!---From Code Institute Walkthrough Project "I think therefor I blog"-->
-  <!--Displaying Django Message-->
+</header>
+
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      {% for message in messages %}
-      <div class="alert {{ message.tags }} alert-dismissible
-        fade show" id="msg" role="alert">
-        {{ message | safe }}
-        <button type="button" class="btn-close"
-          data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      {% endfor %}
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-  </div>
 </div>
 
 {% block page_title %}
 {% endblock page_title %}
 {% block page_content %}
 {% endblock page_content %}
-
 {% block footer %}
 <footer class="footer mt-auto py-3 light-bg">
-  <p class="m-0 text-center">Follow us:
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <a href="https://instagram.com" target="_blank" class="social-icon">
-          <i class="fab fa-instagram-square fa-lg"></i>
-        </a>
-      </div>
-      <div class="col-auto">
-        <a href="https://facebook.com" target="_blank" class="social-icon">
-          <i class="fab fa-facebook-square fa-lg"></i>
-        </a>
-      </div>
-      <div class="col-auto">
-        <a href="https://youtube.com" target="_blank" class="social-icon">
-          <i class="fab fa-youtube-square fa-lg"></i>
-        </a>
-      </div>
-      <div class="col-auto">
-        <a href="https://linkedin.com" target="_blank" class="social-icon">
-          <i class="fab fa-linkedin fa-lg"></i>
-        </a>
-      </div>
+    <p class="m-0 text-center">Follow us:
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram-square fa-lg"></i>
+                </a>
+            </div>
+            <div class="col-auto">
+                <a href="https://facebook.com" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-square fa-lg"></i>
+                </a>
+            </div>
+            <div class="col-auto">
+                <a href="https://youtube.com" target="_blank" class="social-icon">
+                    <i class="fab fa-youtube-square fa-lg"></i>
+                </a>
+            </div>
+            <div class="col-auto">
+                <a href="https://linkedin.com" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
-  </p>
+    </p>
 </footer>
 {% endblock %}
-
 <script src="https://kit.fontawesome.com/89e0726886.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="{% static 'js/comments.js' %}"></script>
