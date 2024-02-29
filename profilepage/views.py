@@ -52,3 +52,4 @@ def delete_post(request, post_id):
     else:
         messages.error(request, 'You can only delete your own post!')
         return HttpResponseRedirect(reverse('profile'))
+

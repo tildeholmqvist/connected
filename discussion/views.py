@@ -119,10 +119,12 @@ def comment_delete(request, pk, comment_id):
     """
     View to delete comment
     """
-    post = get_object_or_404(Post, pk=pk)
-    discussion_comment = get_object_or_404(DiscussionComment, id=comment_id)
-    if discussion_comment.author == request.user:
-            discussion_comment.delete()
+    discussion_post = get_object_or_404(DiscussionPost, pk=pk)
+    comment = get_object_or_404(DiscussionComment, id=comment_id)
+    comment_form = DiscussionCommentForm(data=request.POST, instance=comment)
+
+    if comment.author == request.user:
+            comment.delete()
             messages.success(request, 'Comment deleted!')
     else:
         messages.error(request, 'You can only delete your own comments!')

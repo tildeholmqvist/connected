@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import DiscussionIndex, create_discussion, discussion_detail
+from .views import DiscussionIndex, create_discussion, discussion_detail, comment_delete
 
 urlpatterns = [
     path('', DiscussionIndex.as_view(), name='discussion_list'),
