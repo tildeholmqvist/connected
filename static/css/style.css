@@ -349,10 +349,14 @@ header {
     width: 1400px;
     margin: 0 auto;
     margin-bottom: 300px;
+    align-items: center;
+    justify-content: ceenter;
+    text-align: center;
 }
 
 .user-info-container {
     width:100px;
+    height: 50%;
 }
 
 .user-info-container h6 {
@@ -360,6 +364,10 @@ header {
     text-transform: uppercase;
 }
 
+.comment-profile {
+    margin-left: -25px;
+    width: 100%;
+}
 /*Footer*/ /*https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
 
 footer {

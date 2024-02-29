@@ -51,26 +51,33 @@
         </div>
         {% endif %}
         {% endfor %}
-      </div>
+<br>
 <!-- Comments Column -->
   <div class="container discussion-container-profile">
     <h3 class="discussion-header">Comments made by you</h3>
       {% for comment in comments %}
     {% if comment.approved or comment.author == user %}
-    <div class="comment mb-3 {% if not comment.approved and comment.author == user %} faded {% elif not comment.approved %} d-none {% endif %}" id="comment-{{ comment.id }}">
-        <div class="card-body">
-                    <p class="comment-author">{{ comment.author }}</p>
-                    <p class="comment-date">{{ comment.created_at }}</p>
-                    <p class="comment-body">{{ comment.body | linebreaks }}</p> 
-                    {% if not comment.approved and comment.author == user %}
-                        <p class="approval">This comment is awaiting approval</p>
-                    {% endif %}
-                    {% if user.is_authenticated and comment.author == user %}
-                    <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                    <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
-                {% endif %}
+    <div class="comment-profile mb-3 {% if not comment.approved and comment.author == user %}  {% elif not comment.approved %} d-none {% endif %}" id="comment-{{ comment.id }}">
+      <div class="row mb-8">
+        <div class="col-md-8 offset-md-2">
+          <div class="card discussion-index">
+            <div class="card-body">
+              <p class="card-text">{{ comment.body | linebreaks }}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{ comment.created_at.date }} by {{ comment.author }}</small>
+              {% if not comment.approved and comment.author == user %}
+              <p class="approval">This comment is awaiting approval</p>
+              {% endif %}
+              {% if user.is_authenticated and comment.author == user %}
+              <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+              <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
+              {% endif %}
                 </div>
         </div>
+        </div>
+      </div>
+    </div>
         {% endif %}
     {% endfor %}
 </div>
