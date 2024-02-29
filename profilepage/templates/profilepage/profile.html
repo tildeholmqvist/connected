@@ -38,8 +38,6 @@
                 <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
                 {% if not discussion.approved and discussion.author == user %}
                 <p class="approval">This post is awaiting approval</p>
-                {% elif not discussion.approved %}
-                <p class="approval">This post is pending approval</p>
                 {% endif %}
                 {% if user.is_authenticated and discussion.author == user %}
                 <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
@@ -73,7 +71,7 @@
               <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
               <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
               {% endif %}
-                </div>
+            </div>
         </div>
         </div>
       </div>
@@ -104,22 +102,5 @@
       </div>
     </div>
   </div>
-
-  {% if is_paginated %}
-  <div class="row">
-    <div class="col-md-12">
-      <nav aria-label="Page navigation" class="pagination-nav">
-        <ul class="pagination justify-content-center">
-          {% if page_obj.has_previous %}
-          <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-          {% endif %}
-          {% if page_obj.has_next %}
-          <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-          {% endif %}
-        </ul>
-      </nav>
-    </div>
-  </div>
-  {% endif %}
 </div>
 {% endblock page_content %}
