@@ -107,9 +107,6 @@ def comment_edit(request, slug, comment_id):
     return render(request, "blog/edit_comment.html", context)
 
     
-
-
-
 def comment_delete(request, slug, comment_id):
     """
     View to delete comment

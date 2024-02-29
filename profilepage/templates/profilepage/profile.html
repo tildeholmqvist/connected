@@ -2,14 +2,11 @@
 {% load static %}
 {% url 'account_login' as login_url %}
 
-{% block page_title %}
-{% endblock page_title %}
-
 {% block page_content %}
 <div class="container">
   <div class="row">
     <!-- User Information Column -->
-    <div class="col-md-2 user-info-container">
+    <div class="col-md-4 user-info-container">
       <div class="card">
         <div class="card-header">
           <h6>User Information:</h6>
@@ -20,72 +17,61 @@
         </div>
       </div>
     </div>
-    <!-- Discussion Posts Column -->
-    <div class="col-md-10">
-      <div class="container discussion-container-profile">
+    <!-- Discussion Posts and Comments Column -->
+    <div class="col-md-8">
+      <div class="container">
         <h3 class="discussion-header">Discussion Posts</h3>
         {% for discussion in discussions %}
-        {% if discussion.approved or discussion.author == user %}
-        <div class="discussion mb-3 {% if not discussion.approved and discussion.author == user %} faded {% elif not discussion.approved %} d-none {% endif %}" id="discussion-{{ discussion.id }}"></div>
-        <div class="row mb-8">
-          <div class="col-md-8 offset-md-2">
-            <div class="card discussion-index">
+          {% if discussion.approved or discussion.author == user %}
+            <div class="card mb-3">
               <div class="card-body">
                 <h5 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h5>
                 <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
               </div>
-              <div class="card-footer">
+              <div class="card-footer d-flex flex-wrap justify-content-between">
                 <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
                 {% if not discussion.approved and discussion.author == user %}
-                <small class="approval">This post is awaiting approval</small>
+                  <small class="approval">This post is awaiting approval</small>
                 {% else %}
-                <small class="text-muted">This post has been approved</small>
-                 {% endif %}
+                  <small class="text-muted approved">This post has been approved</small>
+                {% endif %}
                 {% if user.is_authenticated and discussion.author == user %}
-                <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
+                  <div class="buttons-sidebyside">
+                  <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                  <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
+                </div>
                 {% endif %}
               </div>
             </div>
-          </div>
-        </div>
-        {% endif %}
+          {% endif %}
         {% endfor %}
-<br>
-<!-- Comments Column -->
-  <div class="container discussion-container-profile">
-    <h3 class="discussion-header">Comments made by you</h3>
-      {% for comment in comments %}
-    {% if comment.approved or comment.author == user %}
-    <div class="comment-profile mb-3 {% if not comment.approved and comment.author == user %}  {% elif not comment.approved %} d-none {% endif %}" id="comment-{{ comment.id }}">
-      <div class="row mb-8">
-        <div class="col-md-8 offset-md-2">
-          <div class="card discussion-index">
-            <div class="card-body">
-              <p class="card-text">{{ comment.body | linebreaks }}</p>
+        <h3 class="discussion-header">Comments made by you</h3>
+        {% for comment in comments %}
+          {% if comment.approved or comment.author == user %}
+            <div class="card mb-3">
+              <div class="card-body">
+                <p class="card-text">{{ comment.body | linebreaks }}</p>
+              </div>
+              <div class="card-footer d-flex flex-wrap justify-content-between align-items-center ">
+                <small class="text-muted">{{ comment.created_at.date }} by {{ comment.author }}</small>
+                {% if not comment.approved and comment.author == user %}
+                  <small class="approval">This comment is awaiting approval</small>
+                {% else %}
+                  <small class="text-muted approved">This comment has been approved</small>
+                {% endif %}
+                {% if user.is_authenticated and comment.author == user %}
+                <div class="buttons-sidebyside">
+                  <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                  <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
+                </div>
+                {% endif %}
+              </div>
             </div>
-            <div class="card-footer">
-              <small class="text-muted">{{ comment.created_at.date }} by {{ comment.author }}</small>
-              {% if not comment.approved and comment.author == user %}
-              <small class="approval">This comment is awaiting approval</small>
-              {% else %}
-              <small class="text-muted">This comment has been approved</small>
-              {% endif %}
-              {% if user.is_authenticated and comment.author == user %}
-                        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                        <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
-                    {% endif %}
-            </div>
-        </div>
-        </div>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
-        {% endif %}
-    {% endfor %}
-</div>
-</div>
-</div>
-</div>
+  </div>
 </div>
 <!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

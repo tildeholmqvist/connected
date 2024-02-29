@@ -42,11 +42,10 @@ header {
 }
 
 .myindex {
-    margin-left: 140px;
-    margin-right: 140px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .card {
-    width: 320px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -223,6 +222,10 @@ header {
     font-family: "Oswald", sans-serif;
 }
 
+.about-section ul {
+    list-style: none;
+}
+
 /* Categories */
 
 .category-page h2{
@@ -233,7 +236,7 @@ header {
 /* Discussion index page */
 
 .post-your-own {
-    width: 600px;
+    width: 50%;
     margin: auto;
     justify-content: center;
     text-align: center;
@@ -260,7 +263,7 @@ header {
     background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589); 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
-    width: 40%;
+    width: 60%;
     border-radius: 20px;
     padding: 10px;
     display: block;
@@ -314,7 +317,7 @@ header {
     padding: 3px;
     border: solid black 0.2px;
     margin-left: 50px;
-    width: 90%;
+    width: 70%;
     height: 120%;
     margin-bottom: 15px;
 }
@@ -330,18 +333,9 @@ header {
     font-family: "Oswald", sans-serif;
 }
 
-.discussion-container-profile {
-    width: 1400px;
-    margin: 0 auto;
-    margin-bottom: 300px;
-    align-items: center;
-    justify-content: ceenter;
-    text-align: center;
-}
-
 .user-info-container {
-    width:100px;
-    height: 50%;
+    height: 70%;
+    margin-top: 35px;
 }
 
 .user-info-container h6 {
@@ -349,10 +343,6 @@ header {
     text-transform: uppercase;
 }
 
-.comment-profile {
-    margin-left: -25px;
-    width: 100%;
-}
 /*Footer*/ /*https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html*/
 
 footer {
@@ -578,3 +568,26 @@ footer {
 .logout h2 {
     font-family: "Oswald", sans-serif;
 }
+
+
+@media (max-width: 576px) {
+    .comment-p{
+        margin-bottom: 0;
+        text-decoration: none;
+        color:#000000;
+        display: none;
+    }
+
+    .approval {
+        color: rgb(228, 97, 97);
+        font-size: 90%;
+    }
+
+    .user-info-container {
+        margin-bottom: 20px;
+    }
+
+    .approved {
+        display: none;
+    }
+}   

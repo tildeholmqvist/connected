@@ -6,9 +6,8 @@ from django.contrib import messages
 from .models import Profile
 from blog.models import Category
 from discussion.models import DiscussionPost
-from discussion.forms import DiscussionPostForm 
+from discussion.forms import DiscussionPostForm
 from blog.models import Post, Comment
-from blog.views import comment_delete
 
 @login_required
 def profile_page(request):
@@ -52,4 +51,5 @@ def delete_post(request, post_id):
     else:
         messages.error(request, 'You can only delete your own post!')
         return HttpResponseRedirect(reverse('profile'))
+
 
