@@ -18,26 +18,25 @@ header {
     padding: 5px;
 }
 
+.hidden-paragraph {
+    display:none;
+}
 /* Navbar */
-
 .menu-navbar a{
     text-decoration: none;
 }
-
 .brand-name {
     font-family: "Oswald", sans-serif;
     font-size: 250%;
     padding-left: 20px;
     text-transform: uppercase;
 }
-
 .dropdown-item:active {
    text-decoration: none;
    background: none;
-
 }
-/* index.html */
 
+/* index.html */
 .pagination-nav {
     margin-top: 20px;
     display: flex;
@@ -133,10 +132,8 @@ header {
 .btn-delete {
     /* fallback for old browsers */
     background: #f04b71;
-    
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right,   #f04b71,#e53c64, #da1a4d);
-    
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #f04b71,#e53c64, #da1a4d);
     color:#fff;
@@ -147,10 +144,8 @@ header {
 .btn-edit {
     /* fallback for old browsers */
     background: #49a6e3;
-    
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, #49a6e3,#338fcc, #1887d1);
-    
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #49a6e3,#338fcc, #1887d1);
     color: #fff;
@@ -178,25 +173,21 @@ header {
     text-transform: uppercase;
     padding: 10px;
     border: none;
-      /* fallback for old browsers */
-      background: #008DAC;
-    
-      /* Chrome 10-25, Safari 5.1-6 */
-      background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
-      
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
+    /* fallback for old browsers */
+    background: #008DAC;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
 }
 
 #submit-comment:hover{
-     /* fallback for old browsers */
-     background: #588FE9;
-    
-     /* Chrome 10-25, Safari 5.1-6 */
-     background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
-     
-     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+    /* fallback for old browsers */
+    background: #588FE9;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }
 
 .modal-title{
@@ -266,15 +257,12 @@ header {
 }
 
 .submit-post, .login-link  {
-     /* fallback for old browsers */
-     background: #008DAC;
-    
-     /* Chrome 10-25, Safari 5.1-6 */
-     background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589);
-     
-     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-     background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
-
+    /* fallback for old browsers */
+    background: #008DAC;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right,  #007EB7, #008DAC, #009B9A, #40A589); 
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
     width: 40%;
     border-radius: 20px;
     padding: 10px;
@@ -290,10 +278,8 @@ header {
 .submit-post:hover, .login-link:hover {
     /* fallback for old browsers */
     background: #588FE9;
-    
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
-    
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #588FE9, #7B78D8, #955FBE, #A6429E);
 }

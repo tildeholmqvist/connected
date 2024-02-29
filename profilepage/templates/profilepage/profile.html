@@ -37,8 +37,10 @@
               <div class="card-footer">
                 <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
                 {% if not discussion.approved and discussion.author == user %}
-                <p class="approval">This post is awaiting approval</p>
-                {% endif %}
+                <small class="approval">This post is awaiting approval</small>
+                {% else %}
+                <small class="text-muted">This post has been approved</small>
+                 {% endif %}
                 {% if user.is_authenticated and discussion.author == user %}
                 <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
                 <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
@@ -65,7 +67,9 @@
             <div class="card-footer">
               <small class="text-muted">{{ comment.created_at.date }} by {{ comment.author }}</small>
               {% if not comment.approved and comment.author == user %}
-              <p class="approval">This comment is awaiting approval</p>
+              <small class="approval">This comment is awaiting approval</small>
+              {% else %}
+              <small class="text-muted">This comment has been approved</small>
               {% endif %}
               {% if user.is_authenticated and comment.author == user %}
               <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>

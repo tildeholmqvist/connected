@@ -1,7 +1,10 @@
+#https://dev.to/earthcomfy/django-user-profile-3hik
 from django.apps import AppConfig
 
 
 class ProfilepageConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'profilepage'
-    
+
+    def ready(self):
+        import profilepage.signals
