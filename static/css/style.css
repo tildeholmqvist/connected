@@ -111,7 +111,8 @@ header {
 }
 
 .btn-delete,
-.btn-delete-post {
+.btn-delete-post,
+.btn-delete-comment {
     /* fallback for old browsers */
     background: #f04b71;
     /* Chrome 10-25, Safari 5.1-6 */

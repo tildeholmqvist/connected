@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const discussionPostText = document.getElementById("id_body");
   const discussionPostForm = document.getElementById("discussionPostForm");
 
+  const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
+  const deleteCommentButtons = document.getElementsByClassName("btn-delete-comment");
+  const deleteCommentConfirm = document.getElementById("deleteCommentConfirm");
+
   /* const editButtonsDiscussionComments = document.getElementsByClassName("btn-edit-comment");
 
   /**
@@ -95,6 +99,14 @@ document.addEventListener("DOMContentLoaded", function() {
       let discussionContent = document.getElementById(`discussion${discussionPk}`).innerText;
       discussionText.value = discussionContent;
       discussionPostForm.setAttribute("action", `edit_post/${discussionPk}`);
+    });
+  }
+
+  for (let button of deleteCommentButtons) {
+    button.addEventListener("click", (e) => {
+        let commentId = e.target.getAttribute("comment_id");
+        deleteCommentConfirm.href = `/profile/delete_comment/${commentId}/`;
+        deleteCommentModal.show();
     });
   }
 });

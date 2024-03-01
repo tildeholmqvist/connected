@@ -38,7 +38,7 @@ def blog_category(request, category):
 def blog_detail(request, slug):
     queryset = Post.objects.all()
     post = get_object_or_404(queryset, slug=slug)
-    form = CommentForm()
+    form = CommentForm(request.POST)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -54,6 +54,8 @@ def blog_detail(request, slug):
                 'Comment submitted and awaiting approval'
                 )
             return HttpResponseRedirect(request.path_info)
+    else:
+        form = CommentForm()
 
     comments = post.comments.all().order_by("-created_at")
     comment_count = post.comments.filter(approved=True).count()
@@ -64,7 +66,7 @@ def blog_detail(request, slug):
         "comments": comments,
         "categories": categories,
         "comment_count": comment_count,
-        "form": CommentForm(),
+        "form": form,
     }
 
     categories = Category.objects.all()
@@ -81,7 +83,7 @@ def comment_edit(request, slug, comment_id):
     """
     View to edit comments
     """
-    if request.method == "POST":
+    if request.method == "POST": 
         post = get_object_or_404(Post, slug=slug)
         comment = get_object_or_404(Comment, id=comment_id)
         comment_form = CommentForm(data=request.POST, instance=comment)
@@ -121,4 +123,3 @@ def comment_delete(request, slug, comment_id):
         messages.error(request, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('blog_detail', kwargs={'slug': slug}))
-
