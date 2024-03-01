@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
   for (let button of deleteCommentButtons) {
     button.addEventListener("click", (e) => {
         let commentId = e.target.getAttribute("comment_id");
-        deleteCommentConfirm.href = `/profile/delete_comment/${commentId}/`;
+        deleteCommentConfirm.href = `/post/<slug:slug>/delete_comment/<int:comment_id>/`;
         deleteCommentModal.show();
     });
   }

@@ -58,7 +58,8 @@ def discussion_delete(request, pk):
 
 
 @login_required
-def comment_delete(request, comment_id):
+def comment_delete(request, slug, comment_id):
+    post = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, id=comment_id)
     if comment.author == request.user:
         comment.delete()
