@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const deletePostButtons = document.getElementsByClassName("btn-delete-post");
   const deletePostConfirm = document.getElementById("deletePostConfirm");
 
+  const editPostButtons = document.getElementsByClassName("btn-edit-post");
+  const discussionPostText = document.getElementById("id_body");
+  const discussionPostForm = document.getElementById("discussionPostForm");
+
   /* const editButtonsDiscussionComments = document.getElementsByClassName("btn-edit-comment");
 
   /**
@@ -43,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
   * - Displays a confirmation modal (`deleteModal`) to prompt 
   * the user for confirmation before deletion.
   */
+ 
   for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
         let commentId = e.target.getAttribute("comment_id");
@@ -80,6 +85,16 @@ document.addEventListener("DOMContentLoaded", function() {
         let discussionPk = e.target.getAttribute("discussion_pk");
         deletePostConfirm.href = `/discussion/${discussionPk}/delete/`;
         deletePostModal.show();
+    });
+  }
+
+  for (let button of editPostButtons) {
+    button.addEventListener("click", (e) => {
+      console.log("Edit button clicked")
+      let discussionPk = e.target.getAttribute("discussion_pk");
+      let discussionContent = document.getElementById(`discussion${discussionPk}`).innerText;
+      discussionText.value = discussionContent;
+      discussionPostForm.setAttribute("action", `edit_post/${discussionPk}`);
     });
   }
 });

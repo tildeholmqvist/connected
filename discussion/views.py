@@ -114,7 +114,6 @@ def comment_edit(request, pk, comment_id):
 
     return render(request, "discussion/edit_discussion_comment.html", context)
 
-
 def comment_delete(request, pk, comment_id):
     """
     View to delete comment
@@ -129,7 +128,9 @@ def comment_delete(request, pk, comment_id):
     else:
         messages.error(request, 'You can only delete your own comments!')
 
-        return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
+    return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
+
+
 
 def discussion_edit(request, pk):
     categories = Category.objects.all() 

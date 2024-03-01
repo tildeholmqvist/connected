@@ -38,6 +38,7 @@
                         {% if user.is_authenticated and discussion.author == request.user %}
                         <div class="buttons-sidebyside">
                         <button class="btn btn-danger btn-delete-post" discussion_pk="{{ discussion.pk }}">Delete</button>
+                        <a class="btn btn-edit-post" href="{% url 'discussion_edit' discussion.pk %}" discussion_id="{{ discussion.id }}">Edit</a>
                         </div>
                         {% endif %}
                     </div>
@@ -64,7 +65,7 @@
                         {% if user.is_authenticated and comment.author == user %}
                         <div class="buttons-sidebyside">
                             <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                            <a class="btn btn-edit-comment" href="#" comment_id="{{ comment.id }}" discussion_id="{{ comment.discussion.pk }}">Edit</a>
+                            <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
                         </div>
                         {% endif %}
                     </div>

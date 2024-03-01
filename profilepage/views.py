@@ -4,10 +4,9 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Profile
-from blog.models import Category
+from blog.models import Category, Post, Comment
 from discussion.models import DiscussionPost
 from discussion.forms import DiscussionPostForm
-from blog.models import Post, Comment
 
 @login_required
 def profile_page(request):
@@ -57,3 +56,14 @@ def discussion_delete(request, pk):
 
     return HttpResponseRedirect(reverse('profilepage/profile.html'))
 
+
+@login_required
+def comment_delete(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.author == request.user:
+        comment.delete()
+        messages.success(request, 'Comment deleted!')
+    else:
+        messages.error(request, 'You can only delete your own comments!')
+
+    return HttpResponseRedirect(reverse('profile.html'))
