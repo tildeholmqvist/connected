@@ -35,17 +35,19 @@
                         {% else %}
                         <small class="text-muted approved">This post has been approved</small>
                         {% endif %}
-                        {% if user.is_authenticated and discussion.author == user %}
+                        {% if user.is_authenticated and discussion.author == request.user %}
                         <div class="buttons-sidebyside">
-                            <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                            <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
+                        <button class="btn btn-danger btn-delete-post" discussion_pk="{{ discussion.pk }}">Delete</button>
                         </div>
                         {% endif %}
                     </div>
                 </div>
                 {% endif %}
                 {% endfor %}
-                <h3 class="discussion-header">Comments made by you</h3>
+                {% if not discussions %}
+                    <p class="discussion-header text-center">You haven't made any posts yet</p>
+                {% endif %}
+                <h3 class="discussion-header">Your comments on articles</h3>
                 {% for comment in comments %}
                 {% if comment.approved or comment.author == user %}
                 <div class="card mb-3">
@@ -62,33 +64,19 @@
                         {% if user.is_authenticated and comment.author == user %}
                         <div class="buttons-sidebyside">
                             <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                            <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
+                            <a class="btn btn-edit-comment" href="#" comment_id="{{ comment.id }}" discussion_id="{{ comment.discussion.pk }}">Edit</a>
                         </div>
                         {% endif %}
                     </div>
                 </div>
                 {% endif %}
                 {% endfor %}
+                {% if not comments %}
+                <p class="discussion-header text-center">You haven't made any comments yet</p>
+            {% endif %}
             </div>
         </div>
     </div>
 </div>
-<!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete your comment? This action cannot be undone.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
-            </div>
-        </div>
-    </div>
-</div>
+
 {% endblock page_content %}

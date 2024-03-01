@@ -10,10 +10,16 @@
                     <h4 class="card-title">{{ discussion.title }}</h4>
                     <small class="text-muted discussion-created">{{ discussion.created_at|date }}</small>
                     <p>{{ discussion.content | safe | linebreaks }}</p>
+                    {% if user.is_authenticated and discussion.author == request.user %}
+                    <button class="btn btn-danger btn-delete-post" discussion_pk="{{ discussion.pk }}">Delete</button>
+                    <a class="btn btn-edit-post" href="{% url 'discussion_edit' discussion.pk %}" discussion_id="{{ discussion.id }}">Edit</a>
+                    {% endif %}
                 </div>
             </div>
+            
         </div>
     </div>
+    
     <div class="row mb-3">
         <div class="col-md-8 offset-md-2">
             <div class="leave-comment">
@@ -34,7 +40,7 @@
                 {% endif %}
             </div>
         </div>
-    </div>
+</div>
     <!--From the walkthorugh-->
     <!-- Displaying count of comments -->
     <div class="row">
@@ -67,24 +73,6 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
-    </div>
-</div>
-<!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete your comment? This action cannot be undone.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
-            </div>
         </div>
     </div>
 </div>

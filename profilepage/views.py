@@ -29,7 +29,7 @@ def profile_page(request):
     return render(request, 'profilepage/profile.html', context)
 
 @login_required
-def post_edit(request, post_id):
+def discussion_edit(request, post_id):
     post = get_object_or_404(DiscussionPost, pk=post_id, author=request.user)
     if request.method == "POST":
         form = DiscussionPostForm(request.POST, instance=post)
@@ -40,16 +40,20 @@ def post_edit(request, post_id):
     else:
         form = DiscussionPostForm(instance=post)
         return render(request, 'discussionpost_edit.html', {'form': form})
-        
 
 
 @login_required
-def delete_post(request, post_id):
-    post = get_object_or_404(DiscussionPost, pk=post_id, author=request.user)
-    if request.method == "POST":
-        return delete_comment(request, post_id)
-    else:
-        messages.error(request, 'You can only delete your own post!')
-        return HttpResponseRedirect(reverse('profile'))
+def discussion_delete(request, pk):
+    """
+    View to delete discussion post
+    """
+    discussion_post = get_object_or_404(DiscussionPost, pk=pk)
 
+    if discussion_post.author == request.user:
+            discussion_post.delete()
+            messages.success(request, 'Discussion deleted!')
+    else:
+        messages.error(request, 'You can only delete your own discussion!')
+
+    return HttpResponseRedirect(reverse('profilepage/profile.html'))
 

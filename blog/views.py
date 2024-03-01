@@ -121,3 +121,4 @@ def comment_delete(request, slug, comment_id):
         messages.error(request, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('blog_detail', kwargs={'slug': slug}))
+

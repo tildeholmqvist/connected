@@ -129,4 +129,45 @@ def comment_delete(request, pk, comment_id):
     else:
         messages.error(request, 'You can only delete your own comments!')
 
-    return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
+        return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
+
+def discussion_edit(request, pk):
+    categories = Category.objects.all() 
+    discussion_post = get_object_or_404(DiscussionPost, pk=pk)
+    
+    if request.method == "POST":
+        discussion_post_form = DiscussionPostForm(request.POST, instance=discussion_post)
+
+        if discussion_post_form.is_valid() and discussion_post.author == request.user:
+            discussion = discussion_post_form.save(commit=False)
+            discussion_post.approved = False
+            discussion_post.save()
+            messages.success(request, 'Post Updated!')
+            
+            return HttpResponseRedirect(reverse('discussion_detail', kwargs={'pk': pk}))
+        else:
+            messages.error(request, 'Error updating post!')
+    else:
+        discussion_post_form = DiscussionPostForm(instance=discussion_post)
+    context = {
+        "discussion_post": discussion_post,
+        "form": discussion_post_form,
+        "categories": categories
+    }
+
+    return render(request, "discussion/edit_discussion_post.html", context)
+
+
+def discussion_delete(request, pk):
+    """
+    View to delete discussion post
+    """
+    discussion_post = get_object_or_404(DiscussionPost, pk=pk)
+
+    if discussion_post.author == request.user:
+            discussion_post.delete()
+            messages.success(request, 'Discussion deleted!')
+    else:
+        messages.error(request, 'You can only delete your own discussion!')
+
+    return HttpResponseRedirect(reverse('discussion_list'))

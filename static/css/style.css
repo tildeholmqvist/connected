@@ -110,7 +110,8 @@ header {
     color: black;
 }
 
-.btn-delete {
+.btn-delete,
+.btn-delete-post {
     /* fallback for old browsers */
     background: #f04b71;
     /* Chrome 10-25, Safari 5.1-6 */
@@ -122,7 +123,8 @@ header {
     text-transform: uppercase;
 }
 
-.btn-edit {
+.btn-edit,
+.btn-edit-post {
     /* fallback for old browsers */
     background: #49a6e3;
     /* Chrome 10-25, Safari 5.1-6 */
@@ -315,7 +317,7 @@ header {
 
 /* Profile page */
 
-.discussion-header {
+.discussion-header{
     text-align: center;
     font-family: "Oswald", sans-serif;
 }
