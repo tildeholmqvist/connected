@@ -112,7 +112,8 @@ header {
 
 .btn-delete,
 .btn-delete-post,
-.btn-delete-comment {
+.btn-delete-comment,
+.btn-delete-discussion-comment {
     /* fallback for old browsers */
     background: #f04b71;
     /* Chrome 10-25, Safari 5.1-6 */
@@ -136,7 +137,18 @@ header {
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
 }
-
+.btn-primary{
+    /* fallback for old browsers */
+    background: #7FE38F;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #7FE38F, #3EC69A, #00A69B);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #7FE38F, #3EC69A, #00A69B);
+    color: #fff;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    border: none;
+}
 .approval {
     color: rgb(228, 97, 97);
 }

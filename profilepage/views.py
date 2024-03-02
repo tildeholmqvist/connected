@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Profile
 from blog.models import Category, Post, Comment
-from discussion.models import DiscussionPost
+from discussion.models import DiscussionPost, DiscussionComment
 from discussion.forms import DiscussionPostForm
 
 @login_required
@@ -13,15 +13,15 @@ def profile_page(request):
     user_profile = Profile.objects.get(user=request.user)
     categories = Category.objects.all() 
     discussions = DiscussionPost.objects.filter(author=request.user)
-    comments = Comment.objects.filter(post__author=request.user)
-    discussion_comments = Comment.objects.filter(author=request.user)
+    comments = Comment.objects.filter(author=request.user)
+    discussion_comments = DiscussionComment.objects.filter(author=request.user)
 
-    comments = comments | discussion_comments
 
     context = {
         "categories": categories,
         "profile": user_profile,
         "comments": comments,
+        "discussion_comments": discussion_comments,
         "discussions": discussions,
     }
 

@@ -80,7 +80,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                     {{ message | safe }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -143,7 +143,25 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
+<!-- Delete discussion comments confirmation modal -->
+<div class="modal fade" id="deleteDiscussionCommentModal" tabindex="-1" role="dialog" aria-labelledby="deleteDiscussionCommentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteDiscussionCommentModalLabel">Delete Comment?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your comment? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteCommentConfirmDiscussion" href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div> 
 {% endblock %}
 
 {% block page_title %}

@@ -17,8 +17,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const discussionPostForm = document.getElementById("discussionPostForm");
 
   const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
+  const deleteDiscussionCommentModal = new bootstrap.Modal(document.getElementById("deleteDiscussionCommentModal"));
   const deleteCommentButtons = document.getElementsByClassName("btn-delete-comment");
+  const deleteDiscussionCommentButtons = document.getElementsByClassName("btn-delete-discussion-comment");
   const deleteCommentConfirm = document.getElementById("deleteCommentConfirm");
+  const deleteCommentConfirmDiscussion = document.getElementById("deleteCommentConfirmDiscussion");
 
   /* const editButtonsDiscussionComments = document.getElementsByClassName("btn-edit-comment");
 
@@ -104,9 +107,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
   for (let button of deleteCommentButtons) {
     button.addEventListener("click", (e) => {
-        let commentId = e.target.getAttribute("comment_id");
-        deleteCommentConfirm.href = `/post/<slug:slug>/delete_comment/<int:comment_id>/`;
-        deleteCommentModal.show();
+      let commentId = e.target.getAttribute("comment_id");
+      let postSlug = e.target.getAttribute("post_slug");
+      deleteCommentConfirm.href = `/post/${postSlug}/delete_comment/${commentId}/`;
+      deleteCommentModal.show();
     });
   }
+
+  for (let button of deleteDiscussionCommentButtons) {
+    button.addEventListener("click", (e) => {
+      let commentId = e.target.getAttribute("comment_id");
+      let discussionID = e.target.getAttribute("discussion_id");
+      deleteCommentConfirmDiscussion.href = `/discussion/post/${discussionID}/delete_comment/${commentId}/`;
+      deleteDiscussionCommentModal.show();
+    });
+  }
+  
+
 });

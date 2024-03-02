@@ -39,7 +39,7 @@ def blog_detail(request, slug):
     queryset = Post.objects.all()
     post = get_object_or_404(queryset, slug=slug)
     form = CommentForm(request.POST)
-    if request.method == "POST":
+    if request.method == "POST": 
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = Comment(

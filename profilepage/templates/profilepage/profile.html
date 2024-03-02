@@ -22,62 +22,88 @@
             <div class="container">
                 <h3 class="discussion-header">Discussion Posts</h3>
                 {% for discussion in discussions %}
-                {% if discussion.approved or discussion.author == user %}
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h5>
-                        <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
-                    </div>
-                    <div class="card-footer d-flex flex-wrap justify-content-between">
-                        <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
-                        {% if not discussion.approved and discussion.author == user %}
-                        <small class="approval">This post is awaiting approval</small>
-                        {% else %}
-                        <small class="text-muted approved">This post has been approved</small>
-                        {% endif %}
-                        {% if user.is_authenticated and discussion.author == request.user %}
-                        <div class="buttons-sidebyside">
-                        <button class="btn btn-danger btn-delete-post" discussion_pk="{{ discussion.pk }}">Delete</button>
-                        <a class="btn btn-edit-post" href="{% url 'discussion_edit' discussion.pk %}" discussion_id="{{ discussion.id }}">Edit</a>
+                    {% if discussion.approved or discussion.author == user %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'discussion_detail' discussion.pk %}">{{ discussion.title }}</a></h5>
+                            <p class="card-text">{{ discussion.content | safe | truncatechars_html:200 }}</p>
                         </div>
-                        {% endif %}
+                        <div class="card-footer d-flex flex-wrap justify-content-between">
+                            <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
+                            {% if not discussion.approved and discussion.author == user %}
+                            <small class="approval">This post is awaiting approval</small>
+                            {% else %}
+                            <small class="text-muted approved">This post has been approved</small>
+                            {% endif %}
+                            {% if user.is_authenticated and discussion.author == request.user %}
+                            <div class="buttons-sidebyside">
+                            <button class="btn btn-danger btn-delete-post" discussion_pk="{{ discussion.pk }}">Delete</button>
+                            <a class="btn btn-edit-post" href="{% url 'discussion_edit' discussion.pk %}" discussion_id="{{ discussion.id }}">Edit</a>
+                            </div>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                {% endif %}
+                    {% endif %}
                 {% endfor %}
                 {% if not discussions %}
                     <p class="discussion-header text-center">You haven't made any posts yet</p>
                 {% endif %}
                 <h3 class="discussion-header">Your comments on articles</h3>
                 {% for comment in comments %}
-                {% if comment.approved or comment.author == user %}
+                    {% if comment.approved or comment.author == user %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p class="card-text">{{ comment.body | linebreaks }}</p>
+                        </div>
+                        <div class="card-footer d-flex flex-wrap justify-content-between align-items-center ">
+                            <small class="text-muted">{{ comment.created_at.date }} by {{ comment.author }}</small>
+                            {% if not comment.approved and comment.author == user %}
+                            <small class="approval">This comment is awaiting approval</small>
+                            {% else %}
+                            <small class="text-muted approved">This comment has been approved</small>
+                            {% endif %}
+                            {% if user.is_authenticated and comment.author == user %}
+                            <div class="buttons-sidebyside">
+                                <a class="btn btn-primary" href=" {% url 'blog_detail' slug=comment.post.slug %}#comment{{ comment.id }}">View post</a>
+                                <button class="btn btn-delete-comment" comment_id="{{ comment.id }}" post_slug="{{comment.post.slug}}" href="#">Delete</button>
+                                <a class="btn btn-edit" href="{% url 'comment_edit' slug=comment.post.slug comment_id=comment.id %}">Edit</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                 <h3 class="discussion-header">Your comments on discussions</h3>
+                {% for discussion_comment in discussion_comments %}
+                {% if discussion_comment.approved or discussion_comment.author == user %}
                 <div class="card mb-3">
                     <div class="card-body">
-                        <p class="card-text">{{ comment.body | linebreaks }}</p>
+                        <p class="card-text">{{ discussion_comment.body | linebreaks }}</p>
                     </div>
                     <div class="card-footer d-flex flex-wrap justify-content-between align-items-center ">
-                        <small class="text-muted">{{ comment.created_at.date }} by {{ comment.author }}</small>
-                        {% if not comment.approved and comment.author == user %}
+                        <small class="text-muted">{{ discussion_comment.created_at.date }} by {{ discussion_comment.author }}</small>
+                        {% if not discussion_comment.approved and discsussion_comment.author == user %}
                         <small class="approval">This comment is awaiting approval</small>
                         {% else %}
                         <small class="text-muted approved">This comment has been approved</small>
                         {% endif %}
-                        {% if user.is_authenticated and comment.author == user %}
+                        {% if user.is_authenticated and discussion_comment.author == user %}
                         <div class="buttons-sidebyside">
-                            <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                            <a class="btn btn-edit" href="#" comment_id="{{ comment.id }}">Edit</a>
+                            <a class="btn btn-primary" href="{% url 'discussion_detail' pk=discussion_comment.post.pk %}">View post</a>
+                            <button class="btn btn-delete-discussion-comment" comment_id="{{ discussion_comment.id }}" discussion_id="{{discussion_comment.post.id}}">Delete</button>
+                            <a class="btn btn-edit" href="{% url 'comment_edit' discussion_comment.post.pk discussion_comment.pk %}">Edit</a>
                         </div>
                         {% endif %}
                     </div>
                 </div>
                 {% endif %}
                 {% endfor %}
-                {% if not comments %}
+                {% if not discussion_comments %}
                 <p class="discussion-header text-center">You haven't made any comments yet</p>
             {% endif %}
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 {% endblock page_content %}
