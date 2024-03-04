@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, reverse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,14 +8,14 @@ from blog.models import Category, Post, Comment
 from discussion.models import DiscussionPost, DiscussionComment
 from discussion.forms import DiscussionPostForm
 
+
 @login_required
 def profile_page(request):
     user_profile = Profile.objects.get(user=request.user)
-    categories = Category.objects.all() 
+    categories = Category.objects.all()
     discussions = DiscussionPost.objects.filter(author=request.user)
     comments = Comment.objects.filter(author=request.user)
     discussion_comments = DiscussionComment.objects.filter(author=request.user)
-
 
     context = {
         "categories": categories,
@@ -26,6 +26,7 @@ def profile_page(request):
     }
 
     return render(request, 'profilepage/profile.html', context)
+
 
 @login_required
 def discussion_edit(request, post_id):
@@ -49,8 +50,8 @@ def discussion_delete(request, pk):
     discussion_post = get_object_or_404(DiscussionPost, pk=pk)
 
     if discussion_post.author == request.user:
-            discussion_post.delete()
-            messages.success(request, 'Discussion deleted!')
+        discussion_post.delete()
+        messages.success(request, 'Discussion deleted!')
     else:
         messages.error(request, 'You can only delete your own discussion!')
 

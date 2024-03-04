@@ -1,4 +1,4 @@
-#https://dev.to/earthcomfy/django-user-profile-3hik
+# https://dev.to/earthcomfy/django-user-profile-3hik
 
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User

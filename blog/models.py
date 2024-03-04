@@ -21,11 +21,12 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
-    
-    def __str__(self): 
+
+    def __str__(self):
         return f"{self.title} by {self.author}"
 
 # Model handeling Categories
+
 
 class Category(models.Model):
     name = models.CharField(max_length=40)
@@ -36,22 +37,24 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    
-# Model handeling Comments 
+
+# Model handeling Comments
 # Some code is taken from the walkthoughproject "I think therefor I blog"
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="commenter")
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["created_at"]
-    
-    def __str__(self): 
+
+    def __str__(self):
         return f"{self.body} by {self.author}"
-    
+
     def is_visible_to_user(self, user):
         return self.approved or user == self.author

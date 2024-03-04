@@ -13,12 +13,10 @@ class BlogList(generic.ListView):
     queryset = Post.objects.all().order_by("-created_at")
     template_name = "blog/index.html"
     context_object_name = "posts"
-    paginate_by =  6
+    paginate_by = 6
 
-    #With help from antonio
-
-    def get_context_data(self,**kwargs):
-        context = super(BlogList,self).get_context_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super(BlogList, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         return context
 
@@ -39,7 +37,7 @@ def blog_detail(request, slug):
     queryset = Post.objects.all()
     post = get_object_or_404(queryset, slug=slug)
     form = CommentForm(request.POST)
-    if request.method == "POST": 
+    if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = Comment(
@@ -72,18 +70,21 @@ def blog_detail(request, slug):
     categories = Category.objects.all()
     return render(request, "blog/blog_detail.html", context)
 
+
 def about(request):
     categories = Category.objects.all()
     return render(request, 'blog/about.html', {'categories': categories})
 
-# FROM WALKTHROUGH
+# From Code Institutes Walk Through Project, "I think therefor I blog",
+# function to edit and delete comments
+
 
 def comment_edit(request, slug, comment_id):
-    categories = Category.objects.all() 
+    categories = Category.objects.all()
     """
     View to edit comments
     """
-    if request.method == "POST": 
+    if request.method == "POST":
         post = get_object_or_404(Post, slug=slug)
         comment = get_object_or_404(Comment, id=comment_id)
         comment_form = CommentForm(data=request.POST, instance=comment)
@@ -96,7 +97,8 @@ def comment_edit(request, slug, comment_id):
             messages.success(request, 'Comment Updated!')
         else:
             messages.error(request, 'Error updating comment!')
-        return HttpResponseRedirect(reverse('blog_detail', kwargs={'slug': slug}))
+        return HttpResponseRedirect(
+            reverse('blog_detail', kwargs={'slug': slug}))
     else:
         post = get_object_or_404(Post, slug=slug)
         comment = get_object_or_404(Comment, id=comment_id)
@@ -108,7 +110,7 @@ def comment_edit(request, slug, comment_id):
 
     return render(request, "blog/edit_comment.html", context)
 
-    
+
 def comment_delete(request, slug, comment_id):
     """
     View to delete comment

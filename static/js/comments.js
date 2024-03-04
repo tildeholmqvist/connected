@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const deletePostConfirm = document.getElementById("deletePostConfirm");
 
   const editPostButtons = document.getElementsByClassName("btn-edit-post");
-  const discussionPostText = document.getElementById("id_body");
   const discussionPostForm = document.getElementById("discussionPostForm");
 
   const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
@@ -22,8 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const deleteDiscussionCommentButtons = document.getElementsByClassName("btn-delete-discussion-comment");
   const deleteCommentConfirm = document.getElementById("deleteCommentConfirm");
   const deleteCommentConfirmDiscussion = document.getElementById("deleteCommentConfirmDiscussion");
-
-  /* const editButtonsDiscussionComments = document.getElementsByClassName("btn-edit-comment");
 
   /**
   * Initializes edit functionality for the provided edit buttons.
@@ -62,30 +59,10 @@ document.addEventListener("DOMContentLoaded", function() {
         deleteModal.show();
     });
   }
-
-
-  /**
-  * Initializes edit functionality for the provided edit buttons in discussions.
-  * 
-  * For each button in the `editButtons` collection:
-  * - Retrieves the associated comment's ID upon click.
-  * - Fetches the content of the corresponding comment.
-  * - Populates the `commentText` input/textarea with the comment's content for editing.
-  * - Updates the submit button's text to "Update".
-  * - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
-  */
-
   
   /**
   * Initializes deletion functionality for the provided delete buttons in discussions.
-  * 
-  * For each button in the `deleteButtons` collection:
-  * - Retrieves the associated comment's ID upon click.
-  * - Updates the `deleteConfirm` link's href to point to the 
-  * deletion endpoint for the specific comment.
-  * - Displays a confirmation modal (`deleteModal`) to prompt 
-  * the user for confirmation before deletion.
-  */
+  **/
 
   for (let button of deletePostButtons) {
     button.addEventListener("click", (e) => {
@@ -95,15 +72,23 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+    /**
+  * Initializes edit functionality for the provided delete buttons in discussions.
+  **/
+
   for (let button of editPostButtons) {
     button.addEventListener("click", (e) => {
-      console.log("Edit button clicked")
+      console.log("Edit button clicked");
       let discussionPk = e.target.getAttribute("discussion_pk");
       let discussionContent = document.getElementById(`discussion${discussionPk}`).innerText;
       discussionText.value = discussionContent;
       discussionPostForm.setAttribute("action", `edit_post/${discussionPk}`);
     });
   }
+
+    /**
+  * Initializes deletion functionality for the provided delete buttons in blog comments.
+  **/
 
   for (let button of deleteCommentButtons) {
     button.addEventListener("click", (e) => {
@@ -113,6 +98,10 @@ document.addEventListener("DOMContentLoaded", function() {
       deleteCommentModal.show();
     });
   }
+
+    /**
+  * Initializes deletion functionality for the provided delete buttons in discussion comments.
+  **/
 
   for (let button of deleteDiscussionCommentButtons) {
     button.addEventListener("click", (e) => {

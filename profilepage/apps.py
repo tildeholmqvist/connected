@@ -1,4 +1,4 @@
-#https://dev.to/earthcomfy/django-user-profile-3hik
+# code is from: https://dev.to/earthcomfy/django-user-profile-3hik
 from django.apps import AppConfig
 
 
