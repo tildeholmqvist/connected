@@ -584,4 +584,17 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
     .approved {
         display: none;
     }
+
+    .col-auto a {
+        width: 2.8rem;
+        height: 2.8rem;
+      
+    }
+}
+
+@media (max-width: 1024px) {
+    .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
 }
