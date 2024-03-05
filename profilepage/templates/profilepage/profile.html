@@ -37,7 +37,7 @@
                             {% endif %}
                             {% if user.is_authenticated and discussion.author == request.user %}
                             <div class="buttons-sidebyside">
-                            <button class="btn btn-danger btn-delete-post" discussion_pk="{{ discussion.pk }}">Delete</button>
+                            <button class="btn btn-delete-post" discussion_pk="{{ discussion.pk }}">Delete</button>
                             <a class="btn btn-edit-post" href="{% url 'discussion_edit' discussion.pk %}" discussion_id="{{ discussion.id }}">Edit</a>
                             </div>
                             {% endif %}

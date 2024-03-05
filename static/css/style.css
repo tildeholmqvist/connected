@@ -137,6 +137,8 @@ header {
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
 }
+
+/*For Viewpost button in profilepage*/
 .btn-primary{
     /* fallback for old browsers */
     background: #7FE38F;
@@ -149,6 +151,7 @@ header {
     text-transform: uppercase;
     border: none;
 }
+
 .approval {
     color: rgb(228, 97, 97);
 }
@@ -170,7 +173,7 @@ header {
     padding: 10px;
     border: none;
     /* fallback for old browsers */
-    background: #008DAC;
+    background: #007EB7;
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, #007EB7, #008DAC, #009B9A, #40A589);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -592,7 +595,7 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
     }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 576px) and (max-width: 1024px) {
     .col-md-4 {
         flex: 0 0 50%;
         max-width: 50%;
