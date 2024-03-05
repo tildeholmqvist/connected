@@ -318,11 +318,11 @@ header {
 
 .card-discussion-detail {
     background-color: #fff;
-    padding: 3px;
     border: solid black 0.2px;
+    padding: 3px;
     margin-left: 50px;
     width: 70%;
-    height: 120%;
+    height: 100%;
     margin-bottom: 15px;
 }
 
