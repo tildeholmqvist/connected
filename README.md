@@ -261,7 +261,9 @@ To manage comments, both in articles and in the discussion forum, a comment mode
 
 - The profile page consists of the logged in users previously made comments on news articles and discussionposts, as well as their own discussion posts.
 
-### Log in / Register Page
+### User Account Pages
+
+#### Log in / Register 
 
 ![Screenshot of my webpage from Am I responsive?](/docs/readme_images/login-register.png)
 
@@ -272,10 +274,74 @@ To manage comments, both in articles and in the discussion forum, a comment mode
 - The Log in / Register page contains a textbox with a short description about the page and the page social media links, as icons. 
 
 
-### Sign Up Page
+#### Sign Up 
 
 ![Screenshot of my webpage from Am I responsive?](/docs/readme_images/signup.png)
 
 - The Sign Up page consists of a sign up form, provided by Django Allauth.
 
 - The Sign Up page lets the user enter a valid username, emailadress and password, before allowing them to sign up for Connected.
+
+## Testing
+
+GÖR DIN TESTING 
+
+## Deployment - Heroku
+
+The website was deployed through the hosting platform Heroku, from it's GitHub repository.
+
+### Create the Heroku App:
+- Create an account or log in to [Heroku](https://dashboard.heroku.com/apps).
+- On the main page click "New" at the top right corner and choose "Create New App" from the dropdown menu.
+- Give the app a unique and meaningful name.
+- Next up, select your region.
+- Click "Create App".
+
+### Connect the Postgres database:
+- In the Resources tab, type "Postgres", and select "Heroku Postgres".
+- Copy the DATABASE_URL from Config Vars in the Settings Tab.
+
+### Create the enviorment setup:
+- Create an env.py file in the main directory of your GitPod workspace.
+- Add the DATABASE_URL value and your personally choosed SECRET_KEY value to the env.py file.
+- Update your settings.py file to import the env.py file and add the paths for both the DATABASE_URL and SECRET_KEY.
+- Comment out the default database configuration.
+- Save your files and make the migrations.
+- Add Cloudinary URL to the env.py file.
+- Add Cloudinary to the "installed apps" in the settings.py.
+- Configure static files settings including URL, storage path, directory path, root path, media URL, and default file storage path.
+- Connect the file to the templates directory in Heroku.
+- Rename the templates directory to TEMPLATES_DIR.
+- Add Heroku to your ALLOWED_HOSTS.
+
+### Create  Files/Directories
+- Create the requirements.txt file
+- Create a file named "Procfile" in the main directory of your project.
+- In "Procfile" add "web: gunicorn project-name.wsgi".
+
+### Update the Heroku Config Vars
+- In Heroku, add these Config Vars:
+    - SECRET_KEY value 
+    - CLOUDINARY_URL
+    - PORT = 8000
+    - DISABLE_COLLECTSTATIC = 1
+
+### Deploy your site
+- Before deploying, make sure that your DEBUG is set to false in your settings.py file.
+- Go to the deploy tab on Heroku and navigate to connect to GitHub, and then pick the required repository.
+- Scroll to the bottom of the page where you can choose if you want to Enable Automatic Deploys for 
+
+- Go to the deploy tab on Heroku and connect to GitHub, then to the required repository. 
+- Scroll down to the bottom of the page and there you can choose if you want the deploys to be Automatic or Manually. The Manually deployed branches needs redepolying each time the repository is updated.
+- Deploy your website. 
+- Click "View", or scroll up to "Open App" to visit the deployed site.
+
+The deployed website can be found here - [Connected.](https://connected-c643fb1afe74.herokuapp.com/).
+
+## Languages
+
+- Python
+- HTML
+- CSS
+- Javascript
+
