@@ -284,7 +284,152 @@ To manage comments, both in articles and in the discussion forum, a comment mode
 
 ## Testing
 
-GÖR DIN TESTING 
+#### User Story Testing 
+
+ - All user stories have been tested out, and is working correctly. 
+ - All site owner stories have been testes out, and is working correctly.
+
+## Validator Testing 
+
+### W3C Validator HTML
+- When validating the About Page, no errors where found. 
+- When validating the Log in / Sign up page, no errors where found. 
+- When validating the Log out page, no errors where found.
+- When validating, errors related to the summernote text editor occured on these pages: 
+  - Home Page
+  - Article Page
+  - Categories Page
+  - Discussion Page
+  - Profilepage 
+
+[W3C Validator](https://validator.w3.org/)
+
+#### Summernote Errors
+When validating the website a lot of errors occured, all due to the textareas created in the summernote text editor. 
+
+#### Summernote Text Editor and Troubleshooting
+Summernote is a WYSIWYG editor, used for creating text areas in web aplications. While Summernote simplifies the experience for the users and enables interactiv content creation on the website, including features allowing the users and admins to write textareas, include images and font styling, this can sometime result in an unexpected behaving code, that doesn't pass through the HTML validators. 
+
+When troubleshooting these errors, it's a good idea to isolate the code snippets that are created with Summernote, to identify that the errors is connected to the Summernote text areas. This makes it easier to guarantee that the issues or errors only referred to the summernote editor. 
+
+The summernote errors could possibly have an impact on how the website presents in other tests and contexts,
+the main code structure appears to be fine and without any errors or bugs. 
+However it is important to address the fact that the Summernote is causing errors in the code, to ensure the overall quality of the website. 
+
+### W3C Validator CSS
+#### When validating the CSS styling, 2 errors where found:
+- Both errors were located in the code handling the icons in the footer. This code used for the icons layout is borrowed from[parthwebdev - GitHub](https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html).
+- When troubleshooting these errors, other attributes where tried out without achieving the same effect. 
+- Beacuse of this, I decided to keep the CSS code intact and address the errors without changing it.
+
+[W3C Validator CSS](https://jigsaw.w3.org/css-validator/)
+
+### JS Hint 
+
+No errors where found in my JavaScript.
+
+- The following metrics were returned:
+  - There are 7 functions in this file.
+  - Function with the largest signature take 1 arguments, while the median is 1.
+  - Largets function has 29 statements in it, while the median is 4.
+  - The most complex function has a cyclomatic complexity value of 7 while the median is 1.
+
+[Jshint validator](https://jshint.com/)
+
+### PEP8
+
+No errors where found in my Python files.
+
+[CI Python Linter](https://pep8ci.herokuapp.com/)
+
+## Lighthouse 
+| Page           | Performance  | Accessibility | Best Practices  | SEO |
+|----------------|:------------:|:-------------:|:---------------:|:---:|
+|                |              |               |                 |     |
+| Desktop        |              |               |                 |     |
+| Logged Out     |              |               |                 |     |
+| Home           |           64 |            90 |              86 |  90 |
+| Article Page   |           70 |            86 |              91 |  90 |
+| About Us       |           98 |            97 |              95 |  89 |
+| Categories     |           65 |            86 |              86 |  90 |
+| Discussion     |           83 |            94 |              95 |  89 |
+| Log in/Register|           83 |            88 |              95 |  89 |
+| Logged In      |              |               |                 |     |
+| Home           |           83 |            90 |              86 |  90 |
+| Article Page   |           72 |            90 |              91 |  90 |
+| About Us       |           84 |            97 |              95 |  89 |
+| Categories     |           81 |            86 |              86 |  90 |
+| Discussion     |           96 |           94 |             95 | 89 |
+| Create Discussion   |           95 |           89 |             95 | 89 |
+| Profilepage    |           76 |           95 |             91 | 89 |
+| Edit Comment   |              |               |                 |     |
+| Edit Post      |              |               |                 |     |
+| Log out        |              |               |                 |     |
+|                |              |               |                 |     |
+| Mobile         |              |               |                 |     |
+| Logged Out     |              |               |                 |     |
+| Home           |           64 |            90 |              86 |  90 |
+| Article Page   |           70 |            86 |              91 |  90 |
+| About Us       |           98 |            97 |              95 |  89 |
+| Categories     |           65 |            86 |              86 |  90 |
+| Discussion     |           83 |            94 |              95 |  89 |
+| Log in/Register|           83 |            88 |              95 |  89 |
+| Logged In      |              |               |                 |     |
+| Home           |           83 |            90 |              86 |  90 |
+| Article Page   |           72 |            90 |              91 |  90 |
+| About Us       |           84 |            97 |              95 |  89 |
+| Categories     |           81 |            86 |              86 |  90 |
+| Discussion     |           96 |           94 |             95 | 89 |
+| Create Discussion   |           95 |           89 |             95 | 89 |
+| Profilepage    |           76 |           95 |             91 | 89 |
+| Edit Comment   |              |               |                 |     |
+| Edit Post      |              |               |                 |     |
+| Log out        |              |               |                 |     |
+
+## Browser Testing
+
+The website has been tested on different browsers such as Google Chrome, Safari and Firefox, and is working correctly.
+
+## Device Testing
+
+The webpage has been tested on different devices such as Iphone, Ipad, MacBook Pro and iMac, and is working correctly.
+
+## Responsiveness
+
+The websites responsiveness has been tested through the Google Chrom Dev Tool, [Am I Responsive?](https://ui.dev/amiresponsive) and [Responsinator](http://www.responsinator.com/) and is working correctly.
+
+## Manually Testing 
+- Buttons:
+  - All buttons on the website has been tested and is working correctly. 
+- Messages:
+  - Messages providing feedback to the users actions is working correctly. 
+- Sign Up Form: 
+  - The Signup form is working correctly, demanding valid input.
+- Log In Form: 
+  - The Login form is working correctly, demanding valid input.
+- Create Discussion Form: 
+  - The Create Discussionform is working correctly, demanding valid input in the title. 
+  - The Create Discussioform is however also working even with unvalid input in the textarea.
+- Comments:
+  - The leavingcomments form are working correctly on all pages. 
+- Edit Comment or Discussion: 
+  - The Edit tool is working correctly on all pages.
+- Delete Comment or Discussion: 
+   - The Delete tool is working correctly on all pages. 
+
+## Bugs and Issues
+
+Overall the website is working correctly, and the main code is free from errors, except for the [Summernote related ones](#summernote-errors).
+
+### Unfixed Bugs
+
+When a user is creating their own discussion post, they are able to submit the post with invalid input in the textarea.
+
+Although users are required to insert a valid title, the discussion will still be posted even if the textarea contains invalid content.
+
+For the time being, I have chosen to leave this bug unresolved. Since site administration approval is required before discussion posts are displayed to all users, an empty or invalid discussion post does not significantly impact the user experience.
+
+However, addressing this issue is a potential future improvement that I will consider implementing.
 
 ## Deployment - Heroku
 
@@ -336,7 +481,7 @@ The website was deployed through the hosting platform Heroku, from it's GitHub r
 - Deploy your website. 
 - Click "View", or scroll up to "Open App" to visit the deployed site.
 
-The deployed website can be found here - [Connected.](https://connected-c643fb1afe74.herokuapp.com/).
+The deployed website can be found here - [Connected](https://connected-c643fb1afe74.herokuapp.com/).
 
 ## Languages
 
@@ -345,3 +490,37 @@ The deployed website can be found here - [Connected.](https://connected-c643fb1a
 - CSS
 - Javascript
 
+## Frameworks, Libraries and Programs Used
+
+- [Django](https://www.djangoproject.com/): The main framework used in this project, built with Python.
+- [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): The authentication library used for creating user accounts in this project.
+- [PostgreSQL](https://www.postgresql.org/): Used as the database for this project.
+- [GitHub](https://github.com/): Used as an agile tool and for project management.
+- [Heroku](https://dashboard.heroku.com/login): Used as the cloud-based platform to deploy the site.
+- [Bootstrap](https://getbootstrap.com/): Used as the main front-end framework.
+- [Summernote](https://summernote.org/): A WYSIWYG editor.
+- [Cloudinary](https://cloudinary.com/): Used for for image hosting services on the site.
+- [Font Awesome](https://fontawesome.com/): Used for icons in the footer, and on comments.
+- [Google Fonts](https://fonts.google.com/): Used to import fonts, elevating the layout of the project.
+- [Coolors](https://coolors.co/): Used to find the right colors and palettes.
+- [Balsamic](https://balsamiq.com/wireframes/desktop/#): Used to create the wireframes.
+- [Am I Responsive?](https://ui.dev/amiresponsive): Used for the images for the README, showing the responsiveness of the site.
+- [Favicon](https://favicon.io/): Used to create the favicon.
+- [W3C](https://www.w3.org/): Used for HTML & CSS Validation.
+- [PEP8 Online](http://pep8online.com/): Used to validate all the Pythoncode files.
+- [Jshint](https://jshint.com/): Used to validate all javascript.
+
+## Credits 
+- [Stack Overflow](https://stackoverflow.com/)
+- [Bootstrap 4.0 Docs](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+- [Django Docs](https://docs.djangoproject.com/en/5.0/)
+- [Real Python](https://realpython.com/)
+- [MDBootstrap](https://mdbootstrap.com/docs/standard/)
+- [Medium](https://medium.com/)
+- [Learn Django](https://learndjango.com/tutorials/django-slug-tutorial)
+- [Dev Handbook](https://www.devhandbook.com/django/user-profile/)
+- [Dev, Profile](https://dev.to/earthcomfy/django-user-profile-3hik)
+- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog)
+- [Pexels](https://www.pexels.com/sv-se/): Used for the images on the site.
+- Every article and comment is a mock article, created with [Open AI](https://chat.openai.com/).
+- My mentor Antonio, for all of his knowledge, support and advice.

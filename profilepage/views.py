@@ -16,7 +16,7 @@ def profile_page(request):
     discussions = DiscussionPost.objects.filter(author=request.user)
     comments = Comment.objects.filter(author=request.user)
     discussion_comments = DiscussionComment.objects.filter(author=request.user)
-
+    
     context = {
         "categories": categories,
         "profile": user_profile,

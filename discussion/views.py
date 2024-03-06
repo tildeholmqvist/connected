@@ -61,7 +61,7 @@ def discussion_detail(request, pk):
         "discussion": discussion,
         "comments": comments,
         "form": form,
-        "categories": categories,
+        "categories": categories, 
         "discussion.comment_count": discussion.comment_count
     }
     return render(request, 'discussion/discussion_detail.html', context)
