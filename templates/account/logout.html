@@ -10,12 +10,15 @@
     <div class="row justify-content-center align-items-center">
       <div class="col-lg-6">
         <div class="logout">
-        <h2 class="text-center mb-4">Logout</h2>
-    <p class="text-center">Are you sure you want to log out?</p>
-    <form method="post" action="{% url 'account_logout' %}" class="p-4 rounded shadow-sm">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-primary btn-lg submit-post">Logout</button>
-    </form>
+          <h2 class="text-center mb-4">Logout</h2>
+            <p class="text-center">Are you sure you want to log out?</p>
+            <form method="post" action="{% url 'account_logout' %}" class="p-4 rounded shadow-sm">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary btn-lg submit-post">Logout</button>
+            </form>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 {% endblock %}

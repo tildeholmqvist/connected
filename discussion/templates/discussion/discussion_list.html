@@ -40,7 +40,7 @@
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">{{ discussion.created_at.date }} by {{ discussion.author }}</small>
-                    <a href="{% url 'discussion_detail' discussion.id %}" class="comment-p"><small class="text-muted"><p class="comment-p"><i class="far fa-comments comment-p"></i>Leave a comment</p></small></a>
+                    <a href="{% url 'discussion_detail' discussion.id %}" class="comment-p"><p class="comment-p"><small class="text-muted"></small><i class="far fa-comments comment-p"></i>Leave a comment</small></p></a>
                     {% if not discussion.approved and discussion.author == user %}
                     <p class="approval faded">This post is awaiting approval</p>
                     {% endif %}
