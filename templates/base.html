@@ -54,7 +54,6 @@
                             <a class="nav-link" href="{% url 'discussion_list' %}">Discussion</a>
                         </li>
                         <li class="nav-item">
-                            <ul class="login-links">
                                 {% if user.is_authenticated %}
                                 <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,11 +65,8 @@
                                      </ul>
                                 </li>
                                 {% else %}
-                                <li>
-                                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login / Register</a>
-                                </li>
+                                <li><a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login / Register</a></li>
                                 {% endif %}
-                            </ul>
                         </li>
                     </ul>
                 </div>
