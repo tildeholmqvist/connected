@@ -137,4 +137,211 @@ To manage the development of this project, I used the GitHub projects for an agi
 You can view the projectboard
 [here.](https://github.com/users/tildeholmqvist/projects/9)
 
-The 6 Epics listed above were documented within the Github project as Milestones. A Github Issue was created for each User Story which was then allocated to a milestone(Epic). Each User Story has defined acceptance criteria to make it clear when the User Story has been completed. The acceptance criteria are further broken down into tasks to facilitate the User Story's execution.
+When planning for this project 11 Github Issues were created, with two out of this as future improvement.
+Each issue has a list of acceptance criterias, making the execution of the task clear, and easier to navigate to completion.
+
+## Data Model
+
+This project uses the principles of Object-Oritented Programming(OOP) along with Django's Class-Based Generic Views, to create this online news platform.
+
+The site administator can post articles, while the site users are allowed to comment on them. 
+The site user can however post their own post in the dedicated online forum.
+
+For user authentication, Django Allauth is employed to ensure a secure access. 
+
+To manage the posts, both in articles and in the discussion forum, a post model was developed, 
+showcasing the title, author and date. 
+
+To manage the categories, a category model was developed, showcasing the title of the category, allowing the user to easily navigate to their pick of category. 
+
+To manage comments, both in articles and in the discussion forum, a comment model was developed, working in the same way as the post model, with some additions. 
+
+## Features
+
+### Header
+
+![Header](/docs/readme_images/header.png)
+
+#### Logo
+- A logo was created using the Oswald font.
+
+- The logo is linked to the home page for easier navigation for the user.
+
+#### Navigation Bar
+
+- The header and navigation bar is present at every page and includes every link to the other pages.
+
+- The Category link contains a dropdown menu allowing the user to pick their category of choice. 
+
+- For the logged in user the My profile link contains of a dropdown menu allowing the user to pick between showing their profilepage or log out. 
+
+![Navigation bar - logged in](/docs/readme_images/nav-bar-loggedin.png)
+
+- For the signed out user the navigation bar contains a link to Log in / Register 
+
+![Navigation bar - logged in](/docs/readme_images/nav-bar-loggedout.png)
+
+### Footer
+
+![Footer](/docs/readme_images/footer.png)
+
+- The footer section includes links to Instagram, Facebook, Youtube and Linkedin.
+
+- When the links in the footer is clicked, that opens a separate browser tab to avoid pulling the user away from the site.
+
+- When hovering the icons their apps original colorscheme will appear.
+![Footer](/docs/readme_images/footer1.png)
+![Footer](/docs/readme_images/footer2.png)
+![Footer](/docs/readme_images/footer3.png)
+![Footer](/docs/readme_images/footer4.png)
+
+### Home Page
+
+![Screenshot of my webpage from Am I responsive?](/docs/readme_images/amiresponsiveconnected.png)
+
+- The homepage consists of the latest news articles, showing six posts per page. 
+
+- The homepage articles consists of a preview of the post, showing images and excerpts of the article.
+
+- The homepage has a page navigator allowing the user to read more than six articles. 
+
+### The Article Page
+
+![Screenshot of my webpage from Am I responsive?](/docs/readme_images/article-page.png)
+
+- The article page appears if a user clicks on one of the titles on the articles on the home page.
+
+- The article page consists of the different articles, depending on what articles title the user clicked on. 
+
+- The article page allows a logged in user to comment on the article.
+
+- The article page allows a logged in user to see their own, unapproved comments. 
+
+- The article page allows a signed out user to read the articles, but not to comment on them. 
+
+### About Us Page 
+
+![Screenshot of my webpage from Am I responsive?](/docs/readme_images/about-us.png)
+
+- The about us page lets the user read about the company thats behind the news site Connected. 
+
+- The about us page informs the user about what they can expect from the newssite and what the newssites goals is. 
+
+### The Discussion Page
+
+![Screenshot of my webpage from Am I responsive?](/docs/readme_images/discussion.png)
+
+- The discussion page consists of discussion posts made my different users regarding the topic of the newssite. 
+
+- The discussion page is displaying a login button, if the user is not logged in, transfering the user to a login form. 
+
+- The discussion page is displaying a button with the caption "Create Your Own" allowing the user to create their own post in the discussion forum. 
+
+### The Discussionpost Page
+
+![Screenshot of my webpage from Am I responsive?](/docs/readme_images/discussion-post.png)
+
+- The discussionpost page appears if a user clicks on one of the titles on the discussions in the forum.
+
+- The discussionpost page consists of the different discussionposts, depending on what discussion title the user clicked on. 
+
+- The discussionpost page allows a logged in user to comment on the discussions.
+
+- The discussionpost page allows a logged in user to see their own, unapproved comments. 
+
+- The discussionpost page allows a signed out user to read the discussions, but not to comment on them. 
+
+### The Profile Page
+
+![Screenshot of my webpage](/docs/readme_images/profile-page.png)
+
+- The profile page is a page just available for the signed in user. 
+
+- The profile page includes a User information box, displaying the Username and email adress. 
+
+- The profile page consists of the logged in users previously made comments on news articles and discussionposts, as well as their own discussion posts.
+
+### User Account Pages
+
+#### Log in / Register 
+
+![Screenshot of my webpage from Am I responsive?](/docs/readme_images/login-register.png)
+
+- The Log in / Register page consists of a Log in form, provided by Django Allauth. 
+
+- The Log in / Register page contains a button allowing the user to create a new account if they don't already have one. 
+
+- The Log in / Register page contains a textbox with a short description about the page and the page social media links, as icons. 
+
+
+#### Sign Up 
+
+![Screenshot of my webpage from Am I responsive?](/docs/readme_images/signup.png)
+
+- The Sign Up page consists of a sign up form, provided by Django Allauth.
+
+- The Sign Up page lets the user enter a valid username, emailadress and password, before allowing them to sign up for Connected.
+
+## Testing
+
+GÖR DIN TESTING 
+
+## Deployment - Heroku
+
+The website was deployed through the hosting platform Heroku, from it's GitHub repository.
+
+### Create the Heroku App:
+- Create an account or log in to [Heroku](https://dashboard.heroku.com/apps).
+- On the main page click "New" at the top right corner and choose "Create New App" from the dropdown menu.
+- Give the app a unique and meaningful name.
+- Next up, select your region.
+- Click "Create App".
+
+### Connect the Postgres database:
+- In the Resources tab, type "Postgres", and select "Heroku Postgres".
+- Copy the DATABASE_URL from Config Vars in the Settings Tab.
+
+### Create the enviorment setup:
+- Create an env.py file in the main directory of your GitPod workspace.
+- Add the DATABASE_URL value and your personally choosed SECRET_KEY value to the env.py file.
+- Update your settings.py file to import the env.py file and add the paths for both the DATABASE_URL and SECRET_KEY.
+- Comment out the default database configuration.
+- Save your files and make the migrations.
+- Add Cloudinary URL to the env.py file.
+- Add Cloudinary to the "installed apps" in the settings.py.
+- Configure static files settings including URL, storage path, directory path, root path, media URL, and default file storage path.
+- Connect the file to the templates directory in Heroku.
+- Rename the templates directory to TEMPLATES_DIR.
+- Add Heroku to your ALLOWED_HOSTS.
+
+### Create  Files/Directories
+- Create the requirements.txt file
+- Create a file named "Procfile" in the main directory of your project.
+- In "Procfile" add "web: gunicorn project-name.wsgi".
+
+### Update the Heroku Config Vars
+- In Heroku, add these Config Vars:
+    - SECRET_KEY value 
+    - CLOUDINARY_URL
+    - PORT = 8000
+    - DISABLE_COLLECTSTATIC = 1
+
+### Deploy your site
+- Before deploying, make sure that your DEBUG is set to false in your settings.py file.
+- Go to the deploy tab on Heroku and navigate to connect to GitHub, and then pick the required repository.
+- Scroll to the bottom of the page where you can choose if you want to Enable Automatic Deploys for 
+
+- Go to the deploy tab on Heroku and connect to GitHub, then to the required repository. 
+- Scroll down to the bottom of the page and there you can choose if you want the deploys to be Automatic or Manually. The Manually deployed branches needs redepolying each time the repository is updated.
+- Deploy your website. 
+- Click "View", or scroll up to "Open App" to visit the deployed site.
+
+The deployed website can be found here - [Connected.](https://connected-c643fb1afe74.herokuapp.com/).
+
+## Languages
+
+- Python
+- HTML
+- CSS
+- Javascript
+
