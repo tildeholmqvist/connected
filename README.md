@@ -89,16 +89,44 @@ Wireframes were produced using Balsamiq.
 
  <details>
 
- <summary>Desktop Wireframe</summary>
+ <summary>Home Page</summary>
 
-![Desktop Wireframe]()
+![Home Page](docs/readme_images/wireframes/home-page.png)
 
  </details>
 
  <details>
-    <summary>Mobile Wireframe</summary>
+    <summary>About Us Page</summary>
 
-![Mobile Wireframe]()
+![About Page](docs/readme_images/wireframes/about-page.png)
+
+ </details>
+
+  <details>
+    <summary>Category Page</summary>
+
+![Category Page](docs/readme_images/wireframes/category-page.png)
+
+ </details>
+
+ <details>
+    <summary>Discussion Page</summary>
+
+![Discussion Page](docs/readme_images/wireframes/discussion-page.png)
+
+ </details>
+
+  <details>
+    <summary>Profile Page</summary>
+
+![Profile Page](docs/readme_images/wireframes/profilepage-page.png)
+
+ </details>
+
+  <details>
+    <summary>Log in / Register Page</summary>
+
+![Login Page](docs/readme_images/wireframes/login-page.png)
 
  </details>
 
