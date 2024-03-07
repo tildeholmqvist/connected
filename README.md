@@ -614,7 +614,7 @@ The deployed website can be found here - [Connected](https://connected-c643fb1af
 - [Dev, Profile](https://dev.to/earthcomfy/django-user-profile-3hik)
 - [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog)
 - [Pexels](https://www.pexels.com/sv-se/): Used for the images on the site.
-- [Tiny PNG] (https://tinypng.com/): Used for optimizing the images.
+- [Tiny PNG](https://tinypng.com/): Used for optimizing the images.
 - Every article and comment is a mock article, created with [Open AI](https://chat.openai.com/).
 - Tutor Support, Code Institute, for their support and advice.
 - My mentor Antonio, for all of his knowledge, support and advice.
