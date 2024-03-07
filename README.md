@@ -431,13 +431,16 @@ No errors where found in my Python files.
 
 ## Lighthouse 
 
-While using the Lighthouse validator tool, I found that my overall score, particularly in performance, wasn't as high as I had hoped. Upon a closer look, I realized that the quantity of the page's content, specifically, the images, was the primary factor contributing to the lower score. I believe that by optimizing the images to smaller sizes, the performance score could significantly improve.
+When I checked my website's performance with the Lighthouse tool, I noticed it wasn't doing as well as I hoped, especially in speed.
+Despite having already optimized the images, it seems there are other things slowing down how quickly the website loads.
+I suspect that elements such as the Javascript and CSS may be contributing to the slowdown. 
+Addressing these issues would likely improve the website's performance and provide a better user experience.
 
 | Page           | Performance  | Accessibility | Best Practices  | SEO |
 |----------------|:------------:|:-------------:|:---------------:|:---:|
 |                |              |               |                 |     |
 | DESKTOP        |              |               |                 |     |
-| Home           |           81 |            90 |              86 | 100 |
+| Home           |           84 |            90 |              86 | 100 |
 | Article Page   |           90 |            86 |              91 | 100 |
 | About Us       |           99 |            97 |              95 | 100 |
 | Categories     |           78 |            86 |              86 | 100 |
@@ -450,12 +453,12 @@ While using the Lighthouse validator tool, I found that my overall score, partic
 | Edit Post      |           97 |            89 |              95 | 100 |
 |                |              |               |                 |     |
 | MOBILE         |              |               |                 |     |
-| Home           |           71 |            90 |              86 | 100 |
+| Home           |           73 |            90 |              86 | 100 |
 | Article Page   |           71 |            90 |              91 | 100 |
 | About Us       |           99 |            97 |              95 | 100 |
 | Categories     |           72 |            86 |              86 | 100 |
 | Discussion     |           93 |            94 |              95 | 100 |
-| Log in/Register|          78  |            88 |              95 | 100 |
+| Log in/Register|           78 |            88 |              95 | 100 |
 | Log out        |           87 |           100 |              95 | 100 |
 | Create Discussion   |           90 |           89 |             95 | 100 |
 | Profilepage    |           91 |            91 |              95 | 100 |
