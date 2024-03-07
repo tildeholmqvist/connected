@@ -19,7 +19,66 @@ The Connected website can be found here - [Connected.](https://connected-c643fb1
 
 ## Table of Contents
 
-SKRIV INNEHÅLLSFÖRTECKNING HÄR
+- [Connected](#connected)
+  * [Site Owner Goals](#site-owner-goals)
+  * [User Stories](#user-stories)
+    - [User Profile](#user-profile)
+    - [User Navigation](#user-navigation)
+    - [Site Administration](#site-administration)
+    - [User Stories that hasn't been implemented](#user-stories-that-hasnt-been-implemented)
+    - [Future User Stories to consider](#future-user-stories-to-consider)
+  * [Design & Layout](#design--layout)
+    - [Wireframes](#wireframes)
+    - [Color Scheme](#color-scheme)
+    - [Images](#images)
+    - [Fonts](#fonts)
+    - [Favicon](#favicon)
+    - [Social Media Icons](#social-media-icons)
+- [Agile Methodology](#agile-methodology)
+- [Data Model](#data-model)
+- [Features](#features)
+  * [Header](#header)
+    - [Logo](#logo)
+    - [Navigation Bar](#navigation-bar)
+  * [Footer](#footer)
+  * [Home Page](#home-page)
+  * [The Article Page](#the-article-page)
+  * [About Us Page](#about-us-page)
+  * [The Discussion Page](#the-discussion-page)
+  * [The Discussionpost Page](#the-discussionpost-page)
+  * [The Profile Page](#the-profile-page)
+  * [User Account Pages](#user-account-pages)
+    - [Log in / Register](#log-in--register)
+    - [Sign Up](#sign-up)
+- [Testing](#testing)
+  * [User Story Testing](#user-story-testing)
+- [Validator Testing](#validator-testing)
+  * [W3C Validator HTML](#w3c-validator-html)
+    - [Summernote Errors](#summernote-errors)
+    - [Summernote Text Editor and Troubleshooting](#summernote-text-editor-and-troubleshooting)
+  * [W3C Validator CSS](#w3c-validator-css)
+  * [JS Hint](#js-hint)
+  * [PEP8](#pep8)
+- [Lighthouse](#lighthouse)
+- [Browser Testing](#browser-testing)
+- [Device Testing](#device-testing)
+- [Responsiveness](#responsiveness)
+- [Manually Testing](#manually-testing)
+- [Bugs and Issues](#bugs-and-issues)
+  * [Unfixed Bugs](#unfixed-bugs)
+- [Deployment - Heroku](#deployment---heroku)
+  * [Create the Heroku App](#create-the-heroku-app)
+  * [Connect the Postgres database](#connect-the-postgres-database)
+  * [Create the enviorment setup](#create-the-enviorment-setup)
+  * [Create Files/Directories](#create-filesdirectories)
+  * [Update the Heroku Config Vars](#update-the-heroku-config-vars)
+  * [Deploy your site](#deploy-your-site)
+- [Languages](#languages)
+- [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
+  * [Additional Libraries Used](#additional-libraries-used)
+- [Credits](#credits)
+
+
 
 ## Site Owner Goals
 
@@ -371,6 +430,9 @@ No errors where found in my Python files.
 [CI Python Linter](https://pep8ci.herokuapp.com/)
 
 ## Lighthouse 
+
+While using the Lighthouse validator tool, I found that my overall score, particularly in performance, wasn't as high as I had hoped. Upon a closer look, I realized that the quantity of the page's content, specifically, the images, was the primary factor contributing to the lower score. I believe that by optimizing the images to smaller sizes, the performance score could significantly improve.
+
 | Page           | Performance  | Accessibility | Best Practices  | SEO |
 |----------------|:------------:|:-------------:|:---------------:|:---:|
 |                |              |               |                 |     |
@@ -454,18 +516,18 @@ However, addressing these issue is a potential future improvement that I will co
 
 The website was deployed through the hosting platform Heroku, from it's GitHub repository.
 
-### Create the Heroku App:
+### Create the Heroku App
 - Create an account or log in to [Heroku](https://dashboard.heroku.com/apps).
 - On the main page click "New" at the top right corner and choose "Create New App" from the dropdown menu.
 - Give the app a unique and meaningful name.
 - Next up, select your region.
 - Click "Create App".
 
-### Connect the Postgres database:
+### Connect the Postgres database
 - In the Resources tab, type "Postgres", and select "Heroku Postgres".
 - Copy the DATABASE_URL from Config Vars in the Settings Tab.
 
-### Create the enviorment setup:
+### Create the enviorment setup
 - Create an env.py file in the main directory of your GitPod workspace.
 - Add the DATABASE_URL value and your personally choosed SECRET_KEY value to the env.py file.
 - Update your settings.py file to import the env.py file and add the paths for both the DATABASE_URL and SECRET_KEY.
@@ -529,7 +591,7 @@ The deployed website can be found here - [Connected](https://connected-c643fb1af
 - [PEP8 Online](http://pep8online.com/): Used to validate all the Pythoncode files.
 - [Jshint](https://jshint.com/): Used to validate all javascript.
 
-**Additional Libraries Used**:
+### Additional Libraries Used
 - [asgiref](https://pypi.org/project/asgiref/): ASGI specification reference implementation.
 - [oauthlib](https://pypi.org/project/oauthlib/): Provides OAuth client/server functionality.
 - [psycopg2](https://pypi.org/project/psycopg2/): Python adapter for PostgreSQL database.
