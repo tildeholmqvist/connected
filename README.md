@@ -346,45 +346,32 @@ No errors where found in my Python files.
 | Page           | Performance  | Accessibility | Best Practices  | SEO |
 |----------------|:------------:|:-------------:|:---------------:|:---:|
 |                |              |               |                 |     |
-| Desktop        |              |               |                 |     |
-| Logged Out     |              |               |                 |     |
-| Home           |           64 |            90 |              86 |  90 |
-| Article Page   |           70 |            86 |              91 |  90 |
-| About Us       |           98 |            97 |              95 |  89 |
-| Categories     |           65 |            86 |              86 |  90 |
-| Discussion     |           83 |            94 |              95 |  89 |
-| Log in/Register|           83 |            88 |              95 |  89 |
-| Logged In      |              |               |                 |     |
-| Home           |           83 |            90 |              86 |  90 |
-| Article Page   |           72 |            90 |              91 |  90 |
-| About Us       |           84 |            97 |              95 |  89 |
-| Categories     |           81 |            86 |              86 |  90 |
-| Discussion     |           96 |           94 |             95 | 89 |
-| Create Discussion   |           95 |           89 |             95 | 89 |
-| Profilepage    |           76 |           95 |             91 | 89 |
-| Edit Comment   |              |               |                 |     |
-| Edit Post      |              |               |                 |     |
-| Log out        |              |               |                 |     |
+| DESKTOP        |              |               |                 |     |
+| Home           |           81 |            90 |              86 | 100 |
+| Article Page   |           90 |            86 |              91 | 100 |
+| About Us       |           99 |            97 |              95 | 100 |
+| Categories     |           78 |            86 |              86 | 100 |
+| Discussion     |           99 |            94 |              95 | 100 |
+| Log in/Register|           99 |            88 |              95 | 100 |
+| Log out        |           98 |           100 |              95 | 100 |
+| Create Discussion   |           95 |           89 |             95 | 100 |
+| Profilepage    |           97 |            95 |              91 | 100 |
+| Edit Comment   |          100  |           94 |              95 |  100 |
+| Edit Post      |           97 |            89 |              95 | 100 |
 |                |              |               |                 |     |
-| Mobile         |              |               |                 |     |
-| Logged Out     |              |               |                 |     |
-| Home           |           64 |            90 |              86 |  90 |
-| Article Page   |           70 |            86 |              91 |  90 |
-| About Us       |           98 |            97 |              95 |  89 |
-| Categories     |           65 |            86 |              86 |  90 |
-| Discussion     |           83 |            94 |              95 |  89 |
-| Log in/Register|           83 |            88 |              95 |  89 |
-| Logged In      |              |               |                 |     |
-| Home           |           83 |            90 |              86 |  90 |
-| Article Page   |           72 |            90 |              91 |  90 |
-| About Us       |           84 |            97 |              95 |  89 |
-| Categories     |           81 |            86 |              86 |  90 |
-| Discussion     |           96 |           94 |             95 | 89 |
-| Create Discussion   |           95 |           89 |             95 | 89 |
-| Profilepage    |           76 |           95 |             91 | 89 |
-| Edit Comment   |              |               |                 |     |
-| Edit Post      |              |               |                 |     |
-| Log out        |              |               |                 |     |
+| MOBILE         |              |               |                 |     |
+| Home           |           71 |            90 |              86 | 100 |
+| Article Page   |           71 |            90 |              91 | 100 |
+| About Us       |           99 |            97 |              95 | 100 |
+| Categories     |           72 |            86 |              86 | 100 |
+| Discussion     |           93 |            94 |              95 | 100 |
+| Log in/Register|          78  |            88 |              95 | 100 |
+| Log out        |           87 |           100 |              95 | 100 |
+| Create Discussion   |           90 |           89 |             95 | 100 |
+| Profilepage    |           91 |            91 |              95 | 100 |
+| Edit Comment   |           94  |           94 |              95 | 100 |
+| Edit Post      |           90 |            89 |              95 | 100 |
+
 
 ## Browser Testing
 
@@ -421,6 +408,8 @@ The websites responsiveness has been tested through the Google Chrom Dev Tool, [
 
 Overall the website is working correctly, and the main code is free from errors, except for the [Summernote related ones](#summernote-errors).
 
+I encountered a bug when using the discussion ID as a button attribute. However, removing this attribute caused the button to malfunction, so I left it unchanged.
+
 ### Unfixed Bugs
 
 When a user is creating their own discussion post, they are able to submit the post with invalid input in the textarea.
@@ -429,7 +418,9 @@ Although users are required to insert a valid title, the discussion will still b
 
 For the time being, I have chosen to leave this bug unresolved. Since site administration approval is required before discussion posts are displayed to all users, an empty or invalid discussion post does not significantly impact the user experience.
 
-However, addressing this issue is a potential future improvement that I will consider implementing.
+When users click on 'Forgot your password?', they're unable to reset their password. Although this is a significant issue, it's not directly related to this project, as it's a mockup site. Therefore, I've chosen not to address this problem.
+
+However, addressing these issue is a potential future improvement that I will consider implementing.
 
 ## Deployment - Heroku
 
@@ -510,12 +501,23 @@ The deployed website can be found here - [Connected](https://connected-c643fb1af
 - [PEP8 Online](http://pep8online.com/): Used to validate all the Pythoncode files.
 - [Jshint](https://jshint.com/): Used to validate all javascript.
 
+**Additional Libraries Used**:
+- [asgiref](https://pypi.org/project/asgiref/): ASGI specification reference implementation.
+- [oauthlib](https://pypi.org/project/oauthlib/): Provides OAuth client/server functionality.
+- [psycopg2](https://pypi.org/project/psycopg2/): Python adapter for PostgreSQL database.
+- [PyJWT](https://pypi.org/project/PyJWT/): Library for JSON Web Token encoding and decoding.
+- [python3-openid](https://pypi.org/project/python3-openid/): Python OpenID library.
+- [requests-oauthlib](https://pypi.org/project/requests-oauthlib/): Provides OAuth support for requests.
+- [sqlparse](https://pypi.org/project/sqlparse/): SQL parser for Python.
+- [urllib3](https://pypi.org/project/urllib3/): HTTP client library for Python.
+- [whitenoise](https://pypi.org/project/whitenoise/): Serves static files in Django applications.
+
 ## Credits 
 - [Stack Overflow](https://stackoverflow.com/)
 - [Bootstrap 4.0 Docs](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 - [Django Docs](https://docs.djangoproject.com/en/5.0/)
 - [Real Python](https://realpython.com/)
-- [MDBootstrap](https://mdbootstrap.com/docs/standard/)
+- [MDBootstrap](https://mdbootstrap.com/docs/standard/extended/login/)
 - [Medium](https://medium.com/)
 - [Learn Django](https://learndjango.com/tutorials/django-slug-tutorial)
 - [Dev Handbook](https://www.devhandbook.com/django/user-profile/)
@@ -523,4 +525,5 @@ The deployed website can be found here - [Connected](https://connected-c643fb1af
 - [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog)
 - [Pexels](https://www.pexels.com/sv-se/): Used for the images on the site.
 - Every article and comment is a mock article, created with [Open AI](https://chat.openai.com/).
+- Tutor Support, Code Institute, for their support and advice.
 - My mentor Antonio, for all of his knowledge, support and advice.
