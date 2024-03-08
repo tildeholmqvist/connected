@@ -314,6 +314,22 @@ To manage comments, both in articles and in the discussion forum, a comment mode
 
 - The About Us page informs the user about what they can expect from the new site and what the news site's goals are. 
 
+### The Category Page
+
+![Screenshot of my webpage from Am I responsive?](/docs/readme_images/category.png)
+
+- The category page appears if a user clicks on one of the categories on the articles on the home page.
+
+- The category page appears if a user clicks on one of the categories in the category drop-down menu in the navigationbar.
+
+- The category page consists of different articles, depending on what category the user clicked on. 
+
+- The category page allows a logged-in user to comment on the article.
+
+- The category page allows a logged-in user to see their own, unapproved comments. 
+
+- The category page allows a signed-out user to read the articles, but not to comment on them. 
+
 ### The Discussion Page
 
 ![Screenshot of my webpage from Am I responsive?](/docs/readme_images/discussion.png)
@@ -387,15 +403,11 @@ To manage comments, both in articles and in the discussion forum, a comment mode
   - Article Page
   - Categories Page
   - Discussion Page
-<<<<<<< HEAD
-  - Profile page 
-=======
   - Profile page
  - When validating, errors related to attributes on buttons occured on these pages:
    - Article Page
    - Discussionpost Page
    - Profile Page
->>>>>>> e427fc8d1f300417104b1209b52aecf24a757a44
 
 [W3C Validator](https://validator.w3.org/)
 
@@ -410,20 +422,17 @@ When troubleshooting these errors, it's a good idea to isolate the code snippets
 The Summernote errors could have an impact on how the website presents in other tests and contexts,
 the main code structure appears to be fine and without any errors or bugs. 
 However, it is important to address the fact that the Summernote is causing errors in the code, to ensure the overall quality of the website. 
-<<<<<<< HEAD
-=======
+
 
 #### Fixing Button Attribute Errors
 During website validation, errors were identified concerning the buttons responsible for handling delete and edit functions on discussions and comments. These errors appeared due to the use of attributes such as "discussion_pk," "discussion_id," "comment_id," and "post_slug," which are not allowed on button elements.
 
 To correct this issue, I added "data-" before those attributes, changing them to "data-discussion_pk," "data-discussion_id," "data-comment_id," and "data-post_slug." This made sure they met HTML5 standards and resolved the validation errors.
->>>>>>> e427fc8d1f300417104b1209b52aecf24a757a44
+
 
 ### W3C Validator CSS
 #### When validating the CSS styling, 2 errors were found:
-- Both errors were located in the code handling the icons in the footer. This code used for the layout of the icons is borrowed from[parthwebdev - GitHub](https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html).
-- When troubleshooting these errors, other attributes were tried out without achieving the same effect. 
-- Because of this, I decided to keep the CSS code intact and address the errors without changing it.
+- Both errors were located in the code handling the icons in the footer. This code used for the layout of the icons is borrowed from [parthwebdev - GitHub](https://github.com/parthwebdev/UI-Components/blob/main/Socials/02/index.html). When troubleshooting these errors, other attributes were tried out without achieving the same effect. Because of this, I decided to keep the CSS code intact and address the errors without changing it.
 
 [W3C Validator CSS](https://jigsaw.w3.org/css-validator/)
 
@@ -495,31 +504,59 @@ The webpage has been tested on different devices such as iPhone, iPad, MacBook P
 The website's responsiveness has been tested through the Google Chrom Dev Tool, [Am I Responsive?](https://ui.dev/amiresponsive) and [Responsinator](http://www.responsinator.com/), and is working correctly.
 
 ## Manually Testing 
-- Buttons:
-  - All buttons on the website have been tested and are working correctly. 
-- Messages:
+#### Home Page
+ - Every article have been tested, and opens on a new page when clicked, working correctly. 
+ - Previous/Next button has been tested and is working correctly.
+ - The links in the navigationbar has been tested and is working correctly. 
+
+ #### Article Page 
+  - The Category link has been tested, and is working correctly, opening up a new page when clicked. 
+  - The leave a comment form has been tested and is working correctly. 
+  - The nonapproved comments are working correctly and can only be viewed by the author. 
+  - The edit/delete button on comments have been tested and are working correctly. 
+  - The links in the navigationbar has been tested and is working correctly. 
+
+
+#### Category Page
+ - Every article on the category page have been tested, and opens on a new page when clicked, working correctly. 
+ - The links in the navigationbar has been tested and is working correctly. 
+
+#### Discussion Page
+ - Every discussion on the page have been tested, and opens on a new page when clicked, working correctly. 
+- Previous/Next button has been tested and is working correctly.
+- The Log in button has been tested and is working correctly, transfering the logged-out user to the login-form. 
+- The Submit button in Create your own post, have been tested and is working correctly transfering the user to the discussion form. 
+ - The links in the navigationbar has been tested and is working correctly. 
+
+#### Profile Page
+- The discussions and comments on the page have been tested, and opens on a new page when clicked, working correctly. 
+- The Edit/Delete/View Post buttons have been tested and is working correctly. 
+ - The links in the navigationbar has been tested and is working correctly. 
+
+#### Login / Register Page
+- The login form have been tested and is working correctly.
+- The Sign up form has been tested and is working correctly. 
+ - The links in the navigationbar has been tested and is working correctly. 
+
+#### Log out Page
+- The logout button have been tested and is working correctly. 
+ - The links in the navigationbar has been tested and is working correctly. 
+ 
+#### Forms 
+ - The Comment form has been tested and is working correctly, accepting valid input without any issues.
+ - The Create Discussion form has been testing and is working, demanding valid input in the title.
+   - The Create Discussioform is however also working even with invalid input in the text area.
+ - The Login form has been tested and is working correctly, accepting valid input without any issues.
+ - The sign up form has been tested and is working correctly, accepting valid input without any issues.
+
+#### Messages 
   - Messages providing feedback on the user's actions are working correctly. 
-- Sign Up Form: 
-  - The Signup form is working correctly, demanding valid input.
-- Log In Form: 
-  - The Login form is working correctly, demanding valid input.
-- Create Discussion Form: 
-  - The Create Discussionform is working correctly, demanding valid input in the title. 
-  - The Create Discussioform is however also working even with invalid input in the text area.
-- Comments:
-  - The leaving comments form is working correctly on all pages. 
-- Edit Comment or Discussion: 
-  - The Edit tool is working correctly on all pages.
-- Delete Comment or Discussion: 
-   - The Delete tool is working correctly on all pages. 
 
 ## Bugs and Issues
 
 Overall the website is working correctly, and the main code is free from errors, except for the [Summernote-related ones](#summernote-errors).
 
-I encountered a bug when using the discussion ID as a button attribute. However, removing this attribute caused the button to malfunction, so I left it unchanged.
-
-### Unfixed Bugs
+### Unfixed Bugs and Issues
 
 When a user is creating their discussion post, they can submit the post with invalid input in the text area.
 
@@ -527,7 +564,7 @@ Although users are required to insert a valid title, the discussion will still b
 
 For the time being, I have chosen to leave this bug unresolved. Since site administration approval is required before discussion posts are displayed to all users, an empty or invalid discussion post does not significantly impact the user experience.
 
-When users click on 'Forgot your password?', they're unable to reset their password. Although this is a significant issue, it's not directly related to this project, as it's a mockup site. Therefore, I've chosen not to address this problem.
+When users click on 'Forgot your password?', they're unable to reset their password. Although this is a significant issue, it's not directly related to this project, right now. Therefore, I've chosen not to address this problem.
 
 However, I will carefully consider implementing these identified issues as potential areas for future improvement.
 
@@ -637,8 +674,4 @@ The deployed website can be found here - [Connected](https://connected-c643fb1af
 - [Grammarly](https://app.grammarly.com/): Used for spellcheck. 
 - Every article and comment is a mock article, created with [Open AI](https://chat.openai.com/).
 - Tutor Support, Code Institute, for their support and advice.
-<<<<<<< HEAD
 - My mentor Antonio, for all of his knowledge, support, and advice.
-=======
-- My mentor Antonio, for all of his knowledge, support, and advice.
->>>>>>> e427fc8d1f300417104b1209b52aecf24a757a44
