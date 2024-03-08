@@ -387,7 +387,11 @@ To manage comments, both in articles and in the discussion forum, a comment mode
   - Article Page
   - Categories Page
   - Discussion Page
-  - Profile page 
+  - Profile page
+ - When validating, errors related to attributes on buttons occured on these pages:
+   - Article Page
+   - Discussionpost Page
+   - Profile Page
 
 [W3C Validator](https://validator.w3.org/)
 
@@ -402,6 +406,11 @@ When troubleshooting these errors, it's a good idea to isolate the code snippets
 The Summernote errors could have an impact on how the website presents in other tests and contexts,
 the main code structure appears to be fine and without any errors or bugs. 
 However, it is important to address the fact that the Summernote is causing errors in the code, to ensure the overall quality of the website. 
+
+#### Fixing Button Attribute Errors
+During website validation, errors were identified concerning the buttons responsible for handling delete and edit functions on discussions and comments. These errors appeared due to the use of attributes such as "discussion_pk," "discussion_id," "comment_id," and "post_slug," which are not allowed on button elements.
+
+To correct this issue, I added "data-" before those attributes, changing them to "data-discussion_pk," "data-discussion_id," "data-comment_id," and "data-post_slug." This made sure they met HTML5 standards and resolved the validation errors.
 
 ### W3C Validator CSS
 #### When validating the CSS styling, 2 errors were found:
