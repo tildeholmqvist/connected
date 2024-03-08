@@ -456,7 +456,7 @@ No errors were found in my Python files.
 
 ## Lighthouse 
 
-When I checked my website's performance with the Lighthouse tool, I noticed it wasn't doing as well as I hoped, especially in speed.
+When I checked my website's performance with the Lighthouse tool, I noticed it wasn't doing as well as I hoped, especially in performance and best practices.
 Despite having already optimized the images, it seems other things are slowing down how quickly the website loads.
 I suspect that elements such as Javascript and CSS may be contributing to the slowdown. 
 Addressing these issues would likely improve the website's performance and provide a better user experience.
@@ -465,11 +465,11 @@ Addressing these issues would likely improve the website's performance and provi
 |----------------|:------------:|:-------------:|:---------------:|:---:|
 |                |              |               |                 |     |
 | DESKTOP        |              |               |                 |     |
-| Home           |           84 |            90 |              86 | 100 |
-| Article Page   |           90 |            86 |              91 | 100 |
+| Home           |           94 |            90 |              86 | 100 |
+| Article Page   |           97 |            90 |              91 | 100 |
 | About Us       |           99 |            97 |              95 | 100 |
-| Categories     |           78 |            86 |              86 | 100 |
-| Discussion     |           99 |            94 |              95 | 100 |
+| Categories     |           94 |            86 |              86 | 100 |
+| Discussion     |           98 |            94 |              95 | 100 |
 | Log in/Register|           99 |            88 |              95 | 100 |
 | Log out        |           98 |           100 |              95 | 100 |
 | Create Discussion   |           95 |           89 |             95 | 100 |
@@ -478,10 +478,10 @@ Addressing these issues would likely improve the website's performance and provi
 | Edit Post      |           97 |            89 |              95 | 100 |
 |                |              |               |                 |     |
 | MOBILE         |              |               |                 |     |
-| Home           |           73 |            90 |              86 | 100 |
-| Article Page   |           71 |            90 |              91 | 100 |
+| Home           |           74 |            90 |              86 | 100 |
+| Article Page   |           73 |            90 |              91 | 100 |
 | About Us       |           99 |            97 |              95 | 100 |
-| Categories     |           72 |            86 |              86 | 100 |
+| Categories     |           92 |            86 |              86 | 100 |
 | Discussion     |           93 |            94 |              95 | 100 |
 | Log in/Register|           78 |            88 |              95 | 100 |
 | Log out        |           87 |           100 |              95 | 100 |
@@ -545,7 +545,7 @@ The website's responsiveness has been tested through the Google Chrom Dev Tool, 
 #### Forms 
  - The Comment form has been tested and is working correctly, accepting valid input without any issues.
  - The Create Discussion form has been testing and is working, demanding valid input in the title.
-   - The Create Discussioform is however also working even with invalid input in the text area.
+   - The Create Discussion form is however also working even with invalid input in the text area.
  - The Login form has been tested and is working correctly, accepting valid input without any issues.
  - The sign up form has been tested and is working correctly, accepting valid input without any issues.
 
