@@ -12,7 +12,7 @@ Connected is not only a site for news and article research but also an online fo
 
 This website includes a first page displaying the latest articles, an "About us" page, different pages for the different categories that the article is posted in, a discussion forum, and lastly their profile page which allows the user to see their own previously made posts and comments. 
 
-The Connected website can be found here - [Connected.](https://connected-c643fb1afe74.herokuapp.com/).
+The Connected website can be found here - [Connected.](https://connected-c643fb1afe74.herokuapp.com/)
 
 ![Screenshot of my webpage from Am I responsive?](/docs/readme_images/amiresponsiveconnected.png)
 
@@ -195,7 +195,7 @@ The colors used for the Connected Website are mainly black, white, and grey, to 
 The different pops of colors that appear are mainly focused on the buttons and icons in the footer. 
 The colors or the button is matched and faded with different generic gradient palettes based on these:
 
-![Color that the palettes are based of](/docs/readme_images/color-for-palettes.png)
+![Color that the palettes are based on](/docs/readme_images/color-for-palettes.png)
 
 ### Images
 
@@ -212,7 +212,7 @@ All fonts are from [Google Fonts](https://fonts.google.com/).
 
 ### Favicon 
 
-The favicon was generated through [Favicon.io](https://favicon.io/), and is depicting a big C for Connected.
+The favicon was generated through [Favicon.io](https://favicon.io/) and depicts a big C for Connected.
 
 ### Social Media Icons
 
@@ -242,6 +242,8 @@ showcasing the title, author, and date.
 To add categories, a category model was developed, showcasing the title of the category, allowing the user to easily navigate to their pick of category. 
 
 To manage comments, both in articles and in the discussion forum, a comment model was developed, working in the same way as the post model, with some additions. 
+
+![Database Schema](docs/readme_images/database-schema.png)
 
 ## Features
 
@@ -320,7 +322,7 @@ To manage comments, both in articles and in the discussion forum, a comment mode
 
 - The category page appears if a user clicks on one of the categories on the articles on the home page.
 
-- The category page appears if a user clicks on one of the categories in the category drop-down menu in the navigationbar.
+- The category page appears if a user clicks on one of the categories in the category drop-down menu in the navigation bar.
 
 - The category page consists of different articles, depending on what category the user clicked on. 
 
@@ -338,7 +340,7 @@ To manage comments, both in articles and in the discussion forum, a comment mode
 
 - The discussion page displays a login button. If the user is not logged in, it transfers the user to a login form. 
 
-- The discussion page is displaying a button with the caption "Create Your Own" allowing the user to create their post in the discussion forum. 
+- The discussion page displays a button with the caption "Create Your Own" allowing the user to create their post in the discussion forum. 
 
 ### The Discussionpost Page
 
@@ -372,9 +374,9 @@ To manage comments, both in articles and in the discussion forum, a comment mode
 
 - The Log in / Register page consists of a Log in form, provided by Django Allauth. 
 
-- The Log in / Register page contains a button allowing the user to create a new account if they don't already have one. 
+- The login / Register page contains a button allowing the user to create a new account if they don't already have one. 
 
-- The Log in / Register page contains a textbox with a short description about the page and the page's social media links, as icons. 
+- The login / Register page contains a textbox with a short description about the page and the page's social media links, as icons. 
 
 
 #### Sign Up 
@@ -396,17 +398,17 @@ To manage comments, both in articles and in the discussion forum, a comment mode
 
 ### W3C Validator HTML
 - When validating the About Page, no errors were found. 
-- When validating the Log in / Sign up page, no errors were found. 
-- When validating the Log out page, no errors were found.
+- When validating the Login / Sign up page, no errors were found. 
+- When validating the Logout page, no errors were found.
 - When validating, errors related to the Summernote text editor occurred on these pages: 
   - Home Page
   - Article Page
   - Categories Page
   - Discussion Page
   - Profile page
- - When validating, errors related to attributes on buttons occured on these pages:
+ - When validating, errors related to attributes on buttons occurred on these pages:
    - Article Page
-   - Discussionpost Page
+   - Discussion post Page
    - Profile Page
 
 [W3C Validator](https://validator.w3.org/)
@@ -505,49 +507,49 @@ The website's responsiveness has been tested through the Google Chrom Dev Tool, 
 
 ## Manually Testing 
 #### Home Page
- - Every article have been tested, and opens on a new page when clicked, working correctly. 
- - Previous/Next button has been tested and is working correctly.
- - The links in the navigationbar has been tested and is working correctly. 
+ - Every article has been tested and is working correctly, opening up a new page when clicked. 
+ - The previous/Next button has been tested and is working correctly.
+ - The links in the navigation bar have been tested and are working correctly. 
 
  #### Article Page 
-  - The Category link has been tested, and is working correctly, opening up a new page when clicked. 
-  - The leave a comment form has been tested and is working correctly. 
+  - The Category link has been tested and is working correctly, opening up a new page when clicked. 
+  - The leave-a-comment form has been tested and is working correctly. 
   - The nonapproved comments are working correctly and can only be viewed by the author. 
-  - The edit/delete button on comments have been tested and are working correctly. 
-  - The links in the navigationbar has been tested and is working correctly. 
+  - The edit/delete button on comments has been tested and is working correctly. 
+  - The links in the navigation bar have been tested and are working correctly. 
 
 
 #### Category Page
- - Every article on the category page have been tested, and opens on a new page when clicked, working correctly. 
- - The links in the navigationbar has been tested and is working correctly. 
+ - Every article on the category page has been tested and is working correctly, opening up a new page when clicked. 
+ - The links in the navigation bar have been tested and are working correctly. 
 
 #### Discussion Page
- - Every discussion on the page have been tested, and opens on a new page when clicked, working correctly. 
-- Previous/Next button has been tested and is working correctly.
-- The Log in button has been tested and is working correctly, transfering the logged-out user to the login-form. 
-- The Submit button in Create your own post, have been tested and is working correctly transfering the user to the discussion form. 
- - The links in the navigationbar has been tested and is working correctly. 
+ - Every discussion on the page has been tested and opens on a new page when clicked, working correctly. 
+- The previous/Next button has been tested and is working correctly.
+- The login button has been tested and is working correctly, transferring the logged-out user to the login form. 
+- The Submit button in Create your post, has been tested and is working correctly transferring the user to the discussion form. 
+ - The links in the navigation bar have been tested and are working correctly. 
 
 #### Profile Page
-- The discussions and comments on the page have been tested, and opens on a new page when clicked, working correctly. 
-- The Edit/Delete/View Post buttons have been tested and is working correctly. 
- - The links in the navigationbar has been tested and is working correctly. 
+- The discussions and comments on the page have been tested, and open on a new page when clicked, working correctly. 
+- The Edit/Delete/View Post buttons have been tested and are working correctly. 
+ - The links in the navigation bar have been tested and are working correctly. 
 
 #### Login / Register Page
-- The login form have been tested and is working correctly.
-- The Sign up form has been tested and is working correctly. 
- - The links in the navigationbar has been tested and is working correctly. 
+- The login form has been tested and is working correctly.
+- The Signup form has been tested and is working correctly. 
+ - The links in the navigation bar have been tested and are working correctly. 
 
 #### Log out Page
-- The logout button have been tested and is working correctly. 
- - The links in the navigationbar has been tested and is working correctly. 
+- The logout button has been tested and is working correctly. 
+ - The links in the navigation bar have been tested and are working correctly. 
  
 #### Forms 
  - The Comment form has been tested and is working correctly, accepting valid input without any issues.
- - The Create Discussion form has been testing and is working, demanding valid input in the title.
+ - The Create Discussion form has been tested and is working, demanding valid input in the title.
    - The Create Discussion form is however also working even with invalid input in the text area.
  - The Login form has been tested and is working correctly, accepting valid input without any issues.
- - The sign up form has been tested and is working correctly, accepting valid input without any issues.
+ - The signup form has been tested and is working correctly, accepting valid input without any issues.
 
 #### Messages 
   - Messages providing feedback on the user's actions are working correctly. 
