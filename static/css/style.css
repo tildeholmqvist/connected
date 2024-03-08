@@ -18,7 +18,7 @@ header {
 }
 
 .fixed-height-image {
-    max-height: 600px;
+    max-height: 500px;
     width: auto;
 }
 
@@ -597,6 +597,11 @@ https://mdbootstrap.com/docs/standard/extended/login/ */
         width: 2.8rem;
         height: 2.8rem;
       
+    }
+
+    .fixed-height-image {
+        max-height: 300px;
+        width: auto;
     }
 }
 
