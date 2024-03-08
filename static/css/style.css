@@ -17,6 +17,11 @@ header {
     padding: 5px;
 }
 
+.fixed-height-image {
+    max-height: 600px;
+    width: auto;
+}
+
 /* Navigation */
 .brand-name {
     font-family: "Oswald", sans-serif;

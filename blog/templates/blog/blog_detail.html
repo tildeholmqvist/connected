@@ -16,7 +16,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <img class="img-fluid mb-4" src="{% if 'placeholder' in post.featured_image.url %}{% static 'images/default.jpg' %}{% else %}{{ post.featured_image.url }}{% endif %}" alt="{{ post.title }}">
+            <img class="img-fluid mb-4 fixed-height-image" src="{% if 'placeholder' in post.featured_image.url %}{% static 'images/default.jpg' %}{% else %}{{ post.featured_image.url }}{% endif %}" alt="{{ post.title }}">
         </div>
     </div>
     <div class="row">
