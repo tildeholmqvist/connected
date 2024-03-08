@@ -11,8 +11,8 @@
                     <small class="text-muted discussion-created">{{ discussion.created_at|date }}</small>
                     <p>{{ discussion.content | safe | linebreaks }}</p>
                     {% if user.is_authenticated and discussion.author == request.user %}
-                    <button class="btn btn-danger btn-delete-post" discussion_pk="{{ discussion.pk }}">Delete</button>
-                    <a class="btn btn-edit-post" href="{% url 'discussion_edit' discussion.pk %}" discussion_id="{{ discussion.id }}">Edit</a>
+                    <button class="btn btn-danger btn-delete-post" data-discussion_pk="{{ discussion.pk }}">Delete</button>
+                    <a class="btn btn-edit-post" href="{% url 'discussion_edit' discussion.pk %}" data-discussion_id="{{ discussion.id }}">Edit</a>
                     {% endif %}
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     <p class="approval">This comment is awaiting approval</p>
                     {% endif %}
                     {% if user.is_authenticated and comment.author == user %}
-                    <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
                     <a class="btn btn-edit" href="{% url 'comment_edit' discussion.pk comment.pk %}" comment_id="{{ comment.id }}">Edit</a>
                     {% endif %}
                 </div>

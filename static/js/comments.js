@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
   for (let button of editButtons) {
     button.addEventListener("click", (e) => {
       console.log("Edit button clicked")
-      let commentId = e.target.getAttribute("comment_id");
+      let commentId = e.target.getAttribute("data-comment_id");
       let commentContent = document.getElementById(`comment${commentId}`).innerText;
       commentText.value = commentContent;
       commentForm.setAttribute("action", `edit_comment/${commentId}`);
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
  
   for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-        let commentId = e.target.getAttribute("comment_id");
+        let commentId = e.target.getAttribute("data-comment_id");
         deleteConfirm.href = `delete_comment/${commentId}`;
         deleteModal.show();
     });
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   for (let button of deletePostButtons) {
     button.addEventListener("click", (e) => {
-        let discussionPk = e.target.getAttribute("discussion_pk");
+        let discussionPk = e.target.getAttribute("data-discussion_pk");
         deletePostConfirm.href = `/discussion/${discussionPk}/delete/`;
         deletePostModal.show();
     });
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
   for (let button of editPostButtons) {
     button.addEventListener("click", (e) => {
       console.log("Edit button clicked");
-      let discussionPk = e.target.getAttribute("discussion_pk");
+      let discussionPk = e.target.getAttribute("data-discussion_pk");
       let discussionContent = document.getElementById(`discussion${discussionPk}`).innerText;
       discussionText.value = discussionContent;
       discussionPostForm.setAttribute("action", `edit_post/${discussionPk}`);
@@ -92,8 +92,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   for (let button of deleteCommentButtons) {
     button.addEventListener("click", (e) => {
-      let commentId = e.target.getAttribute("comment_id");
-      let postSlug = e.target.getAttribute("post_slug");
+      let commentId = e.target.getAttribute("data-comment_id");
+      let postSlug = e.target.getAttribute("data-post_slug");
       deleteCommentConfirm.href = `/post/${postSlug}/delete_comment/${commentId}/`;
       deleteCommentModal.show();
     });
@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   for (let button of deleteDiscussionCommentButtons) {
     button.addEventListener("click", (e) => {
-      let commentId = e.target.getAttribute("comment_id");
-      let discussionID = e.target.getAttribute("discussion_id");
+      let commentId = e.target.getAttribute("data-comment_id");
+      let discussionID = e.target.getAttribute("data-discussion_id");
       deleteCommentConfirmDiscussion.href = `/discussion/post/${discussionID}/delete_comment/${commentId}/`;
       deleteDiscussionCommentModal.show();
     });

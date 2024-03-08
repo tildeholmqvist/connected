@@ -80,7 +80,7 @@
                                 <p class="approval">This comment is awaiting approval</p>
                             {% endif %}
                             {% if user.is_authenticated and comment.author == user %}
-                                <button class="btn btn-delete-comment" comment_id="{{ comment.id }}" post_slug="{{comment.post.slug}}">Delete</button>
+                                <button class="btn btn-delete-comment" data-comment_id="{{ comment.id }}" data-post_slug="{{comment.post.slug}}">Delete</button>
                                 <a class="btn btn-edit" href="{% url 'comment_edit' slug=post.slug comment_id=comment.id %}" comment_id="{{ comment.id }}">Edit</a>
                             {% endif %}
                         </div>
