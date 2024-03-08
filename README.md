@@ -387,7 +387,15 @@ To manage comments, both in articles and in the discussion forum, a comment mode
   - Article Page
   - Categories Page
   - Discussion Page
+<<<<<<< HEAD
   - Profile page 
+=======
+  - Profile page
+ - When validating, errors related to attributes on buttons occured on these pages:
+   - Article Page
+   - Discussionpost Page
+   - Profile Page
+>>>>>>> e427fc8d1f300417104b1209b52aecf24a757a44
 
 [W3C Validator](https://validator.w3.org/)
 
@@ -402,6 +410,14 @@ When troubleshooting these errors, it's a good idea to isolate the code snippets
 The Summernote errors could have an impact on how the website presents in other tests and contexts,
 the main code structure appears to be fine and without any errors or bugs. 
 However, it is important to address the fact that the Summernote is causing errors in the code, to ensure the overall quality of the website. 
+<<<<<<< HEAD
+=======
+
+#### Fixing Button Attribute Errors
+During website validation, errors were identified concerning the buttons responsible for handling delete and edit functions on discussions and comments. These errors appeared due to the use of attributes such as "discussion_pk," "discussion_id," "comment_id," and "post_slug," which are not allowed on button elements.
+
+To correct this issue, I added "data-" before those attributes, changing them to "data-discussion_pk," "data-discussion_id," "data-comment_id," and "data-post_slug." This made sure they met HTML5 standards and resolved the validation errors.
+>>>>>>> e427fc8d1f300417104b1209b52aecf24a757a44
 
 ### W3C Validator CSS
 #### When validating the CSS styling, 2 errors were found:
@@ -621,4 +637,8 @@ The deployed website can be found here - [Connected](https://connected-c643fb1af
 - [Grammarly](https://app.grammarly.com/): Used for spellcheck. 
 - Every article and comment is a mock article, created with [Open AI](https://chat.openai.com/).
 - Tutor Support, Code Institute, for their support and advice.
+<<<<<<< HEAD
 - My mentor Antonio, for all of his knowledge, support, and advice.
+=======
+- My mentor Antonio, for all of his knowledge, support, and advice.
+>>>>>>> e427fc8d1f300417104b1209b52aecf24a757a44
